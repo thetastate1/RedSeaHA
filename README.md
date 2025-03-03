@@ -45,7 +45,7 @@ TEST FLOW
 CONFIGURE HA
 
 9. The devices and entities will be exposed under the Node-RED Companion integration in HA. Add these to your dashboard as required.
-10. Create automations (e.g. ReffMat roll replacement, Doser suppliment replacement, Feed mode for pumps)
+10. Create automations (e.g. ReefMat roll replacement, Doser suppliment replacement, Feed mode for pumps)
 
 
 TODO
