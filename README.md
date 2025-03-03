@@ -7,6 +7,21 @@ Lights likely possible using the same flow but need someone with lights to test.
 
 This integration uses local http REST integration allowing you to monitor and control devices remotely using Home Assistant.
 
+DEVICES AND ENTITIES CREATED FROM NODE-RED
+<img width="793" alt="Screenshot 2025-03-04 at 9 48 25 am" src="https://github.com/user-attachments/assets/c0f5b465-22a3-499f-bc8e-d7a6bcb30e81" />
+
+<img width="775" alt="Screenshot 2025-03-04 at 9 49 05 am" src="https://github.com/user-attachments/assets/5a794cd8-0f0e-490a-91e3-eeb3a0e660ac" />
+
+<img width="786" alt="Screenshot 2025-03-04 at 9 49 23 am" src="https://github.com/user-attachments/assets/42d06991-fba9-41ca-a567-131f63726c81" />
+
+<img width="473" alt="Screenshot 2025-03-04 at 9 49 42 am" src="https://github.com/user-attachments/assets/a404e926-d82d-41cc-bde7-61470ca89ae1" />
+
+<img width="783" alt="Screenshot 2025-03-04 at 9 49 58 am" src="https://github.com/user-attachments/assets/bc325b85-100c-416a-880d-25f8dae5eb56" />
+
+<img width="784" alt="Screenshot 2025-03-04 at 9 50 16 am" src="https://github.com/user-attachments/assets/3d850c91-0410-424f-901b-996b92b7a84e" />
+
+
+
 INSTALLATION
 
 PREREQUISITES
