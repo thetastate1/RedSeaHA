@@ -45,15 +45,18 @@ TEST FLOW
 CONFIGURE HA
 
 9. The devices and entities will be exposed under the Node-RED Companion integration in HA. Add these to your dashboard as required.
+10. Create automations (e.g. ReffMat roll replacement, Doser suppliment replacement, Feed mode for pumps)
 
 
 TODO
 
-1. Add overskimming and level sensors for Skimmer
+1. Add overskimming and level sensors for Pump/Skimmer
 2. Work out payloads for Wavemaker. Currently have on found a mode value that can be used to monitor and change the mode.
 3. Add manual advance trigger for ReefMat
 4. Lights
 5. Figure out what "st" and "pd" is for in setting pump values
+6. Add manual doser capability
+7. ATO
 
 PAYLOADS
 
@@ -119,5 +122,114 @@ msg.payload = {
 }
 ```
 
+Returns:
+```json
+msg.payload = {
+"success":true,
+"message":"all pump settings updated with success"
+}
+```
+
+
 ReefMat
 
+
+GET http://ReefMatIP/dashboard
+
+Returns:
+```json
+msg.payload = {
+"mode":"auto",
+"is_internet_connected":true,
+"is_ec_sensor_connected":true,
+"unclean_sensor":false,
+"auto_advance":true,
+"is_advancing":false,
+"last_advance_cause":"ec_sensor",
+"roll_level":"full",
+"days_till_end_of_roll":9,
+"internal_ec_average":0,
+"external_ec_average":0,
+"setup_date":"2024-11-17T10:02:12Z",
+"cumulative_steps":9658,
+"device_setup_date":1660259660,
+"lifetime_steps":107075,
+"today_usage":8.9,
+"daily_average_usage":27,
+"total_usage":2549.5,
+"remaining_length":250.3,
+"material":{
+   "name":"28 Meter",
+   "external_diameter":10.1,
+   "thickness":0.0237,
+   "is_partial":false}
+}
+```
+
+
+Dosers
+GET http://DoserIP/head/1/settings
+
+Returns:
+```json
+msg.payload ={
+"slm":true,
+"container_volume":545.5129,
+"schedule_enabled":true,
+"state":"on",
+"show":true,
+"dc":true,
+"last_calibrated":1656594173,
+"today_auto_dosed_volume":45.9,
+"is_food_head":false,
+"food_delay":0,
+"vps":0.056061,
+"entire_dd":true,
+"enable_ratio":true,
+"supplement":{
+   "uid":"76830db3-a0bd-459a-9974-76a57d026893",
+   "name":"KH/Alkalinity (Foundation B)",
+   "display_name":"KH",
+   "short_name":"KH",
+   "brand_name":"Red Sea",
+   "type":"null",
+   "concentration":0,
+   "made_by_redsea":true,
+   "is_brand_editable":false,
+   "is_supplement_editable":false,
+   "is_name_editable":false},
+   "schedule":{
+      "type":"hourly",
+      "dd":100,
+      "days":[1,2,3,4,5,6,7],
+      "mode":"regular",
+      "min":0},
+   "recalibration_required":false,
+   "manual_dose_scheduled":false
+}
+```
+
+WaveMaker
+
+GET http://WaveMakerIP/mode
+
+Returns:
+```json
+msg.payload = {auto}
+```
+
+POST http://WaveMakerIP/mode
+
+with:
+```json
+msg.payload = {
+"mode": "auto"
+}
+```
+Returns:
+```json
+msg.payload = {
+"success":true,
+"message":"auto mode enabled successfully"
+}
+```
