@@ -57,6 +57,7 @@ TODO
 5. Figure out what "st" and "pd" is for in setting pump values
 6. Add manual doser capability
 7. ATO
+8. Perhaps there is a more efficient way to create HA sensors dynamically from a JS function call in node-red rather than creating a node for each sensor
 
 PAYLOADS
 
@@ -233,3 +234,5 @@ msg.payload = {
 "message":"auto mode enabled successfully"
 }
 ```
+
+Keen to collaborate and work out more endpoints, refine flow, optimise install, test lights etc. 
