@@ -1,1 +1,2397 @@
-node-red
+[
+    {
+        "id": "93fb4f06d7a3a7bc",
+        "type": "tab",
+        "label": "RedSeaHomeAssistant",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "730f76ad146b24b9",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "59d27329e9b76a2e"
+            ]
+        ]
+    },
+    {
+        "id": "59d27329e9b76a2e",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump Settings",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.213/pump/settings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 380,
+        "y": 140,
+        "wires": [
+            [
+                "0e85da27edbf79d4"
+            ]
+        ]
+    },
+    {
+        "id": "0e85da27edbf79d4",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 96",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "247be79c4dc0386f",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1680,
+        "wires": [
+            [
+                "fdcfe073c52579b7"
+            ]
+        ]
+    },
+    {
+        "id": "fdcfe073c52579b7",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Wavemaker - mode",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.128/mode",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 370,
+        "y": 1680,
+        "wires": [
+            [
+                "0f9176095ad80dc1",
+                "343c5adce17ee578"
+            ]
+        ]
+    },
+    {
+        "id": "0f9176095ad80dc1",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 97",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "5a77272e697aafe1",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "function 5",
+        "func": "//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1200,
+        "wires": [
+            [
+                "4f12204f99e8e3cf"
+            ]
+        ]
+    },
+    {
+        "id": "b58cda0459bc971e",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1200,
+        "wires": [
+            [
+                "5a77272e697aafe1"
+            ]
+        ]
+    },
+    {
+        "id": "4f12204f99e8e3cf",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Dosers Dashboard",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.125/dashboard",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 690,
+        "y": 1200,
+        "wires": [
+            [
+                "4097902f02f890e2"
+            ]
+        ]
+    },
+    {
+        "id": "4097902f02f890e2",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 98",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "9c5c024594136917",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Every 1 Minuite",
+        "props": [],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 240,
+        "wires": [
+            [
+                "6d74ca27934d0816"
+            ]
+        ]
+    },
+    {
+        "id": "6d74ca27934d0816",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump Dashboard",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.213/dashboard",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 390,
+        "y": 240,
+        "wires": [
+            [
+                "0fab7c24b67c07e4",
+                "78ae024676ecb651",
+                "1eeeba0a936b49ed",
+                "443990d9ae2e1c0f",
+                "a62e8fd04ee517e1"
+            ]
+        ]
+    },
+    {
+        "id": "0fab7c24b67c07e4",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 99",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "b94b6bcf20b503f1",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 340,
+        "wires": [
+            [
+                "b26b03fb1deee5d8"
+            ]
+        ]
+    },
+    {
+        "id": "12d15299aa7b338b",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump Update",
+        "method": "PUT",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.213/pump/settings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 920,
+        "y": 340,
+        "wires": [
+            [
+                "40ab20ab4ef9a6c8"
+            ]
+        ]
+    },
+    {
+        "id": "40ab20ab4ef9a6c8",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Update Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "79a15d469013e7dc",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "function 6",
+        "func": "//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1280,
+        "wires": [
+            [
+                "1ab7efdc3dcc2bce"
+            ]
+        ]
+    },
+    {
+        "id": "18a177727bd66db5",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1280,
+        "wires": [
+            [
+                "79a15d469013e7dc"
+            ]
+        ]
+    },
+    {
+        "id": "1ab7efdc3dcc2bce",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Dosers",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.125/device-settings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 660,
+        "y": 1280,
+        "wires": [
+            [
+                "cafebe369234728f"
+            ]
+        ]
+    },
+    {
+        "id": "cafebe369234728f",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 101",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "7db56b3cfa2bf8a1",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Every 1 Minuite",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 980,
+        "wires": [
+            [
+                "7891a0bc79e3955d",
+                "f2a0ff5f6ce41d93",
+                "08b20658268d23b9",
+                "7709b12466af1992"
+            ]
+        ]
+    },
+    {
+        "id": "7891a0bc79e3955d",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Dosers Head 1",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.125/head/1/settings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 980,
+        "wires": [
+            [
+                "1c1c2fda4c89fe78",
+                "ca0ee2fddddf1572",
+                "6b2f357b62d0a13a",
+                "6011d76135aa3c26",
+                "c8192c80b8fd49ee",
+                "334c7f228e4ec415"
+            ]
+        ]
+    },
+    {
+        "id": "1c1c2fda4c89fe78",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 102",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "dca7e87903c6c433",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1580,
+        "wires": [
+            [
+                "5b6d281e765c900e"
+            ]
+        ]
+    },
+    {
+        "id": "5b6d281e765c900e",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Wavemaker device-settings",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.128/device-settings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 1580,
+        "wires": [
+            [
+                "f1ee33c80146035c"
+            ]
+        ]
+    },
+    {
+        "id": "f1ee33c80146035c",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 103",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "71538128a9a7b680",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1500,
+        "wires": [
+            [
+                "ab722df7fdc43eef"
+            ]
+        ]
+    },
+    {
+        "id": "ab722df7fdc43eef",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Wavemaker - connect events",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.128/connectivity/events",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 1500,
+        "wires": [
+            [
+                "2932bf168ac8530f"
+            ]
+        ]
+    },
+    {
+        "id": "2932bf168ac8530f",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 104",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "635457c5c73bd66c",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Every 15 Minutes",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 600,
+        "wires": [
+            [
+                "d91ffedd5a9a5745"
+            ]
+        ]
+    },
+    {
+        "id": "d91ffedd5a9a5745",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Mat Dashboard",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.92/dashboard",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 400,
+        "y": 600,
+        "wires": [
+            [
+                "d4f690342df983b7",
+                "dc9ea3016f7a0e09",
+                "6e0923f0dd1bd356",
+                "286c8364605a0af5",
+                "404cf543043afa1b",
+                "40c97285ba6bce34",
+                "f3c8d9fbbea45fe4",
+                "9f760cdf4017cd6b",
+                "409abbf4109db3b6"
+            ]
+        ]
+    },
+    {
+        "id": "d4f690342df983b7",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 105",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "78ae024676ecb651",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump1Temperature",
+        "entityConfig": "8622b2230b385942",
+        "version": 0,
+        "state": "payload.pump_1.temperature",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 690,
+        "y": 200,
+        "wires": [
+            [
+                "7e0a125e02520594"
+            ]
+        ]
+    },
+    {
+        "id": "7e0a125e02520594",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 111",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ecb12ca231c96fec",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 112",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "b26b03fb1deee5d8",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "PumpUpdatePayload",
+        "func": "/* msg.payload = {\n    \"entity_id\": \"test_entity\",\n        \"old_state\": {\n        \"state\": \"on\"\n    },\n    \"new_state\": {\n        \"state\": \"off\"\n    }\n}\n*/\n//msg.payload.pump_1.intensity = \"55\"\n/*sg.payload = {\n    \"pump_1\": {\n        \"intensity\": 55\n    }\n}\n*/\n/*\npayload: object\nfield_errors: array[6]\n0: object\nerror_code: \"NotNull\"\nmessage: \"must not be null\"\nfield: \"pump_1.schedule[0].st\"\n1: object\nerror_code: \"NotNull\"\nmessage: \"must not be null\"\nfield: \"pump_1.schedule[0].pd\"\n2: object\nerror_code: \"NotNull\"\nmessage: \"must not be null\"\nsuccess: false\nmessage: \"failed to update all pumps settings\"\n*/\n\n//node.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\nvar newState = msg.payload\n\n// Default value for testing\nif (!msg.payload) { newState = 50 }\n\n// Looks like Reef Pump needs three numeric values. PumpSpeed = \"ti\", not sure what the others are yet \nmsg.payload = {\n    \"pump_1\": {\n        \"schedule\": [\n            {\n                \"ti\": newState,\n                \"st\": 0,\n                \"pd\": 0\n            }\n        ]\n    }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 340,
+        "wires": [
+            [
+                "12d15299aa7b338b",
+                "54e1a6c05f6ba0de"
+            ]
+        ]
+    },
+    {
+        "id": "54e1a6c05f6ba0de",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 113",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "8832f471388ccc7e",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 1720,
+        "wires": [
+            [
+                "f7142fce9e3f038e"
+            ]
+        ]
+    },
+    {
+        "id": "fe9022c07c157866",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Wavemaker - mode",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.128/mode",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 670,
+        "y": 1760,
+        "wires": [
+            [
+                "f9e9576bcc1ff0f1"
+            ]
+        ]
+    },
+    {
+        "id": "1eeeba0a936b49ed",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump1Name",
+        "entityConfig": "dae8aa7e26863969",
+        "version": 0,
+        "state": "payload.pump_1.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 670,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "443990d9ae2e1c0f",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump1Type",
+        "entityConfig": "d0cb2ad053e21785",
+        "version": 0,
+        "state": "payload.pump_1.type",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 670,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dc9ea3016f7a0e09",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatSensor",
+        "entityConfig": "fda19838d43d97fc",
+        "version": 0,
+        "state": "payload.unclean_sensor",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 670,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6e0923f0dd1bd356",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatAutoAdvance",
+        "entityConfig": "0bee1cb3914e5e15",
+        "version": 0,
+        "state": "payload.auto_advance",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 690,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "286c8364605a0af5",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatLastAdvanceCause",
+        "entityConfig": "e247756b63567ed8",
+        "version": 0,
+        "state": "payload.last_advance_cause",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 710,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "404cf543043afa1b",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatRollLevel",
+        "entityConfig": "377b9e06d9d40850",
+        "version": 0,
+        "state": "payload.roll_level",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 670,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "40c97285ba6bce34",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatRollDaysLeft",
+        "entityConfig": "1117c9c480f41ea3",
+        "version": 0,
+        "state": "payload.days_till_end_of_roll",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 680,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f3c8d9fbbea45fe4",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatTodaysUsage",
+        "entityConfig": "ed5d511dfb4a43ef",
+        "version": 0,
+        "state": "payload.today_usage",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 690,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9f760cdf4017cd6b",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatDailyUsage",
+        "entityConfig": "3a8459e4657ff702",
+        "version": 0,
+        "state": "payload.daily_average_usage",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 680,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "409abbf4109db3b6",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatTotalUsage",
+        "entityConfig": "1eab63fe7c5278b9",
+        "version": 0,
+        "state": "payload.total_usage",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 680,
+        "y": 480,
+        "wires": [
+            [
+                "db7242c3a3a5bbec"
+            ]
+        ]
+    },
+    {
+        "id": "90d91d5ed3b3dc42",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Red Sea Pumps and Skimmers",
+        "info": "",
+        "x": 190,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ec6e0e6e195f3cf9",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Red Sea Roller Mat",
+        "info": "http://DeviceIP/reef-matt/settings",
+        "x": 150,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "9f54e9e44bc6249c",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Red Sea Dosers 4 Head",
+        "info": "//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log",
+        "x": 190,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "f2a0ff5f6ce41d93",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "d": true,
+        "name": "Dosers Head 2",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.125/head/2/settings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 1020,
+        "wires": [
+            [
+                "1c1c2fda4c89fe78"
+            ]
+        ]
+    },
+    {
+        "id": "08b20658268d23b9",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "d": true,
+        "name": "Dosers Head 3",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.125/head/3/settings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 1060,
+        "wires": [
+            [
+                "1c1c2fda4c89fe78"
+            ]
+        ]
+    },
+    {
+        "id": "7709b12466af1992",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "d": true,
+        "name": "Dosers Head 4",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://192.168.68.125/head/4/settings",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 1100,
+        "wires": [
+            [
+                "1c1c2fda4c89fe78"
+            ]
+        ]
+    },
+    {
+        "id": "6b2f357b62d0a13a",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head1SuppName",
+        "entityConfig": "f4e2971f10693b77",
+        "version": 0,
+        "state": "payload.supplement.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 690,
+        "y": 980,
+        "wires": [
+            [
+                "7a34cc633b870956"
+            ]
+        ]
+    },
+    {
+        "id": "7a34cc633b870956",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 114",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "6011d76135aa3c26",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head1DosedToday",
+        "entityConfig": "2da421c0cd373f85",
+        "version": 0,
+        "state": "payload.today_auto_dosed_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 690,
+        "y": 1020,
+        "wires": [
+            [
+                "7a34cc633b870956"
+            ]
+        ]
+    },
+    {
+        "id": "c8192c80b8fd49ee",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head1DailyDose",
+        "entityConfig": "0532ec63a052adfa",
+        "version": 0,
+        "state": "payload.schedule.dd",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 690,
+        "y": 1060,
+        "wires": [
+            [
+                "7a34cc633b870956"
+            ]
+        ]
+    },
+    {
+        "id": "db24bd5f7b69e00c",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Red Sea WaveMaker",
+        "info": "Reef Dose Endpoints\n//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\n\nReef Wave Endpoints\nhttp://[rwave-address]/device-settings\nhttp://[rwave-address]/mode\nhttp://[rwave-address]/connectivity\nhttp://[rwave-address]/connectivity/events\nhttp://[rwave-address]/connect\nhttp://[rwave-address]/description.xml\nhttp://[rwave-address]\n",
+        "x": 180,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "db7242c3a3a5bbec",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 115",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ca0ee2fddddf1572",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head1Remaining",
+        "entityConfig": "1c79feb62a03458f",
+        "version": 0,
+        "state": "payload.container_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 690,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "334c7f228e4ec415",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head1SuppShortName",
+        "entityConfig": "04c6d24f05021b64",
+        "version": 0,
+        "state": "payload.supplement.short_name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 710,
+        "y": 1100,
+        "wires": [
+            [
+                "7a34cc633b870956"
+            ]
+        ]
+    },
+    {
+        "id": "a62e8fd04ee517e1",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump1Speed",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "28d87086bfb9ba54",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.pump_1.intensity",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 670,
+        "y": 240,
+        "wires": [
+            [
+                "7e0a125e02520594"
+            ]
+        ]
+    },
+    {
+        "id": "f9fde45dd2b7b737",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump1Speed",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "28d87086bfb9ba54",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload.pump_1.intensity",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 370,
+        "y": 320,
+        "wires": [
+            [
+                "ecb12ca231c96fec",
+                "b26b03fb1deee5d8"
+            ]
+        ]
+    },
+    {
+        "id": "f7142fce9e3f038e",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveMakerUpdatePayload",
+        "func": "\n\nnode.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\nvar newState = msg.payload\n\n// Default value for testing\nif (!msg.payload) { newState = \"auto\" }\n\n// Looks like wavemaker only takes mode. Not sure what the modes are yet...\nmsg.payload = {\n    \"mode\": \"off\"\n    // Could not enable off. Use the dedicated endpoint instead.\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1760,
+        "wires": [
+            [
+                "fe9022c07c157866",
+                "0f9176095ad80dc1"
+            ]
+        ]
+    },
+    {
+        "id": "ec3f72d06e5b7656",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 117",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "5ece2161f65cb60a",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Wavemaker - connect",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "http://192.168.68.128/timer",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 680,
+        "y": 1840,
+        "wires": [
+            [
+                "ec3f72d06e5b7656"
+            ]
+        ]
+    },
+    {
+        "id": "0ce2826e9a59e276",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test for new endpoints",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1840,
+        "wires": [
+            [
+                "5ece2161f65cb60a"
+            ]
+        ]
+    },
+    {
+        "id": "80c450d0f85c39fe",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Red Sea Lights",
+        "info": "//http://[rsled-address]/time\n//http://[rsled-address]/description.xml\n//http://[rsled-address]/cloud\n//http://[rsled-address]/connectivity\n//http://[rsled-address]/connectivity/events\ncurl -i -X POST -H 'Content-Type: application/json' -d '{\"white\": 0, \"blue\":100, \"moon\": 0 }' http://xx.xx.xx.xx/manual\nmode : {\n    mode: auto\n}\ntimer: {\n    \"blue\": 100,\n    \"duration\": 30,\n    \"moon\": 0,\n    \"white\": 100\n}",
+        "x": 160,
+        "y": 1980,
+        "wires": []
+    },
+    {
+        "id": "f9e9576bcc1ff0f1",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 118",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 1720,
+        "wires": []
+    },
+    {
+        "id": "343c5adce17ee578",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefWaveMode",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "0895fa3a865d3ccd",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 660,
+        "y": 1680,
+        "wires": [
+            [
+                "58e523163eb77b63"
+            ]
+        ]
+    },
+    {
+        "id": "d4f2c79f0195975e",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefWaveMode",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "0895fa3a865d3ccd",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 160,
+        "y": 1760,
+        "wires": [
+            [
+                "f7142fce9e3f038e"
+            ]
+        ]
+    },
+    {
+        "id": "58e523163eb77b63",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 119",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "8622b2230b385942",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "0d3d05e917a791bc",
+        "name": "Pump1Temperature",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "PumpTemperature"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:temperature-celsius"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "temperature"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "°C"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": true,
+        "debugEnabled": true
+    },
+    {
+        "id": "dae8aa7e26863969",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "0d3d05e917a791bc",
+        "name": "Pump1Name",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Pump1Name"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:pump"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": true,
+        "debugEnabled": true
+    },
+    {
+        "id": "d0cb2ad053e21785",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "0d3d05e917a791bc",
+        "name": "Pump1Type",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Pump1Type"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:pump"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": true,
+        "debugEnabled": true
+    },
+    {
+        "id": "fda19838d43d97fc",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatSensor",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatSensor"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:leak"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "0bee1cb3914e5e15",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatAutoAdvance",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatAutoAdvance"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "e247756b63567ed8",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatLastAdvanceCause",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatLastAdvanceCause"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "377b9e06d9d40850",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatRollLevel",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatRollLevel"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "1117c9c480f41ea3",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatRollDaysLeft",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatRollDaysLeft"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "ed5d511dfb4a43ef",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatTodaysUsage",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatTodaysUsage"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "distance"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "cm"
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "3a8459e4657ff702",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatDailyUsage",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatDailyUsage"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "distance"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "cm"
+            },
+            {
+                "property": "state_class",
+                "value": "total"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "1eab63fe7c5278b9",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatTotalUsage",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatTotalUsage"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "distance"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "cm"
+            },
+            {
+                "property": "state_class",
+                "value": "total"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "f4e2971f10693b77",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head1SuppName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head1SupplimentName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": true,
+        "debugEnabled": true
+    },
+    {
+        "id": "2da421c0cd373f85",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head1DosedToday",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head1DosedToday"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": true,
+        "debugEnabled": true
+    },
+    {
+        "id": "0532ec63a052adfa",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head1DailyDose",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head1DailyDose"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": true,
+        "debugEnabled": true
+    },
+    {
+        "id": "1c79feb62a03458f",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head1Remaining",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head1Remaining"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:cup-water"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume_storage"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "04c6d24f05021b64",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head1SuppShortName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head1SuppShortName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "28d87086bfb9ba54",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "0d3d05e917a791bc",
+        "name": "Pump1Speed",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Pump1Speed"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:speedometer"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "config"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "Percent"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 100
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "0895fa3a865d3ccd",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "ReefWaveMode",
+        "version": "6",
+        "entityType": "select",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ReefWaveMode"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:auto-mode"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "options",
+                "value": [
+                    "auto",
+                    "off"
+                ]
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "caf9ba1992c9f965",
+        "type": "server",
+        "name": "Home Assistant",
+        "version": 5,
+        "addon": false,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true,
+        "heartbeat": true,
+        "heartbeatInterval": "30",
+        "areaSelector": "friendlyName",
+        "deviceSelector": "friendlyName",
+        "entitySelector": "friendlyName",
+        "statusSeparator": "at: ",
+        "statusYear": "hidden",
+        "statusMonth": "short",
+        "statusDay": "numeric",
+        "statusHourCycle": "h23",
+        "statusTimeFormat": "h:m",
+        "enableGlobalContextStore": true
+    },
+    {
+        "id": "0d3d05e917a791bc",
+        "type": "ha-device-config",
+        "name": "Pump",
+        "hwVersion": "",
+        "manufacturer": "RedSea",
+        "model": "Pump or Skimmer",
+        "swVersion": ""
+    },
+    {
+        "id": "70bff6cea0a47242",
+        "type": "ha-device-config",
+        "name": "RollerMat",
+        "hwVersion": "",
+        "manufacturer": "RedSea",
+        "model": "ReefMat",
+        "swVersion": ""
+    },
+    {
+        "id": "112eaa19e0068b8d",
+        "type": "ha-device-config",
+        "name": "Doser",
+        "hwVersion": "",
+        "manufacturer": "RedSea",
+        "model": "4 Head Doser",
+        "swVersion": ""
+    },
+    {
+        "id": "8e62dc8b866a6a72",
+        "type": "ha-device-config",
+        "name": "ReefWave",
+        "hwVersion": "",
+        "manufacturer": "RedSea",
+        "model": "Wavemaker",
+        "swVersion": ""
+    }
+]
