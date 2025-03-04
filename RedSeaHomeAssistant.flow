@@ -81,7 +81,7 @@
         "id": "247be79c4dc0386f",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
-        "name": "",
+        "name": "Every 10 Minuites",
         "props": [
             {
                 "p": "payload"
@@ -91,14 +91,14 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "600",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 160,
+        "x": 170,
         "y": 1680,
         "wires": [
             [
@@ -1098,7 +1098,6 @@
         "id": "f2a0ff5f6ce41d93",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "d": true,
         "name": "Dosers Head 2",
         "method": "GET",
         "ret": "obj",
@@ -1115,7 +1114,12 @@
         "y": 1020,
         "wires": [
             [
-                "1c1c2fda4c89fe78"
+                "1c1c2fda4c89fe78",
+                "4ab710c345c7fe2a",
+                "8dc911fee4c4b77b",
+                "e46e2914a1e5adad",
+                "76ffdbd0d6f1c569",
+                "2387997495d14cc0"
             ]
         ]
     },
@@ -1123,7 +1127,6 @@
         "id": "08b20658268d23b9",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "d": true,
         "name": "Dosers Head 3",
         "method": "GET",
         "ret": "obj",
@@ -1140,7 +1143,12 @@
         "y": 1060,
         "wires": [
             [
-                "1c1c2fda4c89fe78"
+                "1c1c2fda4c89fe78",
+                "f61e536105bda2fb",
+                "e7df774e76442476",
+                "0dcb2e0439d4c37c",
+                "cbabaa5a7b975b93",
+                "1d1ff6b7af2ebe0d"
             ]
         ]
     },
@@ -1148,7 +1156,6 @@
         "id": "7709b12466af1992",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "d": true,
         "name": "Dosers Head 4",
         "method": "GET",
         "ret": "obj",
@@ -1165,7 +1172,12 @@
         "y": 1100,
         "wires": [
             [
-                "1c1c2fda4c89fe78"
+                "1c1c2fda4c89fe78",
+                "64db713440891d9b",
+                "288baa5706a01397",
+                "8a32d9de8a6793e9",
+                "07f432a7332790d6",
+                "e32cdff36e602a58"
             ]
         ]
     },
@@ -1513,7 +1525,7 @@
         "entityConfig": "0895fa3a865d3ccd",
         "exposeAsEntityConfig": "",
         "mode": "set",
-        "value": "payload",
+        "value": "payload.mode",
         "valueType": "msg",
         "outputProperties": [
             {
@@ -1589,6 +1601,276 @@
         "x": 650,
         "y": 1640,
         "wires": []
+    },
+    {
+        "id": "4ab710c345c7fe2a",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2Remaining",
+        "entityConfig": "a0b5ee75f380e1f0",
+        "version": 0,
+        "state": "payload.container_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 930,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8dc911fee4c4b77b",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2SuppName",
+        "entityConfig": "0336e585822d6738",
+        "version": 0,
+        "state": "payload.supplement.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 930,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e46e2914a1e5adad",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2DosedToday",
+        "entityConfig": "8db87c4539797afc",
+        "version": 0,
+        "state": "payload.today_auto_dosed_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 930,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2387997495d14cc0",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2DailyDose",
+        "entityConfig": "7d384937792c9d86",
+        "version": 0,
+        "state": "payload.schedule.dd",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 930,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "76ffdbd0d6f1c569",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2SuppShortName",
+        "entityConfig": "64d4c459cd31d03a",
+        "version": 0,
+        "state": "payload.supplement.short_name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 950,
+        "y": 1100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f61e536105bda2fb",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3Remaining",
+        "entityConfig": "ee9d565c6f7932f2",
+        "version": 0,
+        "state": "payload.container_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1170,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e7df774e76442476",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3SuppName",
+        "entityConfig": "717a438c0c1ad2b4",
+        "version": 0,
+        "state": "payload.supplement.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1170,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0dcb2e0439d4c37c",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3DosedToday",
+        "entityConfig": "628ae3ba3c61f832",
+        "version": 0,
+        "state": "payload.today_auto_dosed_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1170,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cbabaa5a7b975b93",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3DailyDose",
+        "entityConfig": "83ad6f2d56267cbf",
+        "version": 0,
+        "state": "payload.schedule.dd",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1170,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d1ff6b7af2ebe0d",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3SuppShortName",
+        "entityConfig": "85adae44ea93027a",
+        "version": 0,
+        "state": "payload.supplement.short_name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1190,
+        "y": 1100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64db713440891d9b",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4Remaining",
+        "entityConfig": "cd09158a14612668",
+        "version": 0,
+        "state": "payload.container_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1410,
+        "y": 940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "288baa5706a01397",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4SuppName",
+        "entityConfig": "d4c7de5f22cd0674",
+        "version": 0,
+        "state": "payload.supplement.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1410,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8a32d9de8a6793e9",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4DosedToday",
+        "entityConfig": "3faa22a034cb4334",
+        "version": 0,
+        "state": "payload.today_auto_dosed_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1410,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e32cdff36e602a58",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4DailyDose",
+        "entityConfig": "f0dd2ea7b91c3f1f",
+        "version": 0,
+        "state": "payload.schedule.dd",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1410,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "07f432a7332790d6",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4SuppShortName",
+        "entityConfig": "1797d4fa36801d98",
+        "version": 0,
+        "state": "payload.supplement.short_name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1430,
+        "y": 1100,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "8622b2230b385942",
@@ -2330,6 +2612,621 @@
                     "auto",
                     "off"
                 ]
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "a0b5ee75f380e1f0",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head2Remaining",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head2Remaining"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:cup-water"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume_storage"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "0336e585822d6738",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head2SuppName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head2SuppName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "8db87c4539797afc",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head2DosedToday",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head2DosedToday"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:needle"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "7d384937792c9d86",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head2DailyDose",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head2DailyDose"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "64d4c459cd31d03a",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head2SuppShortName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head2SuppShortName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "ee9d565c6f7932f2",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head3Remaining",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head3Remaining"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:cup-water"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "717a438c0c1ad2b4",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head3SuppName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head3SuppName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "628ae3ba3c61f832",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head3DosedToday",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head3DosedToday"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:needle"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "83ad6f2d56267cbf",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head3DailyDose",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head3DailyDose"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "85adae44ea93027a",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head3SuppShortName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head3SuppShortName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "cd09158a14612668",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head4Remaining",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head4Remaining"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:cup-water"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume_storage"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "d4c7de5f22cd0674",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head4SuppName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head4SuppName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "3faa22a034cb4334",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head4DosedToday",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head4DosedToday"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:needle"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "f0dd2ea7b91c3f1f",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head4DailyDose",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head4DailyDose"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "1797d4fa36801d98",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head4SuppShortName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head4SuppShortName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:chemical-weapon"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
             }
         ],
         "resend": false,
