@@ -66,7 +66,7 @@ CONFIGURE HA
 TODO
 
 1. Add overskimming and level sensors for Pump/Skimmer
-2. Work out payloads for Wavemaker. Currently have on found a mode value that can be used to monitor and change the mode.
+2. Work out payloads for Wavemaker. Currently have only found a mode value that can be used to monitor and change the mode.
 3. Add manual advance trigger for ReefMat
 4. Lights
 5. Figure out what "st" and "pd" is for in setting pump values
