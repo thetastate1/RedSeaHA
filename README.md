@@ -1,30 +1,40 @@
 # RedSeaHA
-Use RedSea devices in Home Assistant
+Use RedSea ReefBeat devices in Home Assistant.
 
 A node-red flow to integrate RedSea Pumps, Skimmers, Dosers, and Wavemakers. 
 
-Lights likely possible using the same flow but need someone with lights to test.
+Lights should be straight forward but I don't have any to test.
 
-This integration uses local http REST integration allowing you to monitor and control devices remotely using Home Assistant.
+This integration uses local and cloud http REST integration allowing you to monitor and control devices remotely using Home Assistant.
 
-DEVICES AND ENTITIES CREATED FROM NODE-RED
-<img width="793" alt="Screenshot 2025-03-04 at 9 48 25 am" src="https://github.com/user-attachments/assets/c0f5b465-22a3-499f-bc8e-d7a6bcb30e81" />
+The cloud API is used to get information about the devices associated with the aquarium to create sensors and controls.
 
-<img width="775" alt="Screenshot 2025-03-04 at 9 49 05 am" src="https://github.com/user-attachments/assets/5a794cd8-0f0e-490a-91e3-eeb3a0e660ac" />
-
-<img width="786" alt="Screenshot 2025-03-04 at 9 49 23 am" src="https://github.com/user-attachments/assets/42d06991-fba9-41ca-a567-131f63726c81" />
-
-<img width="473" alt="Screenshot 2025-03-04 at 9 49 42 am" src="https://github.com/user-attachments/assets/a404e926-d82d-41cc-bde7-61470ca89ae1" />
-
-<img width="783" alt="Screenshot 2025-03-04 at 9 49 58 am" src="https://github.com/user-attachments/assets/bc325b85-100c-416a-880d-25f8dae5eb56" />
-
-<img width="784" alt="Screenshot 2025-03-04 at 9 50 16 am" src="https://github.com/user-attachments/assets/3d850c91-0410-424f-901b-996b92b7a84e" />
+HA can control:
+- Aquarium feed mode can be started and stopped
+- ReefMat can be manually advanced
+- ReefWave change forward and reverse intensity/time and pulse time
+- ReefRun pumps change speed
 
 
+## DEVICES AND ENTITIES CREATED FROM NODE-RED
 
-INSTALLATION
+<img width="825" alt="Screenshot 2025-03-07 at 1 51 19 pm" src="https://github.com/user-attachments/assets/e10d09ee-84e2-4bbe-9615-649858f34ddb" />
 
-PREREQUISITES
+<img width="506" alt="Screenshot 2025-03-07 at 1 52 21 pm" src="https://github.com/user-attachments/assets/28528ddf-ebd5-42c2-86fd-a428cacfeef2" />
+
+<img width="512" alt="Screenshot 2025-03-07 at 1 52 39 pm" src="https://github.com/user-attachments/assets/64a37831-4201-401c-b36f-84e8e60f5120" />
+
+<img width="508" alt="Screenshot 2025-03-07 at 1 52 57 pm" src="https://github.com/user-attachments/assets/f7397f68-3007-4336-a027-0111ef82748b" />
+
+<img width="511" alt="Screenshot 2025-03-07 at 1 53 17 pm" src="https://github.com/user-attachments/assets/52b7808e-50c9-4e41-ab0c-ba8cd2256b87" />
+
+<img width="515" alt="Screenshot 2025-03-07 at 1 53 29 pm" src="https://github.com/user-attachments/assets/c39139e4-f506-4cc9-b4dd-817fdc72a5f6" />
+
+
+
+## INSTALLATION
+
+### PREREQUISITES
 1. Node-red
    https://nodered.org
 2. Node red palatte
@@ -36,45 +46,41 @@ PREREQUISITES
 4. Home Assistant HACS node-red companion integration
    Use HACS to find and install Node-RED Companion
    https://zachowj.github.io/node-red-contrib-home-assistant-websocket/guide/custom_integration/
-5. IP addresses or local host names of your RedSea devices
-   Note that if using IP addresses, set up the devices as static / reserved IP addresses using your router configuration
 
-INSTALL FLOW
-
+### INSTALL FLOW
 
 5. Download or copy and paste the flow from this repository into a new node-red flow using the import menu
 
-CONFIGURE FLOW
+### CONFIGURE FLOW
 
 6. Choose your Home Assistant server node in each of the blue Sensor Nodes -> Entity config -> Edit button -> Server
-7. Change the IP addresses / hostnames in each of the http request nodes to the corresponding RedSea devices. Note that no authentication is required on local devices.
+7. Enter your ReefBeat credentials in the function: *"Do this First: Enter ReefBeat Credentials Here Then Deploy Flow Then Trigger"*
 
-DEPLOY FLOW
+### DEPLOY FLOW
 
 8. Deploy the node-red changes using the Deploy button
 
-TEST FLOW
+### INITIATE CLOUD FLOW
 
-8. Use the test buttons to check connectivity and validate flow configuration
+8. Use the trigger: *"Trigger This Second"* to initiate connection for the first time
+9. Use the trigger: *"This Third"* to populate aquarium info
 
-CONFIGURE HA
+### CONFIGURE HA
 
 9. The devices and entities will be exposed under the Node-RED Companion integration in HA. Add these to your dashboard as required.
 10. Create automations (e.g. ReefMat roll replacement, Doser suppliment replacement, Feed mode for pumps)
 
 
-TODO
+## TODO
 
 1. Add overskimming and level sensors for Pump/Skimmer
-2. Work out payloads for Wavemaker. Currently have only found a mode value that can be used to monitor and change the mode.
-3. Add manual advance trigger for ReefMat
-4. Lights
-5. Figure out what "st" and "pd" is for in setting pump values
+2. Lights
+3. Figure out what "st" and "pd" is for in setting pump values
 6. Add manual doser capability and additional sensors
 7. ATO
 8. Perhaps there is a more efficient way to create HA sensors dynamically from a JS function call in node-red rather than creating a node for each sensor
 
-PAYLOADS
+## PAYLOADS
 
 Pumps
 
@@ -249,5 +255,6 @@ msg.payload = {
 "message":"auto mode enabled successfully"
 }
 ```
+More payloads are included in the comment nodes of the flow
 
 Keen to collaborate and work out more endpoints, refine flow, optimise install, test lights etc. 
