@@ -29,34 +29,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 130,
-        "y": 140,
+        "y": 560,
         "wires": [
             [
-                "59d27329e9b76a2e"
-            ]
-        ]
-    },
-    {
-        "id": "59d27329e9b76a2e",
-        "type": "http request",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Pump Settings",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "http://192.168.68.213/pump/settings",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 380,
-        "y": 140,
-        "wires": [
-            [
-                "0e85da27edbf79d4"
+                "9af672121c880de3"
             ]
         ]
     },
@@ -73,63 +49,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 360,
-        "y": 100,
+        "x": 640,
+        "y": 520,
         "wires": []
-    },
-    {
-        "id": "247be79c4dc0386f",
-        "type": "inject",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Every 10 Minuites",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "600",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 1680,
-        "wires": [
-            [
-                "fdcfe073c52579b7"
-            ]
-        ]
-    },
-    {
-        "id": "fdcfe073c52579b7",
-        "type": "http request",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Wavemaker - mode",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "http://192.168.68.128/mode",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 370,
-        "y": 1680,
-        "wires": [
-            [
-                "0f9176095ad80dc1",
-                "343c5adce17ee578"
-            ]
-        ]
     },
     {
         "id": "0f9176095ad80dc1",
@@ -145,23 +67,23 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 340,
-        "y": 1640,
+        "y": 2020,
         "wires": []
     },
     {
         "id": "5a77272e697aafe1",
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
-        "name": "function 5",
-        "func": "//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\nreturn msg;",
+        "name": "ReefDose Dashboard",
+        "func": "if (global.get(\"RSReefDose\")) {\n            msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/dashboard\"\n            node.send\n}\nelse { node.warn(\"No ReefDose Devices Found\"); return }\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 320,
-        "y": 1200,
+        "x": 420,
+        "y": 1620,
         "wires": [
             [
                 "4f12204f99e8e3cf"
@@ -190,7 +112,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 1200,
+        "y": 1620,
         "wires": [
             [
                 "5a77272e697aafe1"
@@ -201,11 +123,11 @@
         "id": "4f12204f99e8e3cf",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Dosers Dashboard",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://192.168.68.125/dashboard",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -213,8 +135,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 690,
-        "y": 1200,
+        "x": 650,
+        "y": 1620,
         "wires": [
             [
                 "4097902f02f890e2"
@@ -234,14 +156,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 660,
-        "y": 1160,
+        "x": 640,
+        "y": 1580,
         "wires": []
     },
     {
         "id": "9c5c024594136917",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
+        "d": true,
         "name": "Every 1 Minuite",
         "props": [],
         "repeat": "60",
@@ -250,10 +173,10 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 160,
-        "y": 240,
+        "y": 660,
         "wires": [
             [
-                "6d74ca27934d0816"
+                "9523cba9f72f9b28"
             ]
         ]
     },
@@ -261,11 +184,11 @@
         "id": "6d74ca27934d0816",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Pump Dashboard",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://192.168.68.213/dashboard",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -273,15 +196,19 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 390,
-        "y": 240,
+        "x": 650,
+        "y": 660,
         "wires": [
             [
                 "0fab7c24b67c07e4",
                 "78ae024676ecb651",
                 "1eeeba0a936b49ed",
                 "443990d9ae2e1c0f",
-                "a62e8fd04ee517e1"
+                "a62e8fd04ee517e1",
+                "f18274330574aff7",
+                "ee7448d2ecd725d7",
+                "b975d70bc09a6a6a",
+                "e78b7a3be8d63f56"
             ]
         ]
     },
@@ -298,8 +225,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 360,
-        "y": 200,
+        "x": 640,
+        "y": 620,
         "wires": []
     },
     {
@@ -314,7 +241,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 130,
-        "y": 340,
+        "y": 760,
         "wires": [
             [
                 "b26b03fb1deee5d8"
@@ -325,11 +252,11 @@
         "id": "12d15299aa7b338b",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Pump Update",
+        "name": "",
         "method": "PUT",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://192.168.68.213/pump/settings",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -337,8 +264,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 920,
-        "y": 340,
+        "x": 1070,
+        "y": 760,
         "wires": [
             [
                 "40ab20ab4ef9a6c8"
@@ -358,29 +285,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 920,
-        "y": 300,
+        "x": 1080,
+        "y": 720,
         "wires": []
-    },
-    {
-        "id": "79a15d469013e7dc",
-        "type": "function",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "function 6",
-        "func": "//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 320,
-        "y": 1280,
-        "wires": [
-            [
-                "1ab7efdc3dcc2bce"
-            ]
-        ]
     },
     {
         "id": "18a177727bd66db5",
@@ -404,10 +311,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 1280,
+        "y": 1700,
         "wires": [
             [
-                "79a15d469013e7dc"
+                "26334259549fd19d"
             ]
         ]
     },
@@ -415,11 +322,11 @@
         "id": "1ab7efdc3dcc2bce",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Dosers",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://192.168.68.125/device-settings",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -427,8 +334,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 660,
-        "y": 1280,
+        "x": 650,
+        "y": 1700,
         "wires": [
             [
                 "cafebe369234728f"
@@ -448,14 +355,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 670,
-        "y": 1240,
+        "x": 650,
+        "y": 1660,
         "wires": []
     },
     {
         "id": "7db56b3cfa2bf8a1",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
+        "d": true,
         "name": "Every 1 Minuite",
         "props": [
             {
@@ -473,14 +381,14 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 180,
-        "y": 980,
+        "x": 160,
+        "y": 1400,
         "wires": [
             [
-                "7891a0bc79e3955d",
-                "f2a0ff5f6ce41d93",
-                "08b20658268d23b9",
-                "7709b12466af1992"
+                "034bf1bce0bd9e9a",
+                "70fd1ec858f185d2",
+                "7493c8e1dd148e2e",
+                "b00f8237d4278921"
             ]
         ]
     },
@@ -488,11 +396,11 @@
         "id": "7891a0bc79e3955d",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Dosers Head 1",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://192.168.68.125/head/1/settings",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -500,8 +408,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 420,
-        "y": 980,
+        "x": 650,
+        "y": 1400,
         "wires": [
             [
                 "1c1c2fda4c89fe78",
@@ -526,154 +434,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 410,
-        "y": 940,
-        "wires": []
-    },
-    {
-        "id": "dca7e87903c6c433",
-        "type": "inject",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 1580,
-        "wires": [
-            [
-                "5b6d281e765c900e"
-            ]
-        ]
-    },
-    {
-        "id": "5b6d281e765c900e",
-        "type": "http request",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Wavemaker device-settings",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "http://192.168.68.128/device-settings",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 400,
-        "y": 1580,
-        "wires": [
-            [
-                "f1ee33c80146035c"
-            ]
-        ]
-    },
-    {
-        "id": "f1ee33c80146035c",
-        "type": "debug",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "debug 103",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 350,
-        "y": 1540,
-        "wires": []
-    },
-    {
-        "id": "71538128a9a7b680",
-        "type": "inject",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 160,
-        "y": 1500,
-        "wires": [
-            [
-                "ab722df7fdc43eef"
-            ]
-        ]
-    },
-    {
-        "id": "ab722df7fdc43eef",
-        "type": "http request",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Wavemaker - connect events",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "http://192.168.68.128/connectivity/events",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 400,
-        "y": 1500,
-        "wires": [
-            [
-                "2932bf168ac8530f"
-            ]
-        ]
-    },
-    {
-        "id": "2932bf168ac8530f",
-        "type": "debug",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "debug 104",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 350,
-        "y": 1460,
+        "x": 650,
+        "y": 1360,
         "wires": []
     },
     {
         "id": "635457c5c73bd66c",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
+        "d": true,
         "name": "Every 15 Minutes",
         "props": [
             {
@@ -692,10 +461,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 170,
-        "y": 600,
+        "y": 1020,
         "wires": [
             [
-                "d91ffedd5a9a5745"
+                "fba0ff0039159589"
             ]
         ]
     },
@@ -703,11 +472,11 @@
         "id": "d91ffedd5a9a5745",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Mat Dashboard",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://192.168.68.92/dashboard",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -715,8 +484,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 400,
-        "y": 600,
+        "x": 650,
+        "y": 1020,
         "wires": [
             [
                 "d4f690342df983b7",
@@ -744,8 +513,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 390,
-        "y": 560,
+        "x": 650,
+        "y": 980,
         "wires": []
     },
     {
@@ -760,8 +529,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 690,
-        "y": 200,
+        "x": 850,
+        "y": 620,
         "wires": [
             [
                 "7e0a125e02520594"
@@ -780,41 +549,24 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 670,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "ecb12ca231c96fec",
-        "type": "debug",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "debug 112",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 370,
-        "y": 280,
+        "x": 830,
+        "y": 500,
         "wires": []
     },
     {
         "id": "b26b03fb1deee5d8",
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
-        "name": "PumpUpdatePayload",
-        "func": "/* msg.payload = {\n    \"entity_id\": \"test_entity\",\n        \"old_state\": {\n        \"state\": \"on\"\n    },\n    \"new_state\": {\n        \"state\": \"off\"\n    }\n}\n*/\n//msg.payload.pump_1.intensity = \"55\"\n/*sg.payload = {\n    \"pump_1\": {\n        \"intensity\": 55\n    }\n}\n*/\n/*\npayload: object\nfield_errors: array[6]\n0: object\nerror_code: \"NotNull\"\nmessage: \"must not be null\"\nfield: \"pump_1.schedule[0].st\"\n1: object\nerror_code: \"NotNull\"\nmessage: \"must not be null\"\nfield: \"pump_1.schedule[0].pd\"\n2: object\nerror_code: \"NotNull\"\nmessage: \"must not be null\"\nsuccess: false\nmessage: \"failed to update all pumps settings\"\n*/\n\n//node.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\nvar newState = msg.payload\n\n// Default value for testing\nif (!msg.payload) { newState = 50 }\n\n// Looks like Reef Pump needs three numeric values. PumpSpeed = \"ti\", not sure what the others are yet \nmsg.payload = {\n    \"pump_1\": {\n        \"schedule\": [\n            {\n                \"ti\": newState,\n                \"st\": 0,\n                \"pd\": 0\n            }\n        ]\n    }\n}\nreturn msg;",
+        "name": "ReefRun Speed",
+        "func": "// Set the URL with IP\nif (global.get(\"RSReefRun\")) {\n    msg.url = \"http://\" + global.get(\"RSReefRunIP\") + \"/pump/settings\"\n}\nelse { node.warn(\"No ReefRun Devices Found\"); return }\n\n// The value is the payload\nvar newState = msg.payload\n\n// Default value for testing\nif (!msg.payload) { newState = 50 }\n\n// Determine which pump from input node\nvar pump = \"pump_1\"\nif (msg.config == \"Pump1Speed\") {\n    pump = \"pump_2\"\n}\n\n// Looks like Reef Pump needs three numeric values. PumpSpeed = \"ti\", not sure what the others are yet \nmsg.payload = {\n    [pump]: {\n        \"schedule\": [\n            {\n                \"ti\": newState,\n                \"st\": 0,\n                \"pd\": 0\n            }\n        ]\n    }\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 700,
-        "y": 340,
+        "x": 840,
+        "y": 760,
         "wires": [
             [
                 "12d15299aa7b338b",
@@ -835,52 +587,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 670,
-        "y": 300,
+        "x": 830,
+        "y": 720,
         "wires": []
-    },
-    {
-        "id": "8832f471388ccc7e",
-        "type": "inject",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Test",
-        "props": [],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 150,
-        "y": 1720,
-        "wires": [
-            [
-                "f7142fce9e3f038e"
-            ]
-        ]
-    },
-    {
-        "id": "fe9022c07c157866",
-        "type": "http request",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Wavemaker - mode",
-        "method": "POST",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "http://192.168.68.128/mode",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 670,
-        "y": 1760,
-        "wires": [
-            [
-                "f9e9576bcc1ff0f1"
-            ]
-        ]
     },
     {
         "id": "1eeeba0a936b49ed",
@@ -894,8 +603,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 670,
-        "y": 160,
+        "x": 830,
+        "y": 580,
         "wires": [
             []
         ]
@@ -912,8 +621,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 670,
-        "y": 120,
+        "x": 830,
+        "y": 540,
         "wires": [
             []
         ]
@@ -930,8 +639,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 670,
-        "y": 760,
+        "x": 930,
+        "y": 1180,
         "wires": [
             []
         ]
@@ -948,8 +657,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 690,
-        "y": 720,
+        "x": 950,
+        "y": 1140,
         "wires": [
             []
         ]
@@ -966,8 +675,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 710,
-        "y": 680,
+        "x": 970,
+        "y": 1100,
         "wires": [
             []
         ]
@@ -984,8 +693,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 670,
-        "y": 640,
+        "x": 930,
+        "y": 1060,
         "wires": [
             []
         ]
@@ -1002,8 +711,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 680,
-        "y": 600,
+        "x": 940,
+        "y": 1020,
         "wires": [
             []
         ]
@@ -1020,8 +729,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 690,
-        "y": 560,
+        "x": 950,
+        "y": 980,
         "wires": [
             []
         ]
@@ -1038,8 +747,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 680,
-        "y": 520,
+        "x": 940,
+        "y": 940,
         "wires": [
             []
         ]
@@ -1056,53 +765,51 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 680,
-        "y": 480,
+        "x": 940,
+        "y": 900,
         "wires": [
-            [
-                "db7242c3a3a5bbec"
-            ]
+            []
         ]
     },
     {
         "id": "90d91d5ed3b3dc42",
         "type": "comment",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Red Sea Pumps and Skimmers",
+        "name": "Red Sea Pumps and Skimmers - Local",
         "info": "",
-        "x": 190,
-        "y": 40,
+        "x": 210,
+        "y": 460,
         "wires": []
     },
     {
         "id": "ec6e0e6e195f3cf9",
         "type": "comment",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Red Sea Roller Mat",
-        "info": "http://DeviceIP/reef-matt/settings",
-        "x": 150,
-        "y": 460,
+        "name": "Red Sea Roller Mat - Local",
+        "info": "http://DeviceIP/reef-matt/settings\nhttp://DeviceIP/dashboard\nhttp://DeviceIP/mode\n\nPOST https://cloud.reef-beat.com/reef-mat/94b5557ea464/advance\nPOST http://DeviceIP/advance\nGET http://DeviceIP/configuration\nauto_advance: true\nend_of_roll_monitor: 3\ncustom_advance_value: 2.25\nschedule_enable: false\nschedule_time: 0\nschedule_length: 20\nfresh_water_aquarium: false\nposition: \"right\"\nmodel: \"RSMAT500\"\nauto_delay: 30\nblockage_recover_retries: 3\nmat_end_length: 100\nec_water_threshold: 300\nmotor_blockage_threshold: 2000\nblockage_recover_interval: 3\nrelief_motor_reverse_time: 200\ndispatch_timeout_sec: 10\nmotor_speed: 3000\nenable_ec_sensor_detection: true\nec_fresh_water_threshold: 30",
+        "x": 170,
+        "y": 880,
         "wires": []
     },
     {
         "id": "9f54e9e44bc6249c",
         "type": "comment",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Red Sea Dosers 4 Head",
+        "name": "Red Sea Dosers - Local",
         "info": "//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log",
-        "x": 190,
-        "y": 900,
+        "x": 180,
+        "y": 1320,
         "wires": []
     },
     {
         "id": "f2a0ff5f6ce41d93",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Dosers Head 2",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://192.168.68.125/head/2/settings",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -1110,8 +817,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 420,
-        "y": 1020,
+        "x": 650,
+        "y": 1440,
         "wires": [
             [
                 "1c1c2fda4c89fe78",
@@ -1127,11 +834,11 @@
         "id": "08b20658268d23b9",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Dosers Head 3",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://192.168.68.125/head/3/settings",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -1139,8 +846,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 420,
-        "y": 1060,
+        "x": 650,
+        "y": 1480,
         "wires": [
             [
                 "1c1c2fda4c89fe78",
@@ -1156,11 +863,11 @@
         "id": "7709b12466af1992",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Dosers Head 4",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "http://192.168.68.125/head/4/settings",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -1168,8 +875,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 420,
-        "y": 1100,
+        "x": 650,
+        "y": 1520,
         "wires": [
             [
                 "1c1c2fda4c89fe78",
@@ -1193,30 +900,11 @@
         "attributes": [],
         "inputOverride": "block",
         "outputProperties": [],
-        "x": 690,
-        "y": 980,
+        "x": 930,
+        "y": 1400,
         "wires": [
-            [
-                "7a34cc633b870956"
-            ]
+            []
         ]
-    },
-    {
-        "id": "7a34cc633b870956",
-        "type": "debug",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "debug 114",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 900,
-        "wires": []
     },
     {
         "id": "6011d76135aa3c26",
@@ -1230,12 +918,10 @@
         "attributes": [],
         "inputOverride": "block",
         "outputProperties": [],
-        "x": 690,
-        "y": 1020,
+        "x": 930,
+        "y": 1440,
         "wires": [
-            [
-                "7a34cc633b870956"
-            ]
+            []
         ]
     },
     {
@@ -1250,39 +936,20 @@
         "attributes": [],
         "inputOverride": "block",
         "outputProperties": [],
-        "x": 690,
-        "y": 1060,
+        "x": 930,
+        "y": 1480,
         "wires": [
-            [
-                "7a34cc633b870956"
-            ]
+            []
         ]
     },
     {
         "id": "db24bd5f7b69e00c",
         "type": "comment",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Red Sea WaveMaker",
-        "info": "Reef Dose Endpoints\n//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\n\nReef Wave Endpoints\nhttp://[rwave-address]/device-settings\nhttp://[rwave-address]/mode\nhttp://[rwave-address]/connectivity\nhttp://[rwave-address]/connectivity/events\nhttp://[rwave-address]/connect\nhttp://[rwave-address]/description.xml\nhttp://[rwave-address]\n",
-        "x": 180,
-        "y": 1400,
-        "wires": []
-    },
-    {
-        "id": "db7242c3a3a5bbec",
-        "type": "debug",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "debug 115",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 440,
+        "name": "Red Sea WaveMaker - Local - Payloads in comments",
+        "info": "Reef Dose Endpoints\n//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\n\nReef Wave Endpoints Local\nGET http://<IP>/feeding/schedule\nGET http://<IP>/mode\nmsg.payload = {\n    \"mode\": \"off\" // or \"auto\"\n    // Could not enable off. Use the dedicated endpoint instead.\n}\nPOST http://<IP>/feeding/schedule\nmsg.payload =\n{\n    \"in_sync\": true,\n        \"intervals\": [\n            {\n                \"duration\": msg.newValue,\n                \"name\": \"No Wave\",\n                \"type\": \"nw\",\n                \"wave_uid\": wave_uid\n            }\n        ],\n        \"uid\": uid\n}\nPOST http://192.168.68.128/preview\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": 9,\n    \"pd\": 6,\n    //\"pump_settings\": [\n    //    {\n    //        \"fti\": 100,\n    //        \"hwid\": \"16422546\",\n    //        \"rti\": 100\n    //    }\n    //],\n    \"rrt\": 5,\n    \"sn\": 3,\n    \"type\": \"un\",\n    \"duration\": 3000,\n    \"fti\": 10,\n    \"rti\": 10,\n    \"sync\": true\n}\n\n\nReef Wave Endpoints\nhttp://[rwave-address]/device-settings\nhttp://[rwave-address]/mode\nhttp://[rwave-address]/connectivity\nhttp://[rwave-address]/connectivity/events\nhttp://[rwave-address]/connect\nhttp://[rwave-address]/description.xml\nhttp://[rwave-address]\n\nhttps://cloud.reef-beat.com/reef-wave/16422546/device-settings/\n\nPUT https://cloud.reef-beat.com/reef-wave/library/39c5ecea-4d7c-4564-af04-089db8985da9\nPayload to change speed forward is fti back is rti\n{\n    \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n    \"default\": false,\n    \"frt\": 10, // Forward run time\n    \"name\": \"cade\",\n    \"pd\": 7, // Pulse time\n    \"pump_settings\": [\n        {\n            \"fti\": 90, // Forward speed\n            \"hwid\": \"16422546\",\n            \"rti\": 100, // Reverse speed\n            \"sync\": true\n        }\n    ],\n    \"rrt\": 5, // Reverse run time\n    \"type\": \"un\", // Wave type uniform\n    \"uid\": \"39c5ecea-4d7c-4564-af04-089db8985da9\"\n}\n\nPUT https://cloud.reef-beat.com/reef-mat/94b5557ea464/previous-roll\n{\n    \"days_of_usage\": 108,\n    \"length\": 2799.966751098633,\n    \"material_name\": \"Unknown\",\n    \"setup_date\": \"2024-11-17T10:02:12Z\"\n}\n\nhttps://cloud.reef-beat.com/reef-wave/schedule/16422546\n{\n    \"in_sync\": true,\n    \"intervals\": [\n        {\n            \"direction\": \"fw\",\n            \"frt\": 10,\n            \"fti\": 80,\n            \"name\": \"cade\",\n            \"pd\": 6,\n            \"rrt\": 5,\n            \"rti\": 100,\n            \"st\": 0,\n            \"sync\": true,\n            \"type\": \"un\",\n            \"wave_uid\": \"39c5ecea-4d7c-4564-af04-089db8985da9\"\n        }\n    ],\n    \"uid\": \"0bffcb14-f9d9-4d19-9dba-69cd126e6150\"\n}\n\nGET https://cloud.reef-beat.com/reef-wave/16422546/feeding/schedule\n{\n    \"in_sync\": true,\n    \"intervals\": [\n        {\n            \"duration\": 20,\n            \"name\": \"No Wave\",\n            \"type\": \"nw\",\n            \"wave_uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n        }\n    ],\n    \"uid\": \"f4fcb7f3-27bb-4595-9d32-b2feb8ab5831\"\n}\n\nhttps://cloud.reef-beat.com/reef-wave/library\nreturns:\n[\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Regular\",\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"re\",\n        \"uid\": \"0366b9c6-ba0b-4bf9-b306-0daa683f0a81\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Random\",\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"ra\",\n        \"uid\": \"14dcfbe7-cc17-4f3e-b4fd-a57b577f7036\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 10,\n        \"name\": \"cade2\",\n        \"pd\": 5.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 90,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"sn\": 6,\n        \"type\": \"st\",\n        \"uid\": \"3438f860-c7d7-4cd9-bd42-ccd42876b296\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 9,\n        \"name\": \"cade\",\n        \"pd\": 6.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 80,\n                \"hwid\": \"16422546\",\n                \"rti\": 100,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 5,\n        \"type\": \"un\",\n        \"uid\": \"39c5ecea-4d7c-4564-af04-089db8985da9\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Step\",\n        \"pd\": 3.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"sn\": 6,\n        \"type\": \"st\",\n        \"uid\": \"49ac6123-69ac-4fa9-a375-a7447a7f5ed4\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"name\": \"Surface100\",\n        \"pd\": 1.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"type\": \"su\",\n        \"uid\": \"8d4b9c60-d779-4b36-8979-7f7a44444f31\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 10,\n        \"name\": \"cade1\",\n        \"pd\": 5.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 100,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 4,\n        \"type\": \"un\",\n        \"uid\": \"aa9f4dfb-8414-4011-ab01-aec6d71f2a4f\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"name\": \"No Wave\",\n        \"pump_settings\": [],\n        \"type\": \"nw\",\n        \"uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"name\": \"surface100\",\n        \"pd\": 1.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"type\": \"su\",\n        \"uid\": \"ba283d5a-ab18-4cee-9af4-6baf9858c986\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"name\": \"RS Surface\",\n        \"pd\": 1.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"type\": \"su\",\n        \"uid\": \"c832e384-936d-4e88-a151-1f485dd9bd59\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 10,\n        \"name\": \"constant\",\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"re\",\n        \"uid\": \"ccfd6f0c-8f4e-4fd2-a268-1021af77c715\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Uniform\",\n        \"pd\": 3.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"un\",\n        \"uid\": \"f902c5af-9c42-4e81-a166-b6b7cfc24c07\"\n    }\n]",
+        "x": 280,
+        "y": 1820,
         "wires": []
     },
     {
@@ -1297,8 +964,8 @@
         "attributes": [],
         "inputOverride": "block",
         "outputProperties": [],
-        "x": 690,
-        "y": 940,
+        "x": 930,
+        "y": 1360,
         "wires": [
             []
         ]
@@ -1315,12 +982,10 @@
         "attributes": [],
         "inputOverride": "block",
         "outputProperties": [],
-        "x": 710,
-        "y": 1100,
+        "x": 950,
+        "y": 1520,
         "wires": [
-            [
-                "7a34cc633b870956"
-            ]
+            []
         ]
     },
     {
@@ -1351,8 +1016,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 670,
-        "y": 240,
+        "x": 830,
+        "y": 660,
         "wires": [
             [
                 "7e0a125e02520594"
@@ -1385,35 +1050,19 @@
                 "propertyType": "msg",
                 "value": "",
                 "valueType": "previousValue"
+            },
+            {
+                "property": "config",
+                "propertyType": "msg",
+                "value": "name",
+                "valueType": "config"
             }
         ],
-        "x": 370,
-        "y": 320,
+        "x": 650,
+        "y": 720,
         "wires": [
             [
-                "ecb12ca231c96fec",
                 "b26b03fb1deee5d8"
-            ]
-        ]
-    },
-    {
-        "id": "f7142fce9e3f038e",
-        "type": "function",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "WaveMakerUpdatePayload",
-        "func": "\n\nnode.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\nvar newState = msg.payload\n\n// Default value for testing\nif (!msg.payload) { newState = \"auto\" }\n\n// Looks like wavemaker only takes mode. Not sure what the modes are yet...\nmsg.payload = {\n    \"mode\": \"off\"\n    // Could not enable off. Use the dedicated endpoint instead.\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 400,
-        "y": 1760,
-        "wires": [
-            [
-                "fe9022c07c157866",
-                "0f9176095ad80dc1"
             ]
         ]
     },
@@ -1430,19 +1079,406 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 650,
-        "y": 1800,
+        "x": 990,
+        "y": 2020,
         "wires": []
     },
     {
-        "id": "5ece2161f65cb60a",
+        "id": "0ce2826e9a59e276",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test ",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 2720,
+        "wires": [
+            [
+                "1ab2ec0feae15f97"
+            ]
+        ]
+    },
+    {
+        "id": "80c450d0f85c39fe",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Red Sea Lights",
+        "info": "//http://[rsled-address]/time\n//http://[rsled-address]/description.xml\n//http://[rsled-address]/cloud\n//http://[rsled-address]/connectivity\n//http://[rsled-address]/connectivity/events\ncurl -i -X POST -H 'Content-Type: application/json' -d '{\"white\": 0, \"blue\":100, \"moon\": 0 }' http://xx.xx.xx.xx/manual\nmode : {\n    mode: auto\n}\ntimer: {\n    \"blue\": 100,\n    \"duration\": 30,\n    \"moon\": 0,\n    \"white\": 100\n}",
+        "x": 140,
+        "y": 2820,
+        "wires": []
+    },
+    {
+        "id": "4ab710c345c7fe2a",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2Remaining",
+        "entityConfig": "a0b5ee75f380e1f0",
+        "version": 0,
+        "state": "payload.container_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1170,
+        "y": 1360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8dc911fee4c4b77b",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2SuppName",
+        "entityConfig": "0336e585822d6738",
+        "version": 0,
+        "state": "payload.supplement.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1170,
+        "y": 1400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e46e2914a1e5adad",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2DosedToday",
+        "entityConfig": "8db87c4539797afc",
+        "version": 0,
+        "state": "payload.today_auto_dosed_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1170,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2387997495d14cc0",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2DailyDose",
+        "entityConfig": "7d384937792c9d86",
+        "version": 0,
+        "state": "payload.schedule.dd",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1170,
+        "y": 1480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "76ffdbd0d6f1c569",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2SuppShortName",
+        "entityConfig": "64d4c459cd31d03a",
+        "version": 0,
+        "state": "payload.supplement.short_name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1190,
+        "y": 1520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f61e536105bda2fb",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3Remaining",
+        "entityConfig": "ee9d565c6f7932f2",
+        "version": 0,
+        "state": "payload.container_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1410,
+        "y": 1360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e7df774e76442476",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3SuppName",
+        "entityConfig": "717a438c0c1ad2b4",
+        "version": 0,
+        "state": "payload.supplement.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1410,
+        "y": 1400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0dcb2e0439d4c37c",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3DosedToday",
+        "entityConfig": "628ae3ba3c61f832",
+        "version": 0,
+        "state": "payload.today_auto_dosed_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1410,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cbabaa5a7b975b93",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3DailyDose",
+        "entityConfig": "83ad6f2d56267cbf",
+        "version": 0,
+        "state": "payload.schedule.dd",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1410,
+        "y": 1480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d1ff6b7af2ebe0d",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3SuppShortName",
+        "entityConfig": "85adae44ea93027a",
+        "version": 0,
+        "state": "payload.supplement.short_name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1430,
+        "y": 1520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "64db713440891d9b",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4Remaining",
+        "entityConfig": "cd09158a14612668",
+        "version": 0,
+        "state": "payload.container_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1650,
+        "y": 1360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "288baa5706a01397",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4SuppName",
+        "entityConfig": "d4c7de5f22cd0674",
+        "version": 0,
+        "state": "payload.supplement.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1650,
+        "y": 1400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8a32d9de8a6793e9",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4DosedToday",
+        "entityConfig": "3faa22a034cb4334",
+        "version": 0,
+        "state": "payload.today_auto_dosed_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1650,
+        "y": 1440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e32cdff36e602a58",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4DailyDose",
+        "entityConfig": "f0dd2ea7b91c3f1f",
+        "version": 0,
+        "state": "payload.schedule.dd",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1650,
+        "y": 1480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "07f432a7332790d6",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4SuppShortName",
+        "entityConfig": "1797d4fa36801d98",
+        "version": 0,
+        "state": "payload.supplement.short_name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1670,
+        "y": 1520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f18274330574aff7",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump2Type",
+        "entityConfig": "d751b9a98d6b3c6b",
+        "version": 0,
+        "state": "payload.pump_2.type",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1070,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ee7448d2ecd725d7",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump2Name",
+        "entityConfig": "a5d17d3f9e250603",
+        "version": 0,
+        "state": "payload.pump_2.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1070,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b975d70bc09a6a6a",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump2Temperature",
+        "entityConfig": "b86b722722e064a6",
+        "version": 0,
+        "state": "payload.pump_2.temperature",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1090,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e78b7a3be8d63f56",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Pump2Speed",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "fdb3f48ee1b73376",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.pump_2.intensity",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1070,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ee13b72a0ef4f4be",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Wavemaker - connect",
+        "name": "",
         "method": "POST",
         "ret": "obj",
-        "paytoqs": "body",
-        "url": "http://192.168.68.128/timer",
+        "paytoqs": "ignore",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -1450,8 +1486,286 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 680,
-        "y": 1840,
+        "x": 650,
+        "y": 1140,
+        "wires": [
+            [
+                "d4f690342df983b7"
+            ]
+        ]
+    },
+    {
+        "id": "2e2296cf354759bb",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"mode\":\"off\"}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 1200,
+        "wires": [
+            [
+                "adeb69994d1ceb1f"
+            ]
+        ]
+    },
+    {
+        "id": "1e06680288c92652",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 650,
+        "y": 1080,
+        "wires": [
+            [
+                "d4f690342df983b7",
+                "682c87048530fe41"
+            ]
+        ]
+    },
+    {
+        "id": "a9bd0e304ea9bd1a",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "d": true,
+        "name": "Every 15 Minutes",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"mode\":\"off\"}",
+        "payloadType": "json",
+        "x": 170,
+        "y": 1080,
+        "wires": [
+            [
+                "19902e776ba5c264"
+            ]
+        ]
+    },
+    {
+        "id": "682c87048530fe41",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatModel",
+        "entityConfig": "f77f5ec5d961c4f6",
+        "version": 0,
+        "state": "payload.model",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 920,
+        "y": 1220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e1d40ea445d4bba4",
+        "type": "ha-button",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatAdvance",
+        "version": 0,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityConfig": "00519b0a4cd0ae64",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "x": 150,
+        "y": 1140,
+        "wires": [
+            [
+                "adeb69994d1ceb1f"
+            ]
+        ]
+    },
+    {
+        "id": "ed5921976ec1c90e",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Wavemaker - get feeding schedule",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "http://192.168.68.128/feeding/schedule",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 1980,
+        "wires": [
+            [
+                "b486d624e7678961",
+                "7b1cddce1b390dcf",
+                "eb0187f08c547918"
+            ]
+        ]
+    },
+    {
+        "id": "d020aea2bba47bda",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "d": true,
+        "name": "Every 1 Hour",
+        "props": [],
+        "repeat": "3600",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 160,
+        "y": 1980,
+        "wires": [
+            [
+                "ed5921976ec1c90e"
+            ]
+        ]
+    },
+    {
+        "id": "b486d624e7678961",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 120",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 1940,
+        "wires": []
+    },
+    {
+        "id": "05ca3e3f06722232",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Wavemaker - preview",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "http://192.168.68.128/preview",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 700,
+        "y": 1900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "233a59644b9f4b94",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test ",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 1900,
+        "wires": [
+            [
+                "8f43ab0bd7e78a84"
+            ]
+        ]
+    },
+    {
+        "id": "8f43ab0bd7e78a84",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveMakerSettingsPreviewPayload",
+        "func": "\n\nnode.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\nvar newState = msg.payload\n\n// Default value for testing\nif (!msg.payload) { newState = \"auto\" }\n\n// Looks like wavemaker only takes mode. Not sure what the modes are yet...\n/* \nmsg.payload = {\n    \"pump_settings\": [\n        {\n            \"fti\": 90,\n            \"hwid\": \"16422546\",\n            \"rti\": 100,\n            \"sync\": true\n        }\n    ]\n}\n*/\n\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": 9,\n    \"pd\": 6,\n    //\"pump_settings\": [\n    //    {\n    //        \"fti\": 100,\n    //        \"hwid\": \"16422546\",\n    //        \"rti\": 100\n    //    }\n    //],\n    \"rrt\": 5,\n    \"sn\": 3,\n    \"type\": \"un\",\n    \"duration\": 3000,\n    \"fti\": 10,\n    \"rti\": 10,\n    \"sync\": true\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 1900,
+        "wires": [
+            [
+                "05ca3e3f06722232"
+            ]
+        ]
+    },
+    {
+        "id": "0a54e7e6c5feb37a",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Wavemaker - post feeding time",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "http://192.168.68.128/feeding/schedule",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1050,
+        "y": 2060,
         "wires": [
             [
                 "ec3f72d06e5b7656"
@@ -1459,10 +1773,1129 @@
         ]
     },
     {
-        "id": "0ce2826e9a59e276",
+        "id": "a8fc331faa37471d",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Test for new endpoints",
+        "name": "Test ",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 2060,
+        "wires": [
+            [
+                "778616bf3511dc21"
+            ]
+        ]
+    },
+    {
+        "id": "bf21d96081cb8f2e",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveMakerFeedSchedulePayload",
+        "func": "\n\n//node.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\n//var newState = msg.payload\n\n// Default value for testing\n//if (!msg.payload) { newState = \"auto\" }\n\n// Looks like wavemaker only takes mode. Not sure what the modes are yet...\n/*\nmsg.payload = {\n    \"pump_settings\": [\n        {\n            \"fti\": 90,\n            \"hwid\": \"16422546\",\n            \"rti\": 100,\n            \"sync\": true\n        }\n    ]\n}\n\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": 9,\n    \"pd\": 6,\n    //\"pump_settings\": [\n    //    {\n    //        \"fti\": 100,\n    //        \"hwid\": \"16422546\",\n    //        \"rti\": 100\n    //    }\n    //],\n    \"rrt\": 5,\n    \"sn\": 3,\n    \"type\": \"un\",\n    \"duration\": 20000,\n    \"fti\": 10,\n    \"rti\": 10,\n    \"sync\": true\n}\nmsg.payload = \n{\n    \"intervals\": [\n        {\n            \"duration\": 26,\n            \"wave_uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n        }\n    ],\n    \"uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n}\n*/\n//node.warn(msg)\nvar uid = msg.payload.uid\nvar wave_uid = msg.payload.intervals[0].wave_uid\nmsg.payload =\n{\n    \"in_sync\": true,\n        \"intervals\": [\n            {\n                \"duration\": msg.newValue,\n                \"name\": \"No Wave\",\n                \"type\": \"nw\",\n                \"wave_uid\": wave_uid\n            }\n        ],\n        \"uid\": uid\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 2060,
+        "wires": [
+            [
+                "0a54e7e6c5feb37a",
+                "ec3f72d06e5b7656"
+            ]
+        ]
+    },
+    {
+        "id": "778616bf3511dc21",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Wavemaker - get feeding schedule",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "http://192.168.68.128/feeding/schedule",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 420,
+        "y": 2060,
+        "wires": [
+            [
+                "bf21d96081cb8f2e",
+                "0f9176095ad80dc1"
+            ]
+        ]
+    },
+    {
+        "id": "7b1cddce1b390dcf",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveFeedSchedule1Name",
+        "entityConfig": "1f66910c43d561ea",
+        "version": 0,
+        "state": "payload.intervals[0].name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 720,
+        "y": 1940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb0187f08c547918",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveFeedSchedule1Duration",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "82e95b0691de1b05",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.intervals[0].duration",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 720,
+        "y": 1980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7bc683379223f98c",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveFeedSchedule1Duration",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "82e95b0691de1b05",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload.intervals[0].duration",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "newValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 180,
+        "y": 2100,
+        "wires": [
+            [
+                "778616bf3511dc21"
+            ]
+        ]
+    },
+    {
+        "id": "f2bcf39deae1bede",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 2720,
+        "wires": [
+            [
+                "ab49d2ecd4467f5e",
+                "a0b18e314c7ed4e4"
+            ]
+        ]
+    },
+    {
+        "id": "1ab2ec0feae15f97",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "GetTokenPayload",
+        "func": "msg.headers = {\n    \"Authorization\": \"Basic Z0ZqSHRKcGE6Qzlmb2d3cmpEV09SVDJHWQ==\",\n    \"Content-Type\": \"application/x-www-form-urlencoded\"\n};\n\nmsg.url = \"https://cloud.reef-beat.com/oauth/token\"\n\nmsg.payload = \"grant_type=password&username=\" + global.get(\"RSUser\") + \"&password=\" + global.get(\"RSPass\");\n\n\nif (global.get(\"RSReefWave\")) { node.send }\nelse { node.warn(\"No ReefWave Devices Found\"); return }\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 2720,
+        "wires": [
+            [
+                "f2bcf39deae1bede"
+            ]
+        ]
+    },
+    {
+        "id": "ab49d2ecd4467f5e",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 122",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 2680,
+        "wires": []
+    },
+    {
+        "id": "c9b10642b11784c0",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Red Sea WaveMaker - Cloud",
+        "info": "",
+        "x": 200,
+        "y": 2200,
+        "wires": []
+    },
+    {
+        "id": "bc71889d117efdc8",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "SetCurrentWaveValues",
+        "func": "var activeSchedule = global.get(\"WaveActiveSchedule\")\n\n//node.warn(activeSchedule)\nlet match = false\nfor (let i = 0; i < msg.payload.length; i++) {\n    //node.warn(msg.payload[i].name);\n    if (activeSchedule == msg.payload[i].name){\n        match = true\n        global.set(\"WaveActiveScheduleUID\", msg.payload[i].uid)\n        global.set(\"WaveActiveScheduleFRT\", msg.payload[i].frt)\n        global.set(\"WaveActiveScheduleRRT\", msg.payload[i].rrt)\n        global.set(\"WaveActiveSchedulePD\", msg.payload[i].pd)\n        global.set(\"WaveActiveScheduleHWID\", msg.payload[i].pump_settings[0].hwid)\n        global.set(\"WaveActiveScheduleFTI\", msg.payload[i].pump_settings[0].fti) \n        global.set(\"WaveActiveScheduleRTI\", msg.payload[i].pump_settings[0].rti) \n        msg.payload = {\n            \"uid\": msg.payload[i].uid,\n            \"name\": msg.payload[i].name,\n            \"frt\": msg.payload[i].frt,\n            \"rrt\": msg.payload[i].rrt,\n            \"pd\":  msg.payload[i].pd,\n            \"hwid\": msg.payload[i].pump_settings[0].hwid,\n            \"fti\": msg.payload[i].pump_settings[0].fti,\n            \"rti\": msg.payload[i].pump_settings[0].rti,\n            \"sync\": msg.payload[i].pump_settings[0].sync\n        }\n        // Return on first output\n        return [ msg, null ];\n    }\n}\nif (match == false){\n    node.warn(\"No matching wave in library\")\n    msg.payload = \"ERROR: No matching wave in library\"\n    // Return on second output\n    return [null, msg]\n}\n//return msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 2720,
+        "wires": [
+            [
+                "996af4bf1d646132",
+                "09bdf0c5ac1184b0",
+                "83b2c16b0807aae5",
+                "060b43236a711259",
+                "e7c38f02a8520b85",
+                "bd798aca0318dec7",
+                "7899036784f2f18a"
+            ],
+            [
+                "5331139225b57961"
+            ]
+        ]
+    },
+    {
+        "id": "665790a231dede0e",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "994e94fc39644f26",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1130,
+        "y": 2720,
+        "wires": [
+            [
+                "bc71889d117efdc8",
+                "1c6a305c462e382f"
+            ]
+        ]
+    },
+    {
+        "id": "1c6a305c462e382f",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 129",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 2680,
+        "wires": []
+    },
+    {
+        "id": "a0b18e314c7ed4e4",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "SetTokenGetUID",
+        "func": "msg.headers = {\n    \"Authorization\": \"Bearer \" + msg.payload.access_token,\n    \"Content-Type\": \"application/json\"\n}\nflow.set(\"auth_token\", msg.payload.access_token)\n//node.warn(flow.get(\"auth_token\"))\nmsg.url = \"https://cloud.reef-beat.com/reef-wave/library\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 2720,
+        "wires": [
+            [
+                "665790a231dede0e"
+            ]
+        ]
+    },
+    {
+        "id": "82ad56da39fd49aa",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 130",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1610,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "a22ee84d4f7cbde4",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test ",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 2300,
+        "wires": [
+            [
+                "2cc808bea0b8bcd8"
+            ]
+        ]
+    },
+    {
+        "id": "4767286d268ef220",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 670,
+        "y": 2300,
+        "wires": [
+            [
+                "4c2de54a8fb46514",
+                "74cc394b29789046"
+            ]
+        ]
+    },
+    {
+        "id": "2cc808bea0b8bcd8",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "GetTokenPayload",
+        "func": "flow.set(\"SetFeedMode\", msg.payload)\n\nmsg.headers = {\n    \"Authorization\": \"Basic Z0ZqSHRKcGE6Qzlmb2d3cmpEV09SVDJHWQ==\",\n    \"Content-Type\": \"application/x-www-form-urlencoded\"\n};\n\nmsg.url = \"https://cloud.reef-beat.com/oauth/token\"\n\nmsg.payload = \"grant_type=password&username=\" + global.get(\"RSUser\") + \"&password=\" + global.get(\"RSPass\");\n\n\nif (global.get(\"RSReefWave\")) {node.send}\nelse { node.warn(\"No ReefWave Devices Found\"); return }\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 2300,
+        "wires": [
+            [
+                "4767286d268ef220"
+            ]
+        ]
+    },
+    {
+        "id": "4c2de54a8fb46514",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 132",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "74cc394b29789046",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "SetTokenGetUID",
+        "func": "msg.headers = {\n    \"Authorization\": \"Bearer \" + msg.payload.access_token,\n    \"Content-Type\": \"application/json\"\n}\nflow.set(\"auth_token\", msg.payload.access_token)\n//node.warn(flow.get(\"auth_token\"))\nmsg.url = \"https://cloud.reef-beat.com/aquarium\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 2300,
+        "wires": [
+            [
+                "620d29f0299decb6"
+            ]
+        ]
+    },
+    {
+        "id": "620d29f0299decb6",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "994e94fc39644f26",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1130,
+        "y": 2300,
+        "wires": [
+            [
+                "648dc4d24ab38d0b",
+                "a8b304a2336b23eb"
+            ]
+        ]
+    },
+    {
+        "id": "648dc4d24ab38d0b",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 133",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "a8b304a2336b23eb",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "SetTokenURLFeedMode",
+        "func": "msg.headers = {\n    \"Authorization\": \"Bearer \" + flow.get(\"auth_token\"),\n    \"Content-Type\": \"application/json\"\n}\nif (flow.get(\"SetFeedMode\") == \"start\") {\n    msg.url = \"https://cloud.reef-beat.com/aquarium/\" + msg.payload[0].uid + \"/feeding/start\"\n}\nelse {\n    msg.url = \"https://cloud.reef-beat.com/aquarium/\" + msg.payload[0].uid + \"/feeding/stop\"\n}\n//node.warn(msg.url)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1390,
+        "y": 2300,
+        "wires": [
+            [
+                "471807bf187a96b6",
+                "15fdc5b6a77dd4bb"
+            ]
+        ]
+    },
+    {
+        "id": "471807bf187a96b6",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "994e94fc39644f26",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1610,
+        "y": 2300,
+        "wires": [
+            [
+                "82ad56da39fd49aa",
+                "7b1b7a6a82a20392"
+            ]
+        ]
+    },
+    {
+        "id": "15fdc5b6a77dd4bb",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 134",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1350,
+        "y": 2260,
+        "wires": []
+    },
+    {
+        "id": "1f200b46bb8f684a",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveForwardIntensity",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "a2b7f110d698c4df",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "fti",
+                "valueType": "str"
+            }
+        ],
+        "x": 160,
+        "y": 2460,
+        "wires": [
+            [
+                "822dfec83e15372b"
+            ]
+        ]
+    },
+    {
+        "id": "128b5d53eada0a5e",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveReverseIntensity",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "d1f79ffc05882bda",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "rti",
+                "valueType": "str"
+            }
+        ],
+        "x": 160,
+        "y": 2500,
+        "wires": [
+            [
+                "822dfec83e15372b"
+            ]
+        ]
+    },
+    {
+        "id": "17c0ab45f3eb4110",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveForwardTime",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "6c4fa4d696136e6e",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "frt",
+                "valueType": "str"
+            }
+        ],
+        "x": 150,
+        "y": 2540,
+        "wires": [
+            [
+                "822dfec83e15372b"
+            ]
+        ]
+    },
+    {
+        "id": "4268fc57612784aa",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveReverseTime",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "a15b5eb2ffc5cb40",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "rrt",
+                "valueType": "str"
+            }
+        ],
+        "x": 150,
+        "y": 2580,
+        "wires": [
+            [
+                "822dfec83e15372b"
+            ]
+        ]
+    },
+    {
+        "id": "de663c67a8187d97",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "SetActiveSchedule",
+        "func": "global.set(\"WaveActiveSchedule\", msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 2660,
+        "wires": [
+            [
+                "1ab2ec0feae15f97",
+                "ab37a50217886889"
+            ]
+        ]
+    },
+    {
+        "id": "30c78aae2ad05801",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Aquarium",
+        "info": "https://cloud.reef-beat.com/device\nreturns:\n[\n    {\n        \"aquarium_id\": 203621,\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"board\": \"esp32\",\n        \"bssid\": \"3C:84:6A:1B:5B:2E\",\n        \"connected\": true,\n        \"firmware_version\": \"1.2.11\",\n        \"framework\": \"a\",\n        \"group_index\": 0,\n        \"grouped\": false,\n        \"hwid\": \"34ab9545eb30\",\n        \"id\": 388587,\n        \"in_service\": true,\n        \"ip_address\": \"192.168.68.125\",\n        \"last_seen\": \"2025-03-05T04:17:08.903054Z\",\n        \"mac\": \"34:AB:95:45:EB:30\",\n        \"model\": \"RSDOSE4\",\n        \"name\": \"RSDOSE4-820725141\",\n        \"offset\": 0,\n        \"onboarding_date\": \"2022-06-30T02:58:49.834672Z\",\n        \"previously_grouped\": false,\n        \"properties\": {\n            \"battery_level\": \"high\",\n            \"calibration_reminder\": false,\n            \"calibration_reminder_days\": 60,\n            \"calibration_reminder_steps\": 35000,\n            \"daily_metrics_last_compute_time\": 1741132800,\n            \"device_settings\": {\n                \"auto_fill_schedule\": false,\n                \"bundled_heads\": false,\n                \"shortcut_off_delay\": 0\n            },\n            \"dosing_waiting_period\": 15,\n            \"emergency\": false,\n            \"emergency_1\": {\n                \"subscribed\": false\n            },\n            \"factory_reset_time\": 1656593378,\n            \"feeding\": false,\n            \"feeding_1\": {\n                \"duration\": 20,\n                \"subscribed\": false\n            },\n            \"feeding_duration\": 20,\n            \"file_error\": false,\n            \"heads\": {\n                \"1\": {\n                    \"daily_dose\": 90,\n                    \"days\": [\n                        1,\n                        2,\n                        3,\n                        4,\n                        5,\n                        6,\n                        7\n                    ],\n                    \"dc\": true,\n                    \"dd\": 90,\n                    \"enable_ratio\": true,\n                    \"food_delay\": 0,\n                    \"is_food_head\": false,\n                    \"last_calibrated\": 1656594173,\n                    \"nd\": 24,\n                    \"schedule_enabled\": true,\n                    \"schedule_type\": \"hourly\",\n                    \"show\": true,\n                    \"slm\": true,\n                    \"state\": \"on\",\n                    \"supplement\": {\n                        \"brand_name\": \"Red Sea\",\n                        \"concentration\": 0,\n                        \"display_name\": \"KH\",\n                        \"made_by_redsea\": true,\n                        \"name\": \"KH/Alkalinity (Foundation B)\",\n                        \"short_name\": \"KH\",\n                        \"type\": \"null\",\n                        \"uid\": \"76830db3-a0bd-459a-9974-76a57d026893\"\n                    },\n                    \"vps\": 0.056061\n                },\n                \"2\": {\n                    \"daily_dose\": 90,\n                    \"days\": [\n                        1,\n                        2,\n                        3,\n                        4,\n                        5,\n                        6,\n                        7\n                    ],\n                    \"dc\": true,\n                    \"dd\": 90,\n                    \"enable_ratio\": true,\n                    \"food_delay\": 0,\n                    \"is_food_head\": false,\n                    \"last_calibrated\": 1656594359,\n                    \"nd\": 24,\n                    \"schedule_enabled\": true,\n                    \"schedule_type\": \"hourly\",\n                    \"show\": true,\n                    \"slm\": true,\n                    \"state\": \"on\",\n                    \"supplement\": {\n                        \"brand_name\": \"Red Sea\",\n                        \"concentration\": 0,\n                        \"display_name\": \"Calcium\",\n                        \"made_by_redsea\": true,\n                        \"name\": \"Calcium (Foundation A)\",\n                        \"short_name\": \"Ca\",\n                        \"type\": \"null\",\n                        \"uid\": \"7d67412c-fde0-44d4-882a-dc8746fd4acb\"\n                    },\n                    \"vps\": 0.060606\n                },\n                \"3\": {\n                    \"daily_dose\": 95,\n                    \"days\": [\n                        1,\n                        2,\n                        3,\n                        4,\n                        5,\n                        6,\n                        7\n                    ],\n                    \"dc\": true,\n                    \"dd\": 95,\n                    \"enable_ratio\": true,\n                    \"food_delay\": 0,\n                    \"is_food_head\": false,\n                    \"last_calibrated\": 1656594527,\n                    \"nd\": 24,\n                    \"schedule_enabled\": true,\n                    \"schedule_type\": \"hourly\",\n                    \"show\": true,\n                    \"slm\": true,\n                    \"state\": \"on\",\n                    \"supplement\": {\n                        \"brand_name\": \"Red Sea\",\n                        \"concentration\": 0,\n                        \"display_name\": \"Magnesium\",\n                        \"made_by_redsea\": true,\n                        \"name\": \"Magnesium (Foundation C)\",\n                        \"short_name\": \"Mg\",\n                        \"type\": \"null\",\n                        \"uid\": \"f524734e-8651-496e-b09b-640b40fc8bab\"\n                    },\n                    \"vps\": 0.059091\n                },\n                \"4\": {\n                    \"daily_dose\": 5,\n                    \"days\": [\n                        1,\n                        2,\n                        3,\n                        4,\n                        5,\n                        6,\n                        7\n                    ],\n                    \"dc\": true,\n                    \"dd\": 5,\n                    \"enable_ratio\": true,\n                    \"food_delay\": 0,\n                    \"is_food_head\": false,\n                    \"last_calibrated\": 1656594792,\n                    \"nd\": 1,\n                    \"schedule_enabled\": true,\n                    \"schedule_type\": \"single\",\n                    \"show\": true,\n                    \"slm\": true,\n                    \"state\": \"on\",\n                    \"supplement\": {\n                        \"brand_name\": \"Red Sea\",\n                        \"concentration\": 0,\n                        \"display_name\": \"Nutrient control\",\n                        \"made_by_redsea\": true,\n                        \"name\": \"NO3PO4-X\",\n                        \"short_name\": \"NPX\",\n                        \"type\": \"null\",\n                        \"uid\": \"ffaf6ff8-bc6d-44eb-9e4b-e679943dc835\"\n                    },\n                    \"vps\": 0.060606\n                }\n            },\n            \"maintenance\": false,\n            \"maintenance_1\": {\n                \"subscribed\": false\n            },\n            \"missed_doses_reminder\": true,\n            \"mode\": \"auto\",\n            \"ntp_sync\": true,\n            \"shortcut_settings\": {\n                \"shortcut_off_delay\": 0\n            },\n            \"start_of_schedule_for_next_day\": 0,\n            \"stock_alert_days\": 10,\n            \"time_error\": false,\n            \"time_error_unixtime\": 0,\n            \"timezone\": 600,\n            \"turned_off\": false\n        },\n        \"ssid\": \"MarKel\",\n        \"type\": \"reef-dosing\"\n    },\n    {\n        \"aquarium_id\": 203621,\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"board\": \"esp32\",\n        \"connected\": true,\n        \"firmware_version\": \"1.9.1\",\n        \"framework\": \"i\",\n        \"group_index\": 0,\n        \"grouped\": false,\n        \"hw_revision\": \"v0.1_21A\",\n        \"hwid\": \"94b5557ea464\",\n        \"id\": 650831,\n        \"in_service\": true,\n        \"ip_address\": \"192.168.68.92\",\n        \"last_seen\": \"2025-03-05T04:17:10.084597Z\",\n        \"mac\": \"94:B5:55:7E:A4:64\",\n        \"model\": \"RSMAT500\",\n        \"name\": \"RSMAT-1688501845\",\n        \"offset\": 0,\n        \"onboarding_date\": \"2024-03-05T07:26:45.286813Z\",\n        \"previously_grouped\": false,\n        \"properties\": {\n            \"auto_advance\": true,\n            \"cumulative_steps\": 236,\n            \"daily_average_usage\": 26.972900390625,\n            \"days_till_end_of_roll\": 100,\n            \"device_settings\": {\n                \"auto_advance\": true,\n                \"custom_advance_value\": 2.25,\n                \"end_of_roll_monitor\": 3,\n                \"fresh_water_aquarium\": false,\n                \"model\": \"RSMAT500\",\n                \"position\": \"right\",\n                \"schedule_enable\": false,\n                \"schedule_length\": 20,\n                \"schedule_time\": 0\n            },\n            \"device_setup_date\": 1660259660,\n            \"emergency\": false,\n            \"emergency_1\": {\n                \"subscribed\": false\n            },\n            \"external_ec_average\": 0,\n            \"internal_ec_average\": 0,\n            \"is_advancing\": false,\n            \"last_advance_cause\": \"self_test\",\n            \"lifetime_steps\": 107316,\n            \"maintenance\": false,\n            \"maintenance_1\": {\n                \"subscribed\": false\n            },\n            \"material\": {\n                \"external_diameter\": 10.105999946594238,\n                \"is_partial\": false,\n                \"name\": \"28 Meter\",\n                \"thickness\": 0.02370000071823597\n            },\n            \"mode\": \"auto\",\n            \"remaining_length\": 2717.28759765625,\n            \"roll_level\": \"full\",\n            \"setup_date\": \"2025-03-05T12:38:22Z\",\n            \"timezone\": 600,\n            \"today_usage\": 59.46120071411133,\n            \"total_usage\": 82.6792984008789,\n            \"turned_off\": false,\n            \"unclean_sensor\": false\n        },\n        \"ssid\": \"MarKel\",\n        \"type\": \"reef-mat\"\n    },\n    {\n        \"aquarium_id\": 203621,\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"board\": \"esp32\",\n        \"bssid\": \"3C:84:6A:1B:5B:2E\",\n        \"connected\": true,\n        \"firmware_version\": \"1.0.21\",\n        \"framework\": \"i\",\n        \"group_index\": 0,\n        \"grouped\": false,\n        \"hw_revision\": \"v1_22A\",\n        \"hwid\": \"349454ea62b4\",\n        \"id\": 828547,\n        \"in_service\": true,\n        \"ip_address\": \"192.168.68.213\",\n        \"last_seen\": \"2025-03-04T14:30:22.603724Z\",\n        \"mac\": \"34:94:54:EA:62:B4\",\n        \"model\": \"RSRUN\",\n        \"name\": \"RSRUN-3026381396\",\n        \"offset\": 0,\n        \"onboarding_date\": \"2025-03-02T03:23:31.664112Z\",\n        \"previously_grouped\": false,\n        \"properties\": {\n            \"battery_level\": \"high\",\n            \"device_settings\": {\n                \"calibration\": {\n                    \"cup_calibration\": 0,\n                    \"skim_calibration\": 0\n                },\n                \"fullcup_enabled\": true,\n                \"linked\": false,\n                \"overskimming\": {\n                    \"enabled\": true,\n                    \"threshold\": 55\n                },\n                \"restore_settings\": true,\n                \"synced\": true\n            },\n            \"ec_sensor_connected\": false,\n            \"emergency\": false,\n            \"emergency_1\": {\n                \"pump_1\": {\n                    \"subscribed\": false\n                },\n                \"pump_2\": {\n                    \"subscribed\": false\n                }\n            },\n            \"feeding\": false,\n            \"feeding_1\": {\n                \"pump_1\": {\n                    \"delay\": 0,\n                    \"duration\": 1800,\n                    \"intensity\": 0,\n                    \"subscribed\": false\n                },\n                \"pump_2\": {\n                    \"delay\": 0,\n                    \"duration\": 1800,\n                    \"intensity\": 0,\n                    \"subscribed\": false\n                }\n            },\n            \"feeding_duration\": 30,\n            \"initial\": false,\n            \"maintenance\": false,\n            \"maintenance_1\": {\n                \"pump_1\": {\n                    \"subscribed\": false\n                },\n                \"pump_2\": {\n                    \"subscribed\": false\n                }\n            },\n            \"mode\": \"auto\",\n            \"pumps\": {\n                \"1\": {\n                    \"intensity\": 50,\n                    \"missing_pump\": false,\n                    \"missing_sensor\": false,\n                    \"model\": \"return-6\",\n                    \"name\": \"Chiller\",\n                    \"reconnect_pump\": false,\n                    \"schedule\": [\n                        {\n                            \"pd\": 0,\n                            \"st\": 0,\n                            \"ti\": 50\n                        }\n                    ],\n                    \"schedule_enabled\": true,\n                    \"sensor_controlled\": false,\n                    \"state\": \"operational\",\n                    \"type\": \"return\"\n                },\n                \"2\": {\n                    \"intensity\": 50,\n                    \"missing_pump\": false,\n                    \"missing_sensor\": false,\n                    \"model\": \"unknown\",\n                    \"name\": \"\",\n                    \"reconnect_pump\": false,\n                    \"schedule\": [\n                        {\n                            \"pd\": 0,\n                            \"st\": 0,\n                            \"ti\": 50\n                        }\n                    ],\n                    \"schedule_enabled\": false,\n                    \"sensor_controlled\": false,\n                    \"state\": \"operational\",\n                    \"type\": \"unknown\"\n                }\n            },\n            \"shortcut_settings\": {\n                \"pump_1\": {\n                    \"pump_on_delayed\": false,\n                    \"shortcut_off_delay\": 0\n                },\n                \"pump_2\": {\n                    \"pump_on_delayed\": false,\n                    \"shortcut_off_delay\": 0\n                }\n            },\n            \"shortcuts\": {\n                \"pump_1\": {\n                    \"emergency\": false,\n                    \"feeding\": {\n                        \"delay\": 0,\n                        \"duration\": 1800,\n                        \"enabled\": false,\n                        \"intensity\": 0\n                    },\n                    \"maintenance\": false,\n                    \"pump_on_delayed\": false,\n                    \"shortcut_off_delay\": 0\n                },\n                \"pump_2\": {\n                    \"emergency\": false,\n                    \"feeding\": {\n                        \"delay\": 0,\n                        \"duration\": 1800,\n                        \"enabled\": false,\n                        \"intensity\": 0\n                    },\n                    \"maintenance\": false,\n                    \"pump_on_delayed\": false,\n                    \"shortcut_off_delay\": 0\n                }\n            },\n            \"time_error\": false,\n            \"timezone\": 600,\n            \"turned_off\": false\n        },\n        \"ssid\": \"MarKel\",\n        \"type\": \"reef-run\"\n    },\n    {\n        \"aquarium_id\": 203621,\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"board\": \"esp8266\",\n        \"connected\": true,\n        \"firmware_version\": \"2.10.4\",\n        \"framework\": \"a\",\n        \"group_index\": 0,\n        \"grouped\": true,\n        \"hwid\": \"16422546\",\n        \"id\": 457491,\n        \"in_service\": true,\n        \"ip_address\": \"192.168.68.128\",\n        \"last_seen\": \"2025-03-05T09:02:26.865445Z\",\n        \"mac\": \"A4:CF:12:FA:96:92\",\n        \"model\": \"RSWAVE45\",\n        \"name\": \"RSWAVE45-16422546\",\n        \"offset\": 0,\n        \"onboarding_date\": \"2023-01-05T07:09:20.859208Z\",\n        \"previously_grouped\": false,\n        \"properties\": {\n            \"controlling-mode\": \"reef-beat\",\n            \"device_settings\": {\n                \"shortcut_off_delay\": 0\n            },\n            \"emergency\": false,\n            \"emergency_1\": {\n                \"subscribed\": false\n            },\n            \"feeding\": true,\n            \"feeding_1\": {\n                \"intervals\": [\n                    {\n                        \"duration\": 21,\n                        \"name\": \"No Wave\",\n                        \"type\": \"nw\",\n                        \"wave_uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n                    }\n                ],\n                \"subscribed\": true,\n                \"uid\": \"0c7ab0d6-7713-4e0d-935a-55af85d893d4\"\n            },\n            \"feeding_duration\": 20,\n            \"feeding_schedule\": {\n                \"hash\": \"30255e4eb1284c5d6b1562dd09712153\",\n                \"uid\": \"0c7ab0d6-7713-4e0d-935a-55af85d893d4\"\n            },\n            \"maintenance\": false,\n            \"maintenance_1\": {\n                \"subscribed\": false\n            },\n            \"mode\": \"auto\",\n            \"schedule\": {\n                \"hash\": \"285b6cbe1c932fddc0639caaa050e823\",\n                \"uid\": \"f44fe69c-9614-4587-8345-c56c75929a9a\"\n            },\n            \"shortcut_settings\": {\n                \"shortcut_off_delay\": 0\n            },\n            \"timezone\": 600,\n            \"turned_off\": false\n        },\n        \"ssid\": \"MarKel\",\n        \"type\": \"reef-wave\"\n    }\n]",
+        "x": 120,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "6c68736fb287bc72",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "This Third",
+        "props": [],
+        "repeat": "14400",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "0a3eebdf61ed02ce"
+            ]
+        ]
+    },
+    {
+        "id": "dd23aec0b3659433",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Get Token",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://cloud.reef-beat.com/oauth/token",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 650,
+        "y": 260,
+        "wires": [
+            [
+                "c6885b323520a787",
+                "bd1d9cf2ec311e80"
+            ]
+        ]
+    },
+    {
+        "id": "0a3eebdf61ed02ce",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "GetTokenPayload",
+        "func": "msg.headers = {\n    \"Authorization\": \"Basic Z0ZqSHRKcGE6Qzlmb2d3cmpEV09SVDJHWQ==\",\n    \"Content-Type\": \"application/x-www-form-urlencoded\"\n};\n\nmsg.payload = \"grant_type=password&username=\" + global.get(\"RSUser\") + \"&password=\" + global.get(\"RSPass\");\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "dd23aec0b3659433",
+                "6f2babe6fa0b2654"
+            ]
+        ]
+    },
+    {
+        "id": "6f2babe6fa0b2654",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 135",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 370,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c6885b323520a787",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 136",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "bd1d9cf2ec311e80",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Set Token",
+        "func": "msg.headers = {\n    \"Authorization\": \"Bearer \" + msg.payload.access_token,\n    \"Content-Type\": \"application/json\"\n}\n\nflow.set(\"auth_token\", msg.payload.access_token)\n//node.warn(flow.get(\"auth_token\"))\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 260,
+        "wires": [
+            [
+                "eca372aebecd1fe1",
+                "53d514e7a128681b"
+            ]
+        ]
+    },
+    {
+        "id": "eca372aebecd1fe1",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Get Aquarium Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://cloud.reef-beat.com/aquarium",
+        "tls": "994e94fc39644f26",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1050,
+        "y": 260,
+        "wires": [
+            [
+                "3494aa3ea7b5f815",
+                "d08ea755dafebdf4",
+                "d9a4595d3db51f80",
+                "59e2b76e4ea81f76"
+            ]
+        ]
+    },
+    {
+        "id": "3494aa3ea7b5f815",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 137",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "d08ea755dafebdf4",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "AquariumType",
+        "entityConfig": "8b9dea3eac7d4ce8",
+        "version": 0,
+        "state": "payload[0].system_type",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1280,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9a4595d3db51f80",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "AquariumVolume",
+        "entityConfig": "388ce1ae97a61b74",
+        "version": 0,
+        "state": "payload[0].water_volume",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1290,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "59e2b76e4ea81f76",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "AquariumName",
+        "entityConfig": "58bc98e249d76cc4",
+        "version": 0,
+        "state": "payload[0].name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1280,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "53d514e7a128681b",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Get Device Info",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://cloud.reef-beat.com/device",
+        "tls": "994e94fc39644f26",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1040,
+        "y": 300,
+        "wires": [
+            [
+                "3494aa3ea7b5f815",
+                "d205efc0ed9a42a2"
+            ]
+        ]
+    },
+    {
+        "id": "d205efc0ed9a42a2",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "SetDeviceInfo",
+        "func": "// This sets up global variables for the devices\nvar devices = \"Your devices:\"\nfor (let i=0; i < msg.payload.length; i++){\n    //node.warn(msg.payload[i])\n    if (msg.payload[i].type == \"reef-dosing\"){\n        global.set(\"RSReefDose\", true)\n        global.set(\"RSReefDoseHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefDoseModel\", msg.payload[i].model)\n        global.set(\"RSReefDoseIP\", msg.payload[i].ip_address)\n    }\n    if (msg.payload[i].type == \"reef-mat\") {\n        global.set(\"RSReefMat\", true)\n        global.set(\"RSReefMatHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefMatModel\", msg.payload[i].model)\n        global.set(\"RSReefMatIP\", msg.payload[i].ip_address)\n    }\n    if (msg.payload[i].type == \"reef-run\") {\n        global.set(\"RSReefRun\", true)\n        global.set(\"RSReefRunHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefRunModel\", msg.payload[i].model)\n        global.set(\"RSReefRunIP\", msg.payload[i].ip_address)\n    }\n    if (msg.payload[i].type == \"reef-wave\") {\n        global.set(\"RSReefWave\", true)\n        global.set(\"RSReefWaveHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefWaveModel\", msg.payload[i].model)\n        global.set(\"RSReefWaveIP\", msg.payload[i].ip_address)\n        global.set(\"RSReefWaveSchedule\", msg.payload[i].properties.schedule.uid)\n    }\n    if (msg.payload[i].type == \"reef-lights\") {\n        global.set(\"RSReefLights\", true)\n        global.set(\"RSReefLightsHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefLightsModel\", msg.payload[i].model)\n        global.set(\"RSReefLightsIP\", msg.payload[i].ip_address) \n        //global.set(\"RSReefLightsSchedule\", msg.payload[i].properties.schedule.uid)\n    }\n    devices = devices + \"\\n \" + msg.payload[i].model.toString() + \" IP: \" + msg.payload[i].ip_address\n    //node.warn(devices)\n    //node.warn(msg.payload[i].model)\n}\n\nmsg.payload.devices = devices\n//node.warn(msg.payload.devices)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1280,
+        "y": 300,
+        "wires": [
+            [
+                "e73ef57dc4d4fb85"
+            ]
+        ]
+    },
+    {
+        "id": "9af672121c880de3",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefRun Settings",
+        "func": "node.warn(global.get(\"RSReefRun\"))\n\nif (global.get(\"RSReefRun\")){\n    msg.url = \"http://\" + global.get(\"RSReefRunIP\") + \"/pump/settings\"\n    node.warn(msg.url)\n}\nelse {node.warn(\"No ReefRun Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 560,
+        "wires": [
+            [
+                "082781b4e625097f"
+            ]
+        ]
+    },
+    {
+        "id": "082781b4e625097f",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 650,
+        "y": 560,
+        "wires": [
+            [
+                "0e85da27edbf79d4"
+            ]
+        ]
+    },
+    {
+        "id": "9523cba9f72f9b28",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefRun Dashboard",
+        "func": "if (global.get(\"RSReefRun\")){\n    msg.url = \"http://\" + global.get(\"RSReefRunIP\") + \"/dashboard\"\n}\nelse {node.warn(\"No ReefRun Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 660,
+        "wires": [
+            [
+                "6d74ca27934d0816"
+            ]
+        ]
+    },
+    {
+        "id": "fba0ff0039159589",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefMat Dashboard",
+        "func": "if (global.get(\"RSReefMat\")){\n    msg.url = \"http://\" + global.get(\"RSReefMatIP\") + \"/dashboard\"\n}\nelse {node.warn(\"No ReefMat Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1020,
+        "wires": [
+            [
+                "d91ffedd5a9a5745"
+            ]
+        ]
+    },
+    {
+        "id": "19902e776ba5c264",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefMat Config",
+        "func": "if (global.get(\"RSReefMat\")){\n    msg.url = \"http://\" + global.get(\"RSReefMatIP\") + \"/configuration\"\n}\nelse {node.warn(\"No ReefMat Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 1080,
+        "wires": [
+            [
+                "1e06680288c92652"
+            ]
+        ]
+    },
+    {
+        "id": "adeb69994d1ceb1f",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefMat Advance",
+        "func": "if (global.get(\"RSReefMat\")){\n    msg.url = \"http://\" + global.get(\"RSReefMatIP\") + \"/advance\"\n}\nelse {node.warn(\"No ReefMat Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 1140,
+        "wires": [
+            [
+                "ee13b72a0ef4f4be"
+            ]
+        ]
+    },
+    {
+        "id": "477e1f3d9d452c80",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Trigger This Second",
         "props": [
             {
                 "p": "payload"
@@ -1479,86 +2912,142 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 180,
-        "y": 1840,
+        "x": 150,
+        "y": 140,
         "wires": [
             [
-                "5ece2161f65cb60a"
+                "6cb9d6e8a2c37989"
             ]
         ]
     },
     {
-        "id": "80c450d0f85c39fe",
-        "type": "comment",
+        "id": "6cb9d6e8a2c37989",
+        "type": "function",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Red Sea Lights",
-        "info": "//http://[rsled-address]/time\n//http://[rsled-address]/description.xml\n//http://[rsled-address]/cloud\n//http://[rsled-address]/connectivity\n//http://[rsled-address]/connectivity/events\ncurl -i -X POST -H 'Content-Type: application/json' -d '{\"white\": 0, \"blue\":100, \"moon\": 0 }' http://xx.xx.xx.xx/manual\nmode : {\n    mode: auto\n}\ntimer: {\n    \"blue\": 100,\n    \"duration\": 30,\n    \"moon\": 0,\n    \"white\": 100\n}",
-        "x": 160,
-        "y": 1980,
-        "wires": []
-    },
-    {
-        "id": "f9e9576bcc1ff0f1",
-        "type": "debug",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "debug 118",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 650,
-        "y": 1720,
-        "wires": []
-    },
-    {
-        "id": "343c5adce17ee578",
-        "type": "ha-select",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "ReefWaveMode",
-        "version": 1,
-        "debugenabled": false,
-        "inputs": 1,
+        "name": "Do this First: Enter ReefBeat Credentials Here Then Deploy Flow Then Trigger",
+        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"INSERTEMAIL\")\nglobal.set(\"RSPass\", \"INSERTPASS\")\nreturn msg;",
         "outputs": 1,
-        "entityConfig": "0895fa3a865d3ccd",
-        "exposeAsEntityConfig": "",
-        "mode": "set",
-        "value": "payload.mode",
-        "valueType": "msg",
-        "outputProperties": [
-            {
-                "property": "payload",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "value"
-            },
-            {
-                "property": "previousValue",
-                "propertyType": "msg",
-                "value": "",
-                "valueType": "previousValue"
-            }
-        ],
-        "x": 660,
-        "y": 1680,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "034bf1bce0bd9e9a",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefDose Settings",
+        "func": "if (global.get(\"RSReefDose\")){\n    msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/1/settings\"\n}\nelse {node.warn(\"No ReefDose Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1400,
         "wires": [
             [
-                "58e523163eb77b63"
+                "7891a0bc79e3955d"
             ]
         ]
     },
     {
-        "id": "d4f2c79f0195975e",
+        "id": "26334259549fd19d",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefDose Settings",
+        "func": "if (global.get(\"RSReefDose\")) {\n            msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/device-settings\"\n            node.send\n}\nelse { node.warn(\"No ReefDose Devices Found\"); return }\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1700,
+        "wires": [
+            [
+                "1ab7efdc3dcc2bce"
+            ]
+        ]
+    },
+    {
+        "id": "7493c8e1dd148e2e",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefDose Settings",
+        "func": "if (global.get(\"RSReefDose\")){\n    if (global.get(\"RSReedDoseModel\") == \"RSDOSE4\"){\n        for (let i=1; i <=4; i++){\n            msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/3/settings\"\n            node.send\n        }\n    }\n    else {\n        return\n    }\n}\nelse {node.warn(\"No ReefDose Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1480,
+        "wires": [
+            [
+                "08b20658268d23b9"
+            ]
+        ]
+    },
+    {
+        "id": "70fd1ec858f185d2",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefDose Settings",
+        "func": "if (global.get(\"RSReefDose\")){\n    msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/1/settings\"\n}\nelse {node.warn(\"No ReefDose Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1440,
+        "wires": [
+            [
+                "f2a0ff5f6ce41d93"
+            ]
+        ]
+    },
+    {
+        "id": "b00f8237d4278921",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefDose Settings",
+        "func": "if (global.get(\"RSReefDose\")){\n    if (global.get(\"RSReedDoseModel\") == \"RSDOSE4\"){\n        for (let i=1; i <=4; i++){\n            msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/4/settings\"\n            node.send\n        }\n    }\n    else {\n        return\n    }\n}\nelse {node.warn(\"No ReefDose Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1520,
+        "wires": [
+            [
+                "7709b12466af1992"
+            ]
+        ]
+    },
+    {
+        "id": "e16137ab58cb767d",
         "type": "ha-select",
         "z": "93fb4f06d7a3a7bc",
-        "name": "ReefWaveMode",
+        "name": "FeedMode",
         "version": 1,
         "debugenabled": false,
         "inputs": 0,
         "outputs": 1,
-        "entityConfig": "0895fa3a865d3ccd",
+        "entityConfig": "12ba62e53d136fca",
         "exposeAsEntityConfig": "",
         "mode": "listen",
         "value": "payload",
@@ -1577,19 +3066,407 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 160,
-        "y": 1760,
+        "x": 120,
+        "y": 2380,
         "wires": [
             [
-                "f7142fce9e3f038e"
+                "2cc808bea0b8bcd8"
             ]
         ]
     },
     {
-        "id": "58e523163eb77b63",
+        "id": "a346e8bbfa6e5bb7",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "FeedMode",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "d22bb1db97035f04",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 120,
+        "y": 2340,
+        "wires": [
+            [
+                "2cc808bea0b8bcd8"
+            ]
+        ]
+    },
+    {
+        "id": "e73ef57dc4d4fb85",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "AquariumDevices",
+        "entityConfig": "cb24db3794b124eb",
+        "version": 0,
+        "state": "payload.devices",
+        "stateType": "msg",
+        "attributes": [
+            {
+                "property": "IP",
+                "value": "payload[0].ip_address",
+                "valueType": "msg"
+            }
+        ],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1510,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "996af4bf1d646132",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveForwardIntensity",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "a2b7f110d698c4df",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.fti",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1640,
+        "y": 2520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "09bdf0c5ac1184b0",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveReverseIntensity",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "d1f79ffc05882bda",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.rti",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1640,
+        "y": 2560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "83b2c16b0807aae5",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveForwardTime",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "6c4fa4d696136e6e",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.frt",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1630,
+        "y": 2600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "060b43236a711259",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveReverseTime",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "a15b5eb2ffc5cb40",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.rrt",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1630,
+        "y": 2640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e7c38f02a8520b85",
+        "type": "ha-text",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveActiveScheduleName",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "68b3509ab6511a7c",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.name",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1650,
+        "y": 2720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "89a97bfc8fb85e15",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WavePulseTime",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "cf4df60b0dfe2ee3",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "chageItem",
+                "propertyType": "msg",
+                "value": "pd",
+                "valueType": "str"
+            }
+        ],
+        "x": 140,
+        "y": 2620,
+        "wires": [
+            [
+                "822dfec83e15372b"
+            ]
+        ]
+    },
+    {
+        "id": "bd798aca0318dec7",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WavePulseTime",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "cf4df60b0dfe2ee3",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.pd",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1620,
+        "y": 2680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cdc476c12ca7c12b",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "WaveMakerWavePayload",
+        "func": "msg.headers = {\n    \"Authorization\": \"Bearer \" + flow.get(\"auth_token\"),\n    \"Content-Type\": \"application/json\"\n}\n\n\nmsg.url = \"https://cloud.reef-beat.com/reef-wave/library/\" + msg.payload.uid\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": msg.payload.frt,\n    \"pd\": msg.payload.pd,\n    \"pump_settings\": [\n        {\n            \"fti\": msg.payload.fti,\n            \"hwid\": msg.payload.hwid,\n            \"rti\": msg.payload.rti\n        }\n    ],\n    \"rrt\": msg.payload.rrt,\n    \"sn\": 3,\n    \"type\": \"un\",\n    //\"duration\": 3000,\n    \"fti\": msg.payload.fti,\n    \"rti\": msg.payload.rti,\n    \"sync\": true\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 2540,
+        "wires": [
+            [
+                "16afb6bcd2299eab"
+            ]
+        ]
+    },
+    {
+        "id": "16afb6bcd2299eab",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "PUT",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 910,
+        "y": 2540,
+        "wires": [
+            [
+                "a495097117f0090a",
+                "5331139225b57961"
+            ]
+        ]
+    },
+    {
+        "id": "a495097117f0090a",
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
-        "name": "debug 119",
+        "name": "debug 138",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 2500,
+        "wires": []
+    },
+    {
+        "id": "822dfec83e15372b",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "NewValuePayload",
+        "func": "// Retrieve global values once to avoid multiple lookups\nconst schedule = {\n    uid: global.get(\"WaveActiveScheduleUID\"),\n    name: global.get(\"WaveActiveSchedule\"),\n    frt: global.get(\"WaveActiveScheduleFRT\"),\n    rrt: global.get(\"WaveActiveScheduleRRT\"),\n    pd: global.get(\"WaveActiveSchedulePD\"),\n    hwid: global.get(\"WaveActiveScheduleHWID\"),\n    fti: global.get(\"WaveActiveScheduleFTI\"),\n    rti: global.get(\"WaveActiveScheduleRTI\"),\n    sync: true\n};\n\n// Update the specific property based on msg.changeItem\nif (schedule.hasOwnProperty(msg.changeItem)) {\n    schedule[msg.changeItem] = msg.payload;\n}\n\n//node.warn(schedule);\nreturn { payload: schedule };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 2540,
+        "wires": [
+            [
+                "45997b82acf68360",
+                "cdc476c12ca7c12b"
+            ]
+        ]
+    },
+    {
+        "id": "45997b82acf68360",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 139",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -1598,279 +3475,136 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 650,
-        "y": 1640,
+        "x": 370,
+        "y": 2500,
         "wires": []
     },
     {
-        "id": "4ab710c345c7fe2a",
+        "id": "7899036784f2f18a",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 140",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1370,
+        "y": 2680,
+        "wires": []
+    },
+    {
+        "id": "5331139225b57961",
         "type": "ha-sensor",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Head2Remaining",
-        "entityConfig": "a0b5ee75f380e1f0",
+        "name": "WaveLastCommandStatus",
+        "entityConfig": "73e74eefc1781150",
         "version": 0,
-        "state": "payload.container_volume",
+        "state": "payload",
         "stateType": "msg",
         "attributes": [],
-        "inputOverride": "block",
+        "inputOverride": "allow",
         "outputProperties": [],
-        "x": 930,
-        "y": 940,
+        "x": 1200,
+        "y": 2540,
         "wires": [
             []
         ]
     },
     {
-        "id": "8dc911fee4c4b77b",
+        "id": "7b1b7a6a82a20392",
         "type": "ha-sensor",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Head2SuppName",
-        "entityConfig": "0336e585822d6738",
+        "name": "WaveLastCommandStatus",
+        "entityConfig": "73e74eefc1781150",
         "version": 0,
-        "state": "payload.supplement.name",
+        "state": "payload",
         "stateType": "msg",
         "attributes": [],
-        "inputOverride": "block",
+        "inputOverride": "allow",
         "outputProperties": [],
-        "x": 930,
-        "y": 980,
+        "x": 1840,
+        "y": 2300,
         "wires": [
             []
         ]
     },
     {
-        "id": "e46e2914a1e5adad",
-        "type": "ha-sensor",
+        "id": "03a0d420378e36e5",
+        "type": "server-state-changed",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Head2DosedToday",
-        "entityConfig": "8db87c4539797afc",
-        "version": 0,
-        "state": "payload.today_auto_dosed_volume",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 930,
-        "y": 1020,
+        "name": "WaveActiveScheduleNameChange",
+        "server": "caf9ba1992c9f965",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "text.waveactiveschedulename"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "str",
+        "ifState": "",
+        "ifStateType": "str",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 200,
+        "y": 2660,
         "wires": [
-            []
+            [
+                "de663c67a8187d97"
+            ]
         ]
     },
     {
-        "id": "2387997495d14cc0",
-        "type": "ha-sensor",
+        "id": "ab37a50217886889",
+        "type": "debug",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Head2DailyDose",
-        "entityConfig": "7d384937792c9d86",
-        "version": 0,
-        "state": "payload.schedule.dd",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 930,
-        "y": 1060,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "76ffdbd0d6f1c569",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head2SuppShortName",
-        "entityConfig": "64d4c459cd31d03a",
-        "version": 0,
-        "state": "payload.supplement.short_name",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 950,
-        "y": 1100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f61e536105bda2fb",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head3Remaining",
-        "entityConfig": "ee9d565c6f7932f2",
-        "version": 0,
-        "state": "payload.container_volume",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1170,
-        "y": 940,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e7df774e76442476",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head3SuppName",
-        "entityConfig": "717a438c0c1ad2b4",
-        "version": 0,
-        "state": "payload.supplement.name",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1170,
-        "y": 980,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "0dcb2e0439d4c37c",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head3DosedToday",
-        "entityConfig": "628ae3ba3c61f832",
-        "version": 0,
-        "state": "payload.today_auto_dosed_volume",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1170,
-        "y": 1020,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "cbabaa5a7b975b93",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head3DailyDose",
-        "entityConfig": "83ad6f2d56267cbf",
-        "version": 0,
-        "state": "payload.schedule.dd",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1170,
-        "y": 1060,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1d1ff6b7af2ebe0d",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head3SuppShortName",
-        "entityConfig": "85adae44ea93027a",
-        "version": 0,
-        "state": "payload.supplement.short_name",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1190,
-        "y": 1100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "64db713440891d9b",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head4Remaining",
-        "entityConfig": "cd09158a14612668",
-        "version": 0,
-        "state": "payload.container_volume",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1410,
-        "y": 940,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "288baa5706a01397",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head4SuppName",
-        "entityConfig": "d4c7de5f22cd0674",
-        "version": 0,
-        "state": "payload.supplement.name",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1410,
-        "y": 980,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8a32d9de8a6793e9",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head4DosedToday",
-        "entityConfig": "3faa22a034cb4334",
-        "version": 0,
-        "state": "payload.today_auto_dosed_volume",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1410,
-        "y": 1020,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e32cdff36e602a58",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head4DailyDose",
-        "entityConfig": "f0dd2ea7b91c3f1f",
-        "version": 0,
-        "state": "payload.schedule.dd",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1410,
-        "y": 1060,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "07f432a7332790d6",
-        "type": "ha-sensor",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "Head4SuppShortName",
-        "entityConfig": "1797d4fa36801d98",
-        "version": 0,
-        "state": "payload.supplement.short_name",
-        "stateType": "msg",
-        "attributes": [],
-        "inputOverride": "block",
-        "outputProperties": [],
-        "x": 1430,
-        "y": 1100,
-        "wires": [
-            []
-        ]
+        "name": "debug 141",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 2620,
+        "wires": []
     },
     {
         "id": "8622b2230b385942",
@@ -1883,7 +3617,7 @@
         "haConfig": [
             {
                 "property": "name",
-                "value": "PumpTemperature"
+                "value": "Pump1Temperature"
             },
             {
                 "property": "icon",
@@ -2051,7 +3785,7 @@
             },
             {
                 "property": "icon",
-                "value": ""
+                "value": "mdi:order-bool-ascending-variant"
             },
             {
                 "property": "entity_picture",
@@ -2075,7 +3809,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": false
+        "debugEnabled": true
     },
     {
         "id": "e247756b63567ed8",
@@ -2092,7 +3826,7 @@
             },
             {
                 "property": "icon",
-                "value": ""
+                "value": "mdi:paper-roll"
             },
             {
                 "property": "entity_picture",
@@ -2116,7 +3850,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": false
+        "debugEnabled": true
     },
     {
         "id": "377b9e06d9d40850",
@@ -2133,7 +3867,7 @@
             },
             {
                 "property": "icon",
-                "value": ""
+                "value": "mdi:paper-roll"
             },
             {
                 "property": "entity_picture",
@@ -2157,7 +3891,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": false
+        "debugEnabled": true
     },
     {
         "id": "1117c9c480f41ea3",
@@ -2174,7 +3908,7 @@
             },
             {
                 "property": "icon",
-                "value": ""
+                "value": "mdi:calendar-today"
             },
             {
                 "property": "entity_picture",
@@ -2215,7 +3949,7 @@
             },
             {
                 "property": "icon",
-                "value": ""
+                "value": "mdi:paper-roll"
             },
             {
                 "property": "entity_picture",
@@ -2239,7 +3973,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": false
+        "debugEnabled": true
     },
     {
         "id": "3a8459e4657ff702",
@@ -2256,7 +3990,7 @@
             },
             {
                 "property": "icon",
-                "value": ""
+                "value": "mdi:paper-roll"
             },
             {
                 "property": "entity_picture",
@@ -2280,7 +4014,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": false
+        "debugEnabled": true
     },
     {
         "id": "1eab63fe7c5278b9",
@@ -2297,7 +4031,7 @@
             },
             {
                 "property": "icon",
-                "value": ""
+                "value": "mdi:paper-roll"
             },
             {
                 "property": "entity_picture",
@@ -2321,7 +4055,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": false
+        "debugEnabled": true
     },
     {
         "id": "f4e2971f10693b77",
@@ -2379,7 +4113,7 @@
             },
             {
                 "property": "icon",
-                "value": "mdi:chemical-weapon"
+                "value": "mdi:needle"
             },
             {
                 "property": "entity_picture",
@@ -2551,7 +4285,7 @@
             },
             {
                 "property": "entity_category",
-                "value": "config"
+                "value": ""
             },
             {
                 "property": "device_class",
@@ -2576,42 +4310,6 @@
             {
                 "property": "mode",
                 "value": "auto"
-            }
-        ],
-        "resend": false,
-        "debugEnabled": true
-    },
-    {
-        "id": "0895fa3a865d3ccd",
-        "type": "ha-entity-config",
-        "server": "caf9ba1992c9f965",
-        "deviceConfig": "8e62dc8b866a6a72",
-        "name": "ReefWaveMode",
-        "version": "6",
-        "entityType": "select",
-        "haConfig": [
-            {
-                "property": "name",
-                "value": "ReefWaveMode"
-            },
-            {
-                "property": "icon",
-                "value": "mdi:auto-mode"
-            },
-            {
-                "property": "entity_picture",
-                "value": ""
-            },
-            {
-                "property": "entity_category",
-                "value": ""
-            },
-            {
-                "property": "options",
-                "value": [
-                    "auto",
-                    "off"
-                ]
             }
         ],
         "resend": false,
@@ -3233,6 +4931,951 @@
         "debugEnabled": true
     },
     {
+        "id": "d751b9a98d6b3c6b",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "0d3d05e917a791bc",
+        "name": "Pump2Type",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Pump2Type"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:pump"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "a5d17d3f9e250603",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "0d3d05e917a791bc",
+        "name": "Pump2Name",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Pump2Name"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:pump"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "b86b722722e064a6",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "0d3d05e917a791bc",
+        "name": "Pump2Temperature",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Pump2Temperature"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:temperature-celsius"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "fdb3f48ee1b73376",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "0d3d05e917a791bc",
+        "name": "Pump2Speed",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Pump2Speed"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:speedometer"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "Percent"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 100
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "f77f5ec5d961c4f6",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatModel",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatModel"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:paper-roll"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "00519b0a4cd0ae64",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatAdvance",
+        "version": "6",
+        "entityType": "button",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatAdvance"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:paper-roll-outline"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "1f66910c43d561ea",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "WaveFeedSchedule1Name",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "WaveFeedSchedule1Name"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:waves"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "82e95b0691de1b05",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "WaveFeedSchedule1Duration",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "WaveFeedSchedule1Duration"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:timer-edit"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "Minutes"
+            },
+            {
+                "property": "min_value",
+                "value": 1
+            },
+            {
+                "property": "max_value",
+                "value": 60
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "994e94fc39644f26",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": false,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "a2b7f110d698c4df",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "WaveForwardIntensity",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "WaveForwardIntensity"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:waves-arrow-right"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "Percent"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 100
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "d1f79ffc05882bda",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "WaveReverseIntensity",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "WaveReverseIntensity"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:waves-arrow-left"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "Percent"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 100
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "6c4fa4d696136e6e",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "WaveForwardTime",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "WaveForwardTime"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:timer"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "Minutes"
+            },
+            {
+                "property": "min_value",
+                "value": 2
+            },
+            {
+                "property": "max_value",
+                "value": 60
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "a15b5eb2ffc5cb40",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "WaveReverseTime",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "WaveReverseTime"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:timer"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "Minutes"
+            },
+            {
+                "property": "min_value",
+                "value": 2
+            },
+            {
+                "property": "max_value",
+                "value": 60
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "8b9dea3eac7d4ce8",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "d3873c4cc506cca8",
+        "name": "AquariumType",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "AquariumType"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:fishbowl"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "388ce1ae97a61b74",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "d3873c4cc506cca8",
+        "name": "AquariumVolume",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "AquariumVolume"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:fishbowl"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": "volume_storage"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "L"
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "58bc98e249d76cc4",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "d3873c4cc506cca8",
+        "name": "AquariumName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "AquariumName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:fishbowl"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "12ba62e53d136fca",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "FeedMode",
+        "version": "6",
+        "entityType": "select",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "FeedMode"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:hamburger"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "options",
+                "value": [
+                    "start",
+                    "stop"
+                ]
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "d22bb1db97035f04",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "d3873c4cc506cca8",
+        "name": "FeedMode",
+        "version": "6",
+        "entityType": "select",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "FeedMode"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:hamburger"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "options",
+                "value": [
+                    "start",
+                    "stop"
+                ]
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "cb24db3794b124eb",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "d3873c4cc506cca8",
+        "name": "AquariumDevices",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "AquariumDevices"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:fishbowl"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "68b3509ab6511a7c",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "WaveActiveScheduleName",
+        "version": "6",
+        "entityType": "text",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "WaveActiveScheduleName"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:receipt-text-clock"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "mode",
+                "value": "text"
+            },
+            {
+                "property": "min_length",
+                "value": ""
+            },
+            {
+                "property": "max_length",
+                "value": ""
+            },
+            {
+                "property": "pattern",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "cf4df60b0dfe2ee3",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "WavePulseTime",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "WavePulseTime"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:timer"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "Seconds"
+            },
+            {
+                "property": "min_value",
+                "value": 2
+            },
+            {
+                "property": "max_value",
+                "value": 25
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
+        "id": "73e74eefc1781150",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "8e62dc8b866a6a72",
+        "name": "WaveLastCommandStatus",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "WaveLastCommandStatus"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:bug"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": true
+    },
+    {
         "id": "caf9ba1992c9f965",
         "type": "server",
         "name": "Home Assistant",
@@ -3289,6 +5932,15 @@
         "hwVersion": "",
         "manufacturer": "RedSea",
         "model": "Wavemaker",
+        "swVersion": ""
+    },
+    {
+        "id": "d3873c4cc506cca8",
+        "type": "ha-device-config",
+        "name": "Aquarium",
+        "hwVersion": "",
+        "manufacturer": "RedSea",
+        "model": "Aquarium",
         "swVersion": ""
     }
 ]
