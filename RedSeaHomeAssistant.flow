@@ -28,7 +28,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 130,
+        "x": 110,
         "y": 560,
         "wires": [
             [
@@ -66,7 +66,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 340,
+        "x": 640,
         "y": 2020,
         "wires": []
     },
@@ -111,7 +111,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 160,
+        "x": 120,
         "y": 1620,
         "wires": [
             [
@@ -164,7 +164,6 @@
         "id": "9c5c024594136917",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
-        "d": true,
         "name": "Every 1 Minuite",
         "props": [],
         "repeat": "60",
@@ -172,7 +171,7 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 160,
+        "x": 140,
         "y": 660,
         "wires": [
             [
@@ -240,7 +239,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 130,
+        "x": 110,
         "y": 760,
         "wires": [
             [
@@ -310,7 +309,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 160,
+        "x": 120,
         "y": 1700,
         "wires": [
             [
@@ -363,7 +362,6 @@
         "id": "7db56b3cfa2bf8a1",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
-        "d": true,
         "name": "Every 1 Minuite",
         "props": [
             {
@@ -381,7 +379,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 160,
+        "x": 140,
         "y": 1400,
         "wires": [
             [
@@ -442,7 +440,6 @@
         "id": "635457c5c73bd66c",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
-        "d": true,
         "name": "Every 15 Minutes",
         "props": [
             {
@@ -460,7 +457,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 170,
+        "x": 150,
         "y": 1020,
         "wires": [
             [
@@ -777,7 +774,7 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea Pumps and Skimmers - Local",
         "info": "",
-        "x": 210,
+        "x": 190,
         "y": 460,
         "wires": []
     },
@@ -787,7 +784,7 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea Roller Mat - Local",
         "info": "http://DeviceIP/reef-matt/settings\nhttp://DeviceIP/dashboard\nhttp://DeviceIP/mode\n\nPOST https://cloud.reef-beat.com/reef-mat/94b5557ea464/advance\nPOST http://DeviceIP/advance\nGET http://DeviceIP/configuration\nauto_advance: true\nend_of_roll_monitor: 3\ncustom_advance_value: 2.25\nschedule_enable: false\nschedule_time: 0\nschedule_length: 20\nfresh_water_aquarium: false\nposition: \"right\"\nmodel: \"RSMAT500\"\nauto_delay: 30\nblockage_recover_retries: 3\nmat_end_length: 100\nec_water_threshold: 300\nmotor_blockage_threshold: 2000\nblockage_recover_interval: 3\nrelief_motor_reverse_time: 200\ndispatch_timeout_sec: 10\nmotor_speed: 3000\nenable_ec_sensor_detection: true\nec_fresh_water_threshold: 30",
-        "x": 170,
+        "x": 150,
         "y": 880,
         "wires": []
     },
@@ -797,7 +794,7 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea Dosers - Local",
         "info": "//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log",
-        "x": 180,
+        "x": 140,
         "y": 1320,
         "wires": []
     },
@@ -948,7 +945,7 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea WaveMaker - Local - Payloads in comments",
         "info": "Reef Dose Endpoints\n//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\n\nReef Wave Endpoints Local\nGET http://<IP>/feeding/schedule\nGET http://<IP>/mode\nmsg.payload = {\n    \"mode\": \"off\" // or \"auto\"\n    // Could not enable off. Use the dedicated endpoint instead.\n}\nPOST http://<IP>/feeding/schedule\nmsg.payload =\n{\n    \"in_sync\": true,\n        \"intervals\": [\n            {\n                \"duration\": msg.newValue,\n                \"name\": \"No Wave\",\n                \"type\": \"nw\",\n                \"wave_uid\": wave_uid\n            }\n        ],\n        \"uid\": uid\n}\nPOST http://192.168.68.128/preview\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": 9,\n    \"pd\": 6,\n    //\"pump_settings\": [\n    //    {\n    //        \"fti\": 100,\n    //        \"hwid\": \"16422546\",\n    //        \"rti\": 100\n    //    }\n    //],\n    \"rrt\": 5,\n    \"sn\": 3,\n    \"type\": \"un\",\n    \"duration\": 3000,\n    \"fti\": 10,\n    \"rti\": 10,\n    \"sync\": true\n}\n\n\nReef Wave Endpoints\nhttp://[rwave-address]/device-settings\nhttp://[rwave-address]/mode\nhttp://[rwave-address]/connectivity\nhttp://[rwave-address]/connectivity/events\nhttp://[rwave-address]/connect\nhttp://[rwave-address]/description.xml\nhttp://[rwave-address]\n\nhttps://cloud.reef-beat.com/reef-wave/16422546/device-settings/\n\nPUT https://cloud.reef-beat.com/reef-wave/library/39c5ecea-4d7c-4564-af04-089db8985da9\nPayload to change speed forward is fti back is rti\n{\n    \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n    \"default\": false,\n    \"frt\": 10, // Forward run time\n    \"name\": \"cade\",\n    \"pd\": 7, // Pulse time\n    \"pump_settings\": [\n        {\n            \"fti\": 90, // Forward speed\n            \"hwid\": \"16422546\",\n            \"rti\": 100, // Reverse speed\n            \"sync\": true\n        }\n    ],\n    \"rrt\": 5, // Reverse run time\n    \"type\": \"un\", // Wave type uniform\n    \"uid\": \"39c5ecea-4d7c-4564-af04-089db8985da9\"\n}\n\nPUT https://cloud.reef-beat.com/reef-mat/94b5557ea464/previous-roll\n{\n    \"days_of_usage\": 108,\n    \"length\": 2799.966751098633,\n    \"material_name\": \"Unknown\",\n    \"setup_date\": \"2024-11-17T10:02:12Z\"\n}\n\nhttps://cloud.reef-beat.com/reef-wave/schedule/16422546\n{\n    \"in_sync\": true,\n    \"intervals\": [\n        {\n            \"direction\": \"fw\",\n            \"frt\": 10,\n            \"fti\": 80,\n            \"name\": \"cade\",\n            \"pd\": 6,\n            \"rrt\": 5,\n            \"rti\": 100,\n            \"st\": 0,\n            \"sync\": true,\n            \"type\": \"un\",\n            \"wave_uid\": \"39c5ecea-4d7c-4564-af04-089db8985da9\"\n        }\n    ],\n    \"uid\": \"0bffcb14-f9d9-4d19-9dba-69cd126e6150\"\n}\n\nGET https://cloud.reef-beat.com/reef-wave/16422546/feeding/schedule\n{\n    \"in_sync\": true,\n    \"intervals\": [\n        {\n            \"duration\": 20,\n            \"name\": \"No Wave\",\n            \"type\": \"nw\",\n            \"wave_uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n        }\n    ],\n    \"uid\": \"f4fcb7f3-27bb-4595-9d32-b2feb8ab5831\"\n}\n\nhttps://cloud.reef-beat.com/reef-wave/library\nreturns:\n[\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Regular\",\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"re\",\n        \"uid\": \"0366b9c6-ba0b-4bf9-b306-0daa683f0a81\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Random\",\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"ra\",\n        \"uid\": \"14dcfbe7-cc17-4f3e-b4fd-a57b577f7036\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 10,\n        \"name\": \"cade2\",\n        \"pd\": 5.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 90,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"sn\": 6,\n        \"type\": \"st\",\n        \"uid\": \"3438f860-c7d7-4cd9-bd42-ccd42876b296\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 9,\n        \"name\": \"cade\",\n        \"pd\": 6.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 80,\n                \"hwid\": \"16422546\",\n                \"rti\": 100,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 5,\n        \"type\": \"un\",\n        \"uid\": \"39c5ecea-4d7c-4564-af04-089db8985da9\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Step\",\n        \"pd\": 3.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"sn\": 6,\n        \"type\": \"st\",\n        \"uid\": \"49ac6123-69ac-4fa9-a375-a7447a7f5ed4\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"name\": \"Surface100\",\n        \"pd\": 1.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"type\": \"su\",\n        \"uid\": \"8d4b9c60-d779-4b36-8979-7f7a44444f31\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 10,\n        \"name\": \"cade1\",\n        \"pd\": 5.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 100,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 4,\n        \"type\": \"un\",\n        \"uid\": \"aa9f4dfb-8414-4011-ab01-aec6d71f2a4f\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"name\": \"No Wave\",\n        \"pump_settings\": [],\n        \"type\": \"nw\",\n        \"uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"name\": \"surface100\",\n        \"pd\": 1.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"type\": \"su\",\n        \"uid\": \"ba283d5a-ab18-4cee-9af4-6baf9858c986\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"name\": \"RS Surface\",\n        \"pd\": 1.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"type\": \"su\",\n        \"uid\": \"c832e384-936d-4e88-a151-1f485dd9bd59\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 10,\n        \"name\": \"constant\",\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"re\",\n        \"uid\": \"ccfd6f0c-8f4e-4fd2-a268-1021af77c715\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Uniform\",\n        \"pd\": 3.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"un\",\n        \"uid\": \"f902c5af-9c42-4e81-a166-b6b7cfc24c07\"\n    }\n]",
-        "x": 280,
+        "x": 240,
         "y": 1820,
         "wires": []
     },
@@ -1079,7 +1076,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 990,
+        "x": 1270,
         "y": 2020,
         "wires": []
     },
@@ -1094,7 +1091,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 130,
+        "x": 110,
         "y": 2720,
         "wires": [
             [
@@ -1511,7 +1508,7 @@
         "topic": "",
         "payload": "{\"mode\":\"off\"}",
         "payloadType": "json",
-        "x": 130,
+        "x": 110,
         "y": 1200,
         "wires": [
             [
@@ -1548,7 +1545,6 @@
         "id": "a9bd0e304ea9bd1a",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
-        "d": true,
         "name": "Every 15 Minutes",
         "props": [
             {
@@ -1562,7 +1558,7 @@
         "topic": "",
         "payload": "{\"mode\":\"off\"}",
         "payloadType": "json",
-        "x": 170,
+        "x": 150,
         "y": 1080,
         "wires": [
             [
@@ -1617,7 +1613,7 @@
                 "valueType": "entity"
             }
         ],
-        "x": 150,
+        "x": 110,
         "y": 1140,
         "wires": [
             [
@@ -1629,11 +1625,11 @@
         "id": "ed5921976ec1c90e",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Wavemaker - get feeding schedule",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "body",
-        "url": "http://192.168.68.128/feeding/schedule",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -1641,7 +1637,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 420,
+        "x": 630,
         "y": 1980,
         "wires": [
             [
@@ -1655,7 +1651,6 @@
         "id": "d020aea2bba47bda",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
-        "d": true,
         "name": "Every 1 Hour",
         "props": [],
         "repeat": "3600",
@@ -1663,11 +1658,11 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 160,
+        "x": 140,
         "y": 1980,
         "wires": [
             [
-                "ed5921976ec1c90e"
+                "399c7e2d2b29ab59"
             ]
         ]
     },
@@ -1683,7 +1678,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 350,
+        "x": 630,
         "y": 1940,
         "wires": []
     },
@@ -1691,11 +1686,11 @@
         "id": "05ca3e3f06722232",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Wavemaker - preview",
+        "name": "",
         "method": "POST",
         "ret": "obj",
         "paytoqs": "body",
-        "url": "http://192.168.68.128/preview",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -1703,7 +1698,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 700,
+        "x": 930,
         "y": 1900,
         "wires": [
             []
@@ -1720,7 +1715,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 150,
+        "x": 110,
         "y": 1900,
         "wires": [
             [
@@ -1733,14 +1728,14 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "WaveMakerSettingsPreviewPayload",
-        "func": "\n\nnode.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\nvar newState = msg.payload\n\n// Default value for testing\nif (!msg.payload) { newState = \"auto\" }\n\n// Looks like wavemaker only takes mode. Not sure what the modes are yet...\n/* \nmsg.payload = {\n    \"pump_settings\": [\n        {\n            \"fti\": 90,\n            \"hwid\": \"16422546\",\n            \"rti\": 100,\n            \"sync\": true\n        }\n    ]\n}\n*/\n\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": 9,\n    \"pd\": 6,\n    //\"pump_settings\": [\n    //    {\n    //        \"fti\": 100,\n    //        \"hwid\": \"16422546\",\n    //        \"rti\": 100\n    //    }\n    //],\n    \"rrt\": 5,\n    \"sn\": 3,\n    \"type\": \"un\",\n    \"duration\": 3000,\n    \"fti\": 10,\n    \"rti\": 10,\n    \"sync\": true\n}\nreturn msg;",
+        "func": "if (global.get(\"RSReefWave\")) {\n    msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/preview\"\n    node.send\n}\nelse { node.warn(\"No ReefWave Devices Found\"); return }\n\nnode.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\nvar newState = msg.payload\n\n// Default value for testing\nif (!msg.payload) { newState = \"auto\" }\n\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": 9,\n    \"pd\": 6,\n    //\"pump_settings\": [\n    //    {\n    //        \"fti\": 100,\n    //        \"hwid\": \"16422546\",\n    //        \"rti\": 100\n    //    }\n    //],\n    \"rrt\": 5,\n    \"sn\": 3,\n    \"type\": \"un\",\n    \"duration\": 3000,\n    \"fti\": 10,\n    \"rti\": 10,\n    \"sync\": true\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
+        "x": 470,
         "y": 1900,
         "wires": [
             [
@@ -1764,7 +1759,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1050,
+        "x": 1330,
         "y": 2060,
         "wires": [
             [
@@ -1783,11 +1778,11 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 130,
+        "x": 110,
         "y": 2060,
         "wires": [
             [
-                "778616bf3511dc21"
+                "b65a3c00a4735b93"
             ]
         ]
     },
@@ -1803,7 +1798,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 740,
+        "x": 1000,
         "y": 2060,
         "wires": [
             [
@@ -1816,11 +1811,11 @@
         "id": "778616bf3511dc21",
         "type": "http request",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Wavemaker - get feeding schedule",
+        "name": "",
         "method": "GET",
         "ret": "obj",
         "paytoqs": "body",
-        "url": "http://192.168.68.128/feeding/schedule",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -1828,7 +1823,7 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 420,
+        "x": 630,
         "y": 2060,
         "wires": [
             [
@@ -1849,7 +1844,7 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 720,
+        "x": 980,
         "y": 1940,
         "wires": [
             []
@@ -1883,7 +1878,7 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 720,
+        "x": 980,
         "y": 1980,
         "wires": [
             []
@@ -1917,11 +1912,11 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 180,
+        "x": 160,
         "y": 2100,
         "wires": [
             [
-                "778616bf3511dc21"
+                "b65a3c00a4735b93"
             ]
         ]
     },
@@ -1992,7 +1987,7 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea WaveMaker - Cloud",
         "info": "",
-        "x": 200,
+        "x": 160,
         "y": 2200,
         "wires": []
     },
@@ -2115,7 +2110,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 130,
+        "x": 110,
         "y": 2300,
         "wires": [
             [
@@ -2343,7 +2338,7 @@
                 "valueType": "str"
             }
         ],
-        "x": 160,
+        "x": 140,
         "y": 2460,
         "wires": [
             [
@@ -2385,7 +2380,7 @@
                 "valueType": "str"
             }
         ],
-        "x": 160,
+        "x": 140,
         "y": 2500,
         "wires": [
             [
@@ -2427,7 +2422,7 @@
                 "valueType": "str"
             }
         ],
-        "x": 150,
+        "x": 130,
         "y": 2540,
         "wires": [
             [
@@ -2469,7 +2464,7 @@
                 "valueType": "str"
             }
         ],
-        "x": 150,
+        "x": 130,
         "y": 2580,
         "wires": [
             [
@@ -2504,7 +2499,7 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "Aquarium",
         "info": "https://cloud.reef-beat.com/device\nreturns:\n[\n    {\n        \"aquarium_id\": 203621,\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"board\": \"esp32\",\n        \"bssid\": \"3C:84:6A:1B:5B:2E\",\n        \"connected\": true,\n        \"firmware_version\": \"1.2.11\",\n        \"framework\": \"a\",\n        \"group_index\": 0,\n        \"grouped\": false,\n        \"hwid\": \"34ab9545eb30\",\n        \"id\": 388587,\n        \"in_service\": true,\n        \"ip_address\": \"192.168.68.125\",\n        \"last_seen\": \"2025-03-05T04:17:08.903054Z\",\n        \"mac\": \"34:AB:95:45:EB:30\",\n        \"model\": \"RSDOSE4\",\n        \"name\": \"RSDOSE4-820725141\",\n        \"offset\": 0,\n        \"onboarding_date\": \"2022-06-30T02:58:49.834672Z\",\n        \"previously_grouped\": false,\n        \"properties\": {\n            \"battery_level\": \"high\",\n            \"calibration_reminder\": false,\n            \"calibration_reminder_days\": 60,\n            \"calibration_reminder_steps\": 35000,\n            \"daily_metrics_last_compute_time\": 1741132800,\n            \"device_settings\": {\n                \"auto_fill_schedule\": false,\n                \"bundled_heads\": false,\n                \"shortcut_off_delay\": 0\n            },\n            \"dosing_waiting_period\": 15,\n            \"emergency\": false,\n            \"emergency_1\": {\n                \"subscribed\": false\n            },\n            \"factory_reset_time\": 1656593378,\n            \"feeding\": false,\n            \"feeding_1\": {\n                \"duration\": 20,\n                \"subscribed\": false\n            },\n            \"feeding_duration\": 20,\n            \"file_error\": false,\n            \"heads\": {\n                \"1\": {\n                    \"daily_dose\": 90,\n                    \"days\": [\n                        1,\n                        2,\n                        3,\n                        4,\n                        5,\n                        6,\n                        7\n                    ],\n                    \"dc\": true,\n                    \"dd\": 90,\n                    \"enable_ratio\": true,\n                    \"food_delay\": 0,\n                    \"is_food_head\": false,\n                    \"last_calibrated\": 1656594173,\n                    \"nd\": 24,\n                    \"schedule_enabled\": true,\n                    \"schedule_type\": \"hourly\",\n                    \"show\": true,\n                    \"slm\": true,\n                    \"state\": \"on\",\n                    \"supplement\": {\n                        \"brand_name\": \"Red Sea\",\n                        \"concentration\": 0,\n                        \"display_name\": \"KH\",\n                        \"made_by_redsea\": true,\n                        \"name\": \"KH/Alkalinity (Foundation B)\",\n                        \"short_name\": \"KH\",\n                        \"type\": \"null\",\n                        \"uid\": \"76830db3-a0bd-459a-9974-76a57d026893\"\n                    },\n                    \"vps\": 0.056061\n                },\n                \"2\": {\n                    \"daily_dose\": 90,\n                    \"days\": [\n                        1,\n                        2,\n                        3,\n                        4,\n                        5,\n                        6,\n                        7\n                    ],\n                    \"dc\": true,\n                    \"dd\": 90,\n                    \"enable_ratio\": true,\n                    \"food_delay\": 0,\n                    \"is_food_head\": false,\n                    \"last_calibrated\": 1656594359,\n                    \"nd\": 24,\n                    \"schedule_enabled\": true,\n                    \"schedule_type\": \"hourly\",\n                    \"show\": true,\n                    \"slm\": true,\n                    \"state\": \"on\",\n                    \"supplement\": {\n                        \"brand_name\": \"Red Sea\",\n                        \"concentration\": 0,\n                        \"display_name\": \"Calcium\",\n                        \"made_by_redsea\": true,\n                        \"name\": \"Calcium (Foundation A)\",\n                        \"short_name\": \"Ca\",\n                        \"type\": \"null\",\n                        \"uid\": \"7d67412c-fde0-44d4-882a-dc8746fd4acb\"\n                    },\n                    \"vps\": 0.060606\n                },\n                \"3\": {\n                    \"daily_dose\": 95,\n                    \"days\": [\n                        1,\n                        2,\n                        3,\n                        4,\n                        5,\n                        6,\n                        7\n                    ],\n                    \"dc\": true,\n                    \"dd\": 95,\n                    \"enable_ratio\": true,\n                    \"food_delay\": 0,\n                    \"is_food_head\": false,\n                    \"last_calibrated\": 1656594527,\n                    \"nd\": 24,\n                    \"schedule_enabled\": true,\n                    \"schedule_type\": \"hourly\",\n                    \"show\": true,\n                    \"slm\": true,\n                    \"state\": \"on\",\n                    \"supplement\": {\n                        \"brand_name\": \"Red Sea\",\n                        \"concentration\": 0,\n                        \"display_name\": \"Magnesium\",\n                        \"made_by_redsea\": true,\n                        \"name\": \"Magnesium (Foundation C)\",\n                        \"short_name\": \"Mg\",\n                        \"type\": \"null\",\n                        \"uid\": \"f524734e-8651-496e-b09b-640b40fc8bab\"\n                    },\n                    \"vps\": 0.059091\n                },\n                \"4\": {\n                    \"daily_dose\": 5,\n                    \"days\": [\n                        1,\n                        2,\n                        3,\n                        4,\n                        5,\n                        6,\n                        7\n                    ],\n                    \"dc\": true,\n                    \"dd\": 5,\n                    \"enable_ratio\": true,\n                    \"food_delay\": 0,\n                    \"is_food_head\": false,\n                    \"last_calibrated\": 1656594792,\n                    \"nd\": 1,\n                    \"schedule_enabled\": true,\n                    \"schedule_type\": \"single\",\n                    \"show\": true,\n                    \"slm\": true,\n                    \"state\": \"on\",\n                    \"supplement\": {\n                        \"brand_name\": \"Red Sea\",\n                        \"concentration\": 0,\n                        \"display_name\": \"Nutrient control\",\n                        \"made_by_redsea\": true,\n                        \"name\": \"NO3PO4-X\",\n                        \"short_name\": \"NPX\",\n                        \"type\": \"null\",\n                        \"uid\": \"ffaf6ff8-bc6d-44eb-9e4b-e679943dc835\"\n                    },\n                    \"vps\": 0.060606\n                }\n            },\n            \"maintenance\": false,\n            \"maintenance_1\": {\n                \"subscribed\": false\n            },\n            \"missed_doses_reminder\": true,\n            \"mode\": \"auto\",\n            \"ntp_sync\": true,\n            \"shortcut_settings\": {\n                \"shortcut_off_delay\": 0\n            },\n            \"start_of_schedule_for_next_day\": 0,\n            \"stock_alert_days\": 10,\n            \"time_error\": false,\n            \"time_error_unixtime\": 0,\n            \"timezone\": 600,\n            \"turned_off\": false\n        },\n        \"ssid\": \"MarKel\",\n        \"type\": \"reef-dosing\"\n    },\n    {\n        \"aquarium_id\": 203621,\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"board\": \"esp32\",\n        \"connected\": true,\n        \"firmware_version\": \"1.9.1\",\n        \"framework\": \"i\",\n        \"group_index\": 0,\n        \"grouped\": false,\n        \"hw_revision\": \"v0.1_21A\",\n        \"hwid\": \"94b5557ea464\",\n        \"id\": 650831,\n        \"in_service\": true,\n        \"ip_address\": \"192.168.68.92\",\n        \"last_seen\": \"2025-03-05T04:17:10.084597Z\",\n        \"mac\": \"94:B5:55:7E:A4:64\",\n        \"model\": \"RSMAT500\",\n        \"name\": \"RSMAT-1688501845\",\n        \"offset\": 0,\n        \"onboarding_date\": \"2024-03-05T07:26:45.286813Z\",\n        \"previously_grouped\": false,\n        \"properties\": {\n            \"auto_advance\": true,\n            \"cumulative_steps\": 236,\n            \"daily_average_usage\": 26.972900390625,\n            \"days_till_end_of_roll\": 100,\n            \"device_settings\": {\n                \"auto_advance\": true,\n                \"custom_advance_value\": 2.25,\n                \"end_of_roll_monitor\": 3,\n                \"fresh_water_aquarium\": false,\n                \"model\": \"RSMAT500\",\n                \"position\": \"right\",\n                \"schedule_enable\": false,\n                \"schedule_length\": 20,\n                \"schedule_time\": 0\n            },\n            \"device_setup_date\": 1660259660,\n            \"emergency\": false,\n            \"emergency_1\": {\n                \"subscribed\": false\n            },\n            \"external_ec_average\": 0,\n            \"internal_ec_average\": 0,\n            \"is_advancing\": false,\n            \"last_advance_cause\": \"self_test\",\n            \"lifetime_steps\": 107316,\n            \"maintenance\": false,\n            \"maintenance_1\": {\n                \"subscribed\": false\n            },\n            \"material\": {\n                \"external_diameter\": 10.105999946594238,\n                \"is_partial\": false,\n                \"name\": \"28 Meter\",\n                \"thickness\": 0.02370000071823597\n            },\n            \"mode\": \"auto\",\n            \"remaining_length\": 2717.28759765625,\n            \"roll_level\": \"full\",\n            \"setup_date\": \"2025-03-05T12:38:22Z\",\n            \"timezone\": 600,\n            \"today_usage\": 59.46120071411133,\n            \"total_usage\": 82.6792984008789,\n            \"turned_off\": false,\n            \"unclean_sensor\": false\n        },\n        \"ssid\": \"MarKel\",\n        \"type\": \"reef-mat\"\n    },\n    {\n        \"aquarium_id\": 203621,\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"board\": \"esp32\",\n        \"bssid\": \"3C:84:6A:1B:5B:2E\",\n        \"connected\": true,\n        \"firmware_version\": \"1.0.21\",\n        \"framework\": \"i\",\n        \"group_index\": 0,\n        \"grouped\": false,\n        \"hw_revision\": \"v1_22A\",\n        \"hwid\": \"349454ea62b4\",\n        \"id\": 828547,\n        \"in_service\": true,\n        \"ip_address\": \"192.168.68.213\",\n        \"last_seen\": \"2025-03-04T14:30:22.603724Z\",\n        \"mac\": \"34:94:54:EA:62:B4\",\n        \"model\": \"RSRUN\",\n        \"name\": \"RSRUN-3026381396\",\n        \"offset\": 0,\n        \"onboarding_date\": \"2025-03-02T03:23:31.664112Z\",\n        \"previously_grouped\": false,\n        \"properties\": {\n            \"battery_level\": \"high\",\n            \"device_settings\": {\n                \"calibration\": {\n                    \"cup_calibration\": 0,\n                    \"skim_calibration\": 0\n                },\n                \"fullcup_enabled\": true,\n                \"linked\": false,\n                \"overskimming\": {\n                    \"enabled\": true,\n                    \"threshold\": 55\n                },\n                \"restore_settings\": true,\n                \"synced\": true\n            },\n            \"ec_sensor_connected\": false,\n            \"emergency\": false,\n            \"emergency_1\": {\n                \"pump_1\": {\n                    \"subscribed\": false\n                },\n                \"pump_2\": {\n                    \"subscribed\": false\n                }\n            },\n            \"feeding\": false,\n            \"feeding_1\": {\n                \"pump_1\": {\n                    \"delay\": 0,\n                    \"duration\": 1800,\n                    \"intensity\": 0,\n                    \"subscribed\": false\n                },\n                \"pump_2\": {\n                    \"delay\": 0,\n                    \"duration\": 1800,\n                    \"intensity\": 0,\n                    \"subscribed\": false\n                }\n            },\n            \"feeding_duration\": 30,\n            \"initial\": false,\n            \"maintenance\": false,\n            \"maintenance_1\": {\n                \"pump_1\": {\n                    \"subscribed\": false\n                },\n                \"pump_2\": {\n                    \"subscribed\": false\n                }\n            },\n            \"mode\": \"auto\",\n            \"pumps\": {\n                \"1\": {\n                    \"intensity\": 50,\n                    \"missing_pump\": false,\n                    \"missing_sensor\": false,\n                    \"model\": \"return-6\",\n                    \"name\": \"Chiller\",\n                    \"reconnect_pump\": false,\n                    \"schedule\": [\n                        {\n                            \"pd\": 0,\n                            \"st\": 0,\n                            \"ti\": 50\n                        }\n                    ],\n                    \"schedule_enabled\": true,\n                    \"sensor_controlled\": false,\n                    \"state\": \"operational\",\n                    \"type\": \"return\"\n                },\n                \"2\": {\n                    \"intensity\": 50,\n                    \"missing_pump\": false,\n                    \"missing_sensor\": false,\n                    \"model\": \"unknown\",\n                    \"name\": \"\",\n                    \"reconnect_pump\": false,\n                    \"schedule\": [\n                        {\n                            \"pd\": 0,\n                            \"st\": 0,\n                            \"ti\": 50\n                        }\n                    ],\n                    \"schedule_enabled\": false,\n                    \"sensor_controlled\": false,\n                    \"state\": \"operational\",\n                    \"type\": \"unknown\"\n                }\n            },\n            \"shortcut_settings\": {\n                \"pump_1\": {\n                    \"pump_on_delayed\": false,\n                    \"shortcut_off_delay\": 0\n                },\n                \"pump_2\": {\n                    \"pump_on_delayed\": false,\n                    \"shortcut_off_delay\": 0\n                }\n            },\n            \"shortcuts\": {\n                \"pump_1\": {\n                    \"emergency\": false,\n                    \"feeding\": {\n                        \"delay\": 0,\n                        \"duration\": 1800,\n                        \"enabled\": false,\n                        \"intensity\": 0\n                    },\n                    \"maintenance\": false,\n                    \"pump_on_delayed\": false,\n                    \"shortcut_off_delay\": 0\n                },\n                \"pump_2\": {\n                    \"emergency\": false,\n                    \"feeding\": {\n                        \"delay\": 0,\n                        \"duration\": 1800,\n                        \"enabled\": false,\n                        \"intensity\": 0\n                    },\n                    \"maintenance\": false,\n                    \"pump_on_delayed\": false,\n                    \"shortcut_off_delay\": 0\n                }\n            },\n            \"time_error\": false,\n            \"timezone\": 600,\n            \"turned_off\": false\n        },\n        \"ssid\": \"MarKel\",\n        \"type\": \"reef-run\"\n    },\n    {\n        \"aquarium_id\": 203621,\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"board\": \"esp8266\",\n        \"connected\": true,\n        \"firmware_version\": \"2.10.4\",\n        \"framework\": \"a\",\n        \"group_index\": 0,\n        \"grouped\": true,\n        \"hwid\": \"16422546\",\n        \"id\": 457491,\n        \"in_service\": true,\n        \"ip_address\": \"192.168.68.128\",\n        \"last_seen\": \"2025-03-05T09:02:26.865445Z\",\n        \"mac\": \"A4:CF:12:FA:96:92\",\n        \"model\": \"RSWAVE45\",\n        \"name\": \"RSWAVE45-16422546\",\n        \"offset\": 0,\n        \"onboarding_date\": \"2023-01-05T07:09:20.859208Z\",\n        \"previously_grouped\": false,\n        \"properties\": {\n            \"controlling-mode\": \"reef-beat\",\n            \"device_settings\": {\n                \"shortcut_off_delay\": 0\n            },\n            \"emergency\": false,\n            \"emergency_1\": {\n                \"subscribed\": false\n            },\n            \"feeding\": true,\n            \"feeding_1\": {\n                \"intervals\": [\n                    {\n                        \"duration\": 21,\n                        \"name\": \"No Wave\",\n                        \"type\": \"nw\",\n                        \"wave_uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n                    }\n                ],\n                \"subscribed\": true,\n                \"uid\": \"0c7ab0d6-7713-4e0d-935a-55af85d893d4\"\n            },\n            \"feeding_duration\": 20,\n            \"feeding_schedule\": {\n                \"hash\": \"30255e4eb1284c5d6b1562dd09712153\",\n                \"uid\": \"0c7ab0d6-7713-4e0d-935a-55af85d893d4\"\n            },\n            \"maintenance\": false,\n            \"maintenance_1\": {\n                \"subscribed\": false\n            },\n            \"mode\": \"auto\",\n            \"schedule\": {\n                \"hash\": \"285b6cbe1c932fddc0639caaa050e823\",\n                \"uid\": \"f44fe69c-9614-4587-8345-c56c75929a9a\"\n            },\n            \"shortcut_settings\": {\n                \"shortcut_off_delay\": 0\n            },\n            \"timezone\": 600,\n            \"turned_off\": false\n        },\n        \"ssid\": \"MarKel\",\n        \"type\": \"reef-wave\"\n    }\n]",
-        "x": 120,
+        "x": 100,
         "y": 60,
         "wires": []
     },
@@ -2568,26 +2563,9 @@
         "y": 260,
         "wires": [
             [
-                "dd23aec0b3659433",
-                "6f2babe6fa0b2654"
+                "dd23aec0b3659433"
             ]
         ]
-    },
-    {
-        "id": "6f2babe6fa0b2654",
-        "type": "debug",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "debug 135",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 370,
-        "y": 220,
-        "wires": []
     },
     {
         "id": "c6885b323520a787",
@@ -2925,7 +2903,7 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "Do this First: Enter ReefBeat Credentials Here Then Deploy Flow Then Trigger",
-        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"INSERTEMAIL\")\nglobal.set(\"RSPass\", \"INSERTPASS\")\nreturn msg;",
+        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"user_email\")\nglobal.set(\"RSPass\", \"user_pass\")\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3066,7 +3044,7 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 120,
+        "x": 100,
         "y": 2380,
         "wires": [
             [
@@ -3102,7 +3080,7 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 120,
+        "x": 100,
         "y": 2340,
         "wires": [
             [
@@ -3338,7 +3316,7 @@
                 "valueType": "str"
             }
         ],
-        "x": 140,
+        "x": 120,
         "y": 2620,
         "wires": [
             [
@@ -3582,7 +3560,7 @@
                 "valueType": "triggerId"
             }
         ],
-        "x": 200,
+        "x": 180,
         "y": 2660,
         "wires": [
             [
@@ -3605,6 +3583,46 @@
         "x": 430,
         "y": 2620,
         "wires": []
+    },
+    {
+        "id": "399c7e2d2b29ab59",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefWaveFeedSettings",
+        "func": "if (global.get(\"RSReefWave\")) {\n    msg.url = \"http://\" + global.get(\"RSReefWaveIP\") + \"/feeding/schedule\"\n            node.send\n}\nelse { node.warn(\"No ReefWave Devices Found\"); return }\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 1980,
+        "wires": [
+            [
+                "ed5921976ec1c90e"
+            ]
+        ]
+    },
+    {
+        "id": "b65a3c00a4735b93",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefWaveFeedSettings",
+        "func": "if (global.get(\"RSReefWave\")) {\n    msg.url = \"http://\" + global.get(\"RSReefWaveIP\") + \"/feeding/schedule\"\n            node.send\n}\nelse { node.warn(\"No ReefWave Devices Found\"); return }\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 2060,
+        "wires": [
+            [
+                "778616bf3511dc21"
+            ]
+        ]
     },
     {
         "id": "8622b2230b385942",
