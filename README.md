@@ -12,7 +12,7 @@ The cloud API is used to get information about the devices associated with the a
 HA can control:
 - Aquarium feed mode can be started and stopped
 - ReefMat can be manually advanced
-- ReefWave change forward and reverse intensity/time and pulse time
+- ReefWave change forward and reverse intensity/time and pulse time for the active wave
 - ReefRun pumps change speed
 
 
@@ -67,18 +67,19 @@ HA can control:
 
 ### CONFIGURE HA
 
-9. The devices and entities will be exposed under the Node-RED Companion integration in HA. Add these to your dashboard as required.
-10. Create automations (e.g. ReefMat roll replacement, Doser suppliment replacement, Feed mode for pumps)
+10. The devices and entities will be exposed under the Node-RED Companion integration in HA. Add these to your dashboard as required.
+11. Create automations (e.g. ReefMat roll replacement, Doser suppliment replacement, Feed mode for pumps)
 
 
 ## TODO
 
 1. Add overskimming and level sensors for Pump/Skimmer
 2. Lights
-3. Figure out what "st" and "pd" is for in setting pump values
-6. Add manual doser capability and additional sensors
-7. ATO
-8. Perhaps there is a more efficient way to create HA sensors dynamically from a JS function call in node-red rather than creating a node for each sensor
+3. ATO
+4. Figure out what "st" and "pd" is for in setting pump values
+5. Add manual doser capability and additional sensors
+6. Enhance ReefWave to display all wave libraries, modify each from HA, and choose an active wave
+7. Perhaps there is a more efficient way to create HA sensors dynamically from a JS function call in node-red rather than creating a node for each sensor
 
 ## PAYLOADS
 
