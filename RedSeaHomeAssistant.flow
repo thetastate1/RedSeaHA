@@ -71,96 +71,6 @@
         "wires": []
     },
     {
-        "id": "5a77272e697aafe1",
-        "type": "function",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "ReefDose Dashboard",
-        "func": "if (global.get(\"RSReefDose\")) {\n            msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/dashboard\"\n            node.send\n}\nelse { node.warn(\"No ReefDose Devices Found\"); return }\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 420,
-        "y": 1620,
-        "wires": [
-            [
-                "4f12204f99e8e3cf"
-            ]
-        ]
-    },
-    {
-        "id": "b58cda0459bc971e",
-        "type": "inject",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 1620,
-        "wires": [
-            [
-                "5a77272e697aafe1"
-            ]
-        ]
-    },
-    {
-        "id": "4f12204f99e8e3cf",
-        "type": "http request",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 650,
-        "y": 1620,
-        "wires": [
-            [
-                "4097902f02f890e2"
-            ]
-        ]
-    },
-    {
-        "id": "4097902f02f890e2",
-        "type": "debug",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "debug 98",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 640,
-        "y": 1580,
-        "wires": []
-    },
-    {
         "id": "9c5c024594136917",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
@@ -267,7 +177,8 @@
         "y": 760,
         "wires": [
             [
-                "40ab20ab4ef9a6c8"
+                "40ab20ab4ef9a6c8",
+                "a94b84c1ca1f3c38"
             ]
         ]
     },
@@ -289,80 +200,10 @@
         "wires": []
     },
     {
-        "id": "18a177727bd66db5",
-        "type": "inject",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 120,
-        "y": 1700,
-        "wires": [
-            [
-                "26334259549fd19d"
-            ]
-        ]
-    },
-    {
-        "id": "1ab7efdc3dcc2bce",
-        "type": "http request",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 650,
-        "y": 1700,
-        "wires": [
-            [
-                "cafebe369234728f"
-            ]
-        ]
-    },
-    {
-        "id": "cafebe369234728f",
-        "type": "debug",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "debug 101",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 650,
-        "y": 1660,
-        "wires": []
-    },
-    {
         "id": "7db56b3cfa2bf8a1",
         "type": "inject",
         "z": "93fb4f06d7a3a7bc",
-        "name": "Every 1 Minuite",
+        "name": "Every 5 Minutes",
         "props": [
             {
                 "p": "payload"
@@ -372,14 +213,14 @@
                 "vt": "str"
             }
         ],
-        "repeat": "60",
+        "repeat": "300",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 140,
+        "x": 150,
         "y": 1400,
         "wires": [
             [
@@ -415,7 +256,8 @@
                 "6b2f357b62d0a13a",
                 "6011d76135aa3c26",
                 "c8192c80b8fd49ee",
-                "334c7f228e4ec415"
+                "334c7f228e4ec415",
+                "26497e4056963518"
             ]
         ]
     },
@@ -793,7 +635,7 @@
         "type": "comment",
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea Dosers - Local",
-        "info": "//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log",
+        "info": "cloud\n//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\n\n/* \nmsg.payload = {\n    \"container_volume\": msg.payload.container_volume,\n    \"dc\": msg.payload.dc,\n    \"entire_dd\": msg.payload.entire_dd,\n    \"food_delay\": msg.payload.food_delay,\n    \"is_food_head\": msg.payload.is_food_head,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": msg.newValue,\n        \"mode\": msg.payload.schedule.mode,\n        \"time\": msg.payload.schedule.time,\n        \"type\": msg.payload.schedule.type\n    },\n    \"schedule_enabled\": msg.payload.schedule_enabled,\n    \"show\": msg.payload.show,\n    \"slm\": msg.payload.slm\n}\n*/\n\n\n// Cloud\n// PUT https://cloud.reef-beat.com/reef-dosing/34ab9545eb30/head/4/settings\n/*\nvar returns = {\n    \"container_volume\": 159,\n    \"dc\": true,\n    \"entire_dd\": true,\n    \"food_delay\": 0,\n    \"is_food_head\": false,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": 6,\n        \"mode\": \"regular\",\n        \"time\": 480,\n        \"type\": \"single\"\n    },\n    \"schedule_enabled\": true,\n    \"show\": true,\n    \"slm\": true\n}\n\n//GET https://cloud.reef-beat.com/reef-dosing/34ab9545eb30/head/4/settings\nreturns = {\n    \"container_volume\": 159,\n    \"dc\": true,\n    \"enable_ratio\": true,\n    \"entire_dd\": true,\n    \"food_delay\": 0,\n    \"is_food_head\": false,\n    \"last_calibrated\": 1656594792,\n    \"manual_dose_scheduled\": false,\n    \"recalibration_required\": false,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": 6,\n        \"mode\": \"regular\",\n        \"time\": 480,\n        \"type\": \"single\"\n    },\n    \"schedule_enabled\": true,\n        \"show\": true,\n        \"slm\": true,\n        \"state\": \"on\",\n        \"supplement\": {\n            \"brand_name\": \"Red Sea\",\n            \"concentration\": 0,\n            \"display_name\": \"Nutrient control\",\n            \"is_brand_editable\": false,\n            \"is_name_editable\": false,\n            \"is_supplement_editable\": false,\n            \"made_by_redsea\": true,\n            \"name\": \"NO3PO4-X\",\n            \"short_name\": \"NPX\",\n            \"type\": \"null\",\n            \"uid\": \"ffaf6ff8-bc6d-44eb-9e4b-e679943dc835\"\n    },\n    \"today_auto_dosed_volume\": 5,\n    \"vps\": 0.060606\n}\n*/\n\nlocal\nhttp://\" + global.get(\"RSReefDoseIP\") + \"/device-settings\"\nhttp://\" + global.get(\"RSReefDoseIP\") + \"/dashboard\"\nGET and PUT http://\" + global.get(\"RSReefDoseIP\") + \"/head/1/settings\"",
         "x": 140,
         "y": 1320,
         "wires": []
@@ -823,7 +665,8 @@
                 "8dc911fee4c4b77b",
                 "e46e2914a1e5adad",
                 "76ffdbd0d6f1c569",
-                "2387997495d14cc0"
+                "2387997495d14cc0",
+                "125b21759419b9d4"
             ]
         ]
     },
@@ -852,7 +695,8 @@
                 "e7df774e76442476",
                 "0dcb2e0439d4c37c",
                 "cbabaa5a7b975b93",
-                "1d1ff6b7af2ebe0d"
+                "1d1ff6b7af2ebe0d",
+                "7c0bf8b15b3a901c"
             ]
         ]
     },
@@ -881,7 +725,8 @@
                 "288baa5706a01397",
                 "8a32d9de8a6793e9",
                 "07f432a7332790d6",
-                "e32cdff36e602a58"
+                "e32cdff36e602a58",
+                "b91f42114df37425"
             ]
         ]
     },
@@ -1487,7 +1332,8 @@
         "y": 1140,
         "wires": [
             [
-                "d4f690342df983b7"
+                "d4f690342df983b7",
+                "4f765cbd20c3466a"
             ]
         ]
     },
@@ -2600,7 +2446,8 @@
         "wires": [
             [
                 "eca372aebecd1fe1",
-                "53d514e7a128681b"
+                "53d514e7a128681b",
+                "34c1be87e63e0835"
             ]
         ]
     },
@@ -2752,7 +2599,7 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "ReefRun Settings",
-        "func": "node.warn(global.get(\"RSReefRun\"))\n\nif (global.get(\"RSReefRun\")){\n    msg.url = \"http://\" + global.get(\"RSReefRunIP\") + \"/pump/settings\"\n    node.warn(msg.url)\n}\nelse {node.warn(\"No ReefRun Devices Found\");return}\n\nreturn msg;",
+        "func": "if (global.get(\"RSReefRun\")){\n    msg.url = \"http://\" + global.get(\"RSReefRunIP\") + \"/pump/settings\"\n}\nelse {node.warn(\"No ReefRun Devices Found\");return}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2773,10 +2620,12 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "",
         "method": "GET",
-        "ret": "txt",
-        "paytoqs": false,
+        "ret": "obj",
+        "paytoqs": "ignore",
         "url": "",
+        "tls": "",
         "persist": false,
+        "proxy": "",
         "insecureHTTPParser": false,
         "authType": "",
         "senderr": false,
@@ -2903,7 +2752,7 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "Do this First: Enter ReefBeat Credentials Here Then Deploy Flow Then Trigger",
-        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"user_name_here\")\nglobal.set(\"RSPass\", \"pass_here\")\nreturn msg;",
+        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"user_email\")\nglobal.set(\"RSPass\", \"user_pass\")\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2937,26 +2786,6 @@
         ]
     },
     {
-        "id": "26334259549fd19d",
-        "type": "function",
-        "z": "93fb4f06d7a3a7bc",
-        "name": "ReefDose Settings",
-        "func": "if (global.get(\"RSReefDose\")) {\n            msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/device-settings\"\n            node.send\n}\nelse { node.warn(\"No ReefDose Devices Found\"); return }\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 410,
-        "y": 1700,
-        "wires": [
-            [
-                "1ab7efdc3dcc2bce"
-            ]
-        ]
-    },
-    {
         "id": "7493c8e1dd148e2e",
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
@@ -2981,7 +2810,7 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "ReefDose Settings",
-        "func": "if (global.get(\"RSReefDose\")){\n    msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/1/settings\"\n}\nelse {node.warn(\"No ReefDose Devices Found\");return}\n\nreturn msg;",
+        "func": "if (global.get(\"RSReefDose\")){\n    msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/2/settings\"\n}\nelse {node.warn(\"No ReefDose Devices Found\");return}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3384,7 +3213,7 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "",
         "method": "PUT",
-        "ret": "txt",
+        "ret": "obj",
         "paytoqs": "ignore",
         "url": "",
         "tls": "",
@@ -3481,7 +3310,7 @@
         "name": "WaveLastCommandStatus",
         "entityConfig": "73e74eefc1781150",
         "version": 0,
-        "state": "payload",
+        "state": "payload.message",
         "stateType": "msg",
         "attributes": [],
         "inputOverride": "allow",
@@ -3499,7 +3328,7 @@
         "name": "WaveLastCommandStatus",
         "entityConfig": "73e74eefc1781150",
         "version": 0,
-        "state": "payload",
+        "state": "payload.message",
         "stateType": "msg",
         "attributes": [],
         "inputOverride": "allow",
@@ -3622,6 +3451,495 @@
             [
                 "778616bf3511dc21"
             ]
+        ]
+    },
+    {
+        "id": "a94b84c1ca1f3c38",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "PumpLastCommandStatus",
+        "entityConfig": "61b63132cd01c4a5",
+        "version": 0,
+        "state": "payload.message",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1320,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4f765cbd20c3466a",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "MatLastCommandStatus",
+        "entityConfig": "dfdf2e90cf12b465",
+        "version": 0,
+        "state": "payload.message",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 690,
+        "y": 1220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f518162ad74e137f",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test 3ml head 4",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "data.entity_id",
+                "v": "4",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "3",
+        "payloadType": "num",
+        "x": 160,
+        "y": 1620,
+        "wires": [
+            [
+                "b3529660c7ceb99e"
+            ]
+        ]
+    },
+    {
+        "id": "1492fdcbf1d4b8d3",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "PUT",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1150,
+        "y": 1660,
+        "wires": [
+            [
+                "75b37d0088177ce5",
+                "fe3ed67df2224e0c"
+            ]
+        ]
+    },
+    {
+        "id": "75b37d0088177ce5",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 142",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "a15a366f2faa0257",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefDose Set Daily Dose",
+        "func": "/*\nnode.warn(\"NEW VALUE=\" + msg.newValue)\nnode.warn(\"PAYLOAD=\" + msg.payload)\nif (global.get(\"RSReefDose\")) {\n    if (msg.data.entity_id.includes(\"1\")) {\n        msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/1/settings\"\n    }\n    if (msg.data.entity_id.includes(\"2\")) {\n        msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/2/settings\"\n    }\n    if (msg.data.entity_id.includes(\"3\")) {\n        msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/3/settings\"\n    }\n    if (msg.data.entity_id.includes(\"4\")) {\n        msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/4/settings\"\n    }\n}\nelse { node.warn(\"No ReefDose Devices Found\"); return }\n*/\n\nmsg.payload.schedule.dd = msg.newValue\nreturn msg;\n\n/* \nmsg.payload = {\n    \"container_volume\": msg.payload.container_volume,\n    \"dc\": msg.payload.dc,\n    \"entire_dd\": msg.payload.entire_dd,\n    \"food_delay\": msg.payload.food_delay,\n    \"is_food_head\": msg.payload.is_food_head,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": msg.newValue,\n        \"mode\": msg.payload.schedule.mode,\n        \"time\": msg.payload.schedule.time,\n        \"type\": msg.payload.schedule.type\n    },\n    \"schedule_enabled\": msg.payload.schedule_enabled,\n    \"show\": msg.payload.show,\n    \"slm\": msg.payload.slm\n}\n*/\n\n\n// Cloud\n// PUT https://cloud.reef-beat.com/reef-dosing/34ab9545eb30/head/4/settings\n/*\nvar returns = {\n    \"container_volume\": 159,\n    \"dc\": true,\n    \"entire_dd\": true,\n    \"food_delay\": 0,\n    \"is_food_head\": false,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": 6,\n        \"mode\": \"regular\",\n        \"time\": 480,\n        \"type\": \"single\"\n    },\n    \"schedule_enabled\": true,\n    \"show\": true,\n    \"slm\": true\n}\n\n//GET https://cloud.reef-beat.com/reef-dosing/34ab9545eb30/head/4/settings\nreturns = {\n    \"container_volume\": 159,\n    \"dc\": true,\n    \"enable_ratio\": true,\n    \"entire_dd\": true,\n    \"food_delay\": 0,\n    \"is_food_head\": false,\n    \"last_calibrated\": 1656594792,\n    \"manual_dose_scheduled\": false,\n    \"recalibration_required\": false,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": 6,\n        \"mode\": \"regular\",\n        \"time\": 480,\n        \"type\": \"single\"\n    },\n    \"schedule_enabled\": true,\n        \"show\": true,\n        \"slm\": true,\n        \"state\": \"on\",\n        \"supplement\": {\n            \"brand_name\": \"Red Sea\",\n            \"concentration\": 0,\n            \"display_name\": \"Nutrient control\",\n            \"is_brand_editable\": false,\n            \"is_name_editable\": false,\n            \"is_supplement_editable\": false,\n            \"made_by_redsea\": true,\n            \"name\": \"NO3PO4-X\",\n            \"short_name\": \"NPX\",\n            \"type\": \"null\",\n            \"uid\": \"ffaf6ff8-bc6d-44eb-9e4b-e679943dc835\"\n    },\n    \"today_auto_dosed_volume\": 5,\n    \"vps\": 0.060606\n}\n*/",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 1660,
+        "wires": [
+            [
+                "1492fdcbf1d4b8d3",
+                "37ece6ab52c176c3"
+            ]
+        ]
+    },
+    {
+        "id": "2dcade150113459e",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 650,
+        "y": 1660,
+        "wires": [
+            [
+                "767c7a0729c13b24",
+                "a15a366f2faa0257"
+            ]
+        ]
+    },
+    {
+        "id": "b3529660c7ceb99e",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefDose Settings",
+        "func": "msg.newValue = msg.payload\n//node.warn(msg.newValue)\nif (global.get(\"RSReefDose\")){\n    //if (global.get(\"RSReedDoseModel\") == \"RSDOSE4\"){\n    //    for (let i=1; i <=4; i++){\n    if (msg.data.entity_id.includes(\"1\")) {\n        msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/1/settings\"\n    }\n    if (msg.data.entity_id.includes(\"2\")) {\n        msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/2/settings\"\n    }\n    if (msg.data.entity_id.includes(\"3\")) {\n        msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/3/settings\"\n    }\n    if (msg.data.entity_id.includes(\"4\")) {\n        msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/4/settings\"\n    }\n    //        node.send\n    //    }\n    //}\n    //else {\n    //    return\n    //}\n}\nelse {node.warn(\"No ReefDose Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1660,
+        "wires": [
+            [
+                "b4de56184c7e3118",
+                "2dcade150113459e"
+            ]
+        ]
+    },
+    {
+        "id": "767c7a0729c13b24",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 143",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "37ece6ab52c176c3",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 144",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "fe3ed67df2224e0c",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "DoseLastCommandStatus",
+        "entityConfig": "07b8790cadce93bc",
+        "version": 0,
+        "state": "payload.message",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1440,
+        "y": 1660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "26497e4056963518",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head1DailyDose",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "288f1f2485534f8d",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.schedule.dd",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 920,
+        "y": 1560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "125b21759419b9d4",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head2DailyDose",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "55edf4b23778c3ae",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.schedule.dd",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1160,
+        "y": 1560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7c0bf8b15b3a901c",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head3DailyDose",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "28230898ebd93f48",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.schedule.dd",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1400,
+        "y": 1560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b91f42114df37425",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Head4DailyDose",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "dd0f724332bd869c",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.schedule.dd",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1640,
+        "y": 1560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "80916361316060a2",
+        "type": "server-state-changed",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "DoseDailyChange",
+        "server": "caf9ba1992c9f965",
+        "version": 6,
+        "outputs": 1,
+        "exposeAsEntityConfig": "",
+        "entities": {
+            "entity": [
+                "number.head1dailydose",
+                "number.head2dailydose",
+                "number.head3dailydose",
+                "number.head4dailydose"
+            ],
+            "substring": [],
+            "regex": []
+        },
+        "outputInitially": false,
+        "stateType": "num",
+        "ifState": "",
+        "ifStateType": "num",
+        "ifStateOperator": "is",
+        "outputOnlyOnStateChange": true,
+        "for": "0",
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": true,
+        "ignoreCurrentStateUnavailable": true,
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "eventData"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            }
+        ],
+        "x": 150,
+        "y": 1660,
+        "wires": [
+            [
+                "b3529660c7ceb99e"
+            ]
+        ]
+    },
+    {
+        "id": "b4de56184c7e3118",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 145",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "34c1be87e63e0835",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Get Notifications",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://cloud.reef-beat.com/notification/inapp?expirationDays=90&page=0&size=100000&sortDirection=DESC",
+        "tls": "994e94fc39644f26",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1050,
+        "y": 340,
+        "wires": [
+            [
+                "3494aa3ea7b5f815",
+                "9ddbe36147651faa"
+            ]
+        ]
+    },
+    {
+        "id": "9ddbe36147651faa",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LastNotification",
+        "entityConfig": "02b9cfdc004615b4",
+        "version": 0,
+        "state": "payload.content[0].text",
+        "stateType": "msg",
+        "attributes": [
+            {
+                "property": "DeviceType",
+                "value": "payload.content[0].device_type",
+                "valueType": "msg"
+            }
+        ],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1280,
+        "y": 340,
+        "wires": [
+            []
         ]
     },
     {
@@ -5915,6 +6233,382 @@
         "statusHourCycle": "h23",
         "statusTimeFormat": "h:m",
         "enableGlobalContextStore": true
+    },
+    {
+        "id": "61b63132cd01c4a5",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "0d3d05e917a791bc",
+        "name": "PumpLastCommandStatus",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "PumpLastCommandStatus"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:bug"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "dfdf2e90cf12b465",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "70bff6cea0a47242",
+        "name": "MatLastCommandStatus",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "MatLastCommandStatus"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:bug"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "07b8790cadce93bc",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "DoseLastCommandStatus",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "DoseLastCommandStatus"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "288f1f2485534f8d",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head1DailyDose",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head1DailyDose"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:needle"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "ml"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 200
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "55edf4b23778c3ae",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head2DailyDose",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head2DailyDose"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:needle"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "ml"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 200
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "28230898ebd93f48",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head3DailyDose",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head3DailyDose"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:needle"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "ml"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 200
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "dd0f724332bd869c",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "Head4DailyDose",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Head4DailyDose"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:needle"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "ml"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 200
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "02b9cfdc004615b4",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "d3873c4cc506cca8",
+        "name": "LastNotification",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LastNotification"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:bell"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
     },
     {
         "id": "0d3d05e917a791bc",
