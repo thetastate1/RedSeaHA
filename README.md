@@ -7,7 +7,7 @@ Lights should be straight forward but I don't have any to test.
 
 This integration uses local and cloud http REST integration allowing you to monitor and control devices remotely using Home Assistant.
 
-The cloud API is used to get information about the devices associated with the aquarium to create sensors and controls.
+The cloud API is used to get information about the devices associated with the aquarium to create sensors and controls. It also provides notifications.
 
 HA can control:
 - Aquarium feed mode can be started and stopped
