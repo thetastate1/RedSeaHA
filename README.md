@@ -14,6 +14,7 @@ HA can control:
 - ReefMat can be manually advanced
 - ReefWave change forward and reverse intensity/time and pulse time for the active wave
 - ReefRun pumps change speed
+- ReefDose daily dose can be changed
 
 
 ## DEVICES AND ENTITIES CREATED FROM NODE-RED
@@ -30,6 +31,15 @@ HA can control:
 
 <img width="515" alt="Screenshot 2025-03-07 at 1 53 29 pm" src="https://github.com/user-attachments/assets/c39139e4-f506-4cc9-b4dd-817fdc72a5f6" />
 
+## EXAMPLE DASHBOARDS USING MUSHROOM
+
+<img width="375" alt="Screenshot 2025-03-08 at 1 09 31 pm" src="https://github.com/user-attachments/assets/d29879bf-374a-493f-a13f-7252dc11bb2f" />
+
+<img width="371" alt="Screenshot 2025-03-08 at 1 10 16 pm" src="https://github.com/user-attachments/assets/d32ce0ab-66d1-4cf0-9e26-85b337a78537" />
+
+<img width="378" alt="Screenshot 2025-03-08 at 1 10 29 pm" src="https://github.com/user-attachments/assets/6948368c-37fe-4b9d-9146-4e7097e8fbee" />
+
+<img width="376" alt="Screenshot 2025-03-08 at 1 10 56 pm" src="https://github.com/user-attachments/assets/055558e3-0b3c-4cd1-b635-74e683edfe87" />
 
 
 ## INSTALLATION
@@ -77,9 +87,8 @@ HA can control:
 2. Lights
 3. ATO
 4. Figure out what "st" and "pd" is for in setting pump values
-5. Add manual doser capability and additional sensors
-6. Enhance ReefWave to display all wave libraries, modify each from HA, and choose an active wave
-7. Perhaps there is a more efficient way to create HA sensors dynamically from a JS function call in node-red rather than creating a node for each sensor
+5. Enhance ReefWave to display all wave libraries, modify each from HA, and choose an active wave
+6. Perhaps there is a more efficient way to create HA sensors dynamically from a JS function call in node-red rather than creating a node for each sensor
 
 ## PAYLOADS
 
