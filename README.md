@@ -269,6 +269,6 @@ msg.payload = {
 "message":"auto mode enabled successfully"
 }
 ```
-More payloads are included in the comment nodes of the flow
+More payloads and endpoints are included in the comment nodes of the flow.
 
 Keen to collaborate and work out more endpoints, refine flow, optimise install, test lights etc. 
