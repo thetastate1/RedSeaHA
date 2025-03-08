@@ -76,12 +76,13 @@ HA can control:
 ### INITIATE CLOUD FLOW
 
 8. Use the trigger: *"Trigger This Second"* to initiate connection for the first time
-9. Use the trigger: *"This Third"* to populate aquarium info
+9. Use the trigger: *"This Third"* to populate aquarium info (this gets the IP addresses and hardware ids for each connected device that is used for local direct calls to the devices)
 
 ### CONFIGURE HA
 
 10. The devices and entities will be exposed under the Node-RED Companion integration in HA. Add these to your dashboard as required.
 11. Create automations (e.g. ReefMat roll replacement, Doser suppliment replacement, Feed mode for pumps)
+12. Create template sensors (e.g. days remaining = 
 
 
 ## TODO
