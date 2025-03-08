@@ -2752,7 +2752,7 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "Do this First: Enter ReefBeat Credentials Here Then Deploy Flow Then Trigger",
-        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"user_email\")\nglobal.set(\"RSPass\", \"user_pass\")\nreturn msg;",
+        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"user\")\nglobal.set(\"RSPass\", \"pass\")\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
