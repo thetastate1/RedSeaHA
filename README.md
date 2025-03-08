@@ -82,7 +82,7 @@ HA can control:
 
 10. The devices and entities will be exposed under the Node-RED Companion integration in HA. Add these to your dashboard as required.
 11. Create automations (e.g. ReefMat roll replacement, Doser suppliment replacement, Feed mode for pumps)
-12. Create template sensors (e.g. days remaining = 
+12. Create template sensors (e.g. days_remaining = suppliment_volume / daily_dose)
 
 
 ## TODO
