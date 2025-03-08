@@ -19,9 +19,9 @@ HA can control:
 
 ## DEVICES AND ENTITIES CREATED FROM NODE-RED
 
-<img width="825" alt="Screenshot 2025-03-07 at 1 51 19 pm" src="https://github.com/user-attachments/assets/e10d09ee-84e2-4bbe-9615-649858f34ddb" />
+<img width="825" alt="Screenshot 2025-03-07 at 1 51 19 pm" src="https://github.com/user-attachments/assets/e10d09ee-84e2-4bbe-9615-649858f34ddb" />  
 
-<img width="506" alt="Screenshot 2025-03-07 at 1 52 21 pm" src="https://github.com/user-attachments/assets/28528ddf-ebd5-42c2-86fd-a428cacfeef2" />
+<img width="506" alt="Screenshot 2025-03-07 at 1 52 21 pm" src="https://github.com/user-attachments/assets/28528ddf-ebd5-42c2-86fd-a428cacfeef2" />  
 
 <img width="512" alt="Screenshot 2025-03-07 at 1 52 39 pm" src="https://github.com/user-attachments/assets/64a37831-4201-401c-b36f-84e8e60f5120" />
 
@@ -33,13 +33,16 @@ HA can control:
 
 ## EXAMPLE DASHBOARDS USING MUSHROOM
 
-<img width="375" alt="Screenshot 2025-03-08 at 1 09 31 pm" src="https://github.com/user-attachments/assets/d29879bf-374a-493f-a13f-7252dc11bb2f" />
+<img width="375" alt="Screenshot 2025-03-08 at 1 09 31 pm" src="https://github.com/user-attachments/assets/d29879bf-374a-493f-a13f-7252dc11bb2f" />  
+<br />
 
-<img width="371" alt="Screenshot 2025-03-08 at 1 10 16 pm" src="https://github.com/user-attachments/assets/d32ce0ab-66d1-4cf0-9e26-85b337a78537" />
+<img width="371" alt="Screenshot 2025-03-08 at 1 10 16 pm" src="https://github.com/user-attachments/assets/d32ce0ab-66d1-4cf0-9e26-85b337a78537" />  
+<br />
 
-<img width="378" alt="Screenshot 2025-03-08 at 1 10 29 pm" src="https://github.com/user-attachments/assets/6948368c-37fe-4b9d-9146-4e7097e8fbee" />
+<img width="378" alt="Screenshot 2025-03-08 at 1 10 29 pm" src="https://github.com/user-attachments/assets/6948368c-37fe-4b9d-9146-4e7097e8fbee" />  
+<br />
 
-<img width="376" alt="Screenshot 2025-03-08 at 1 10 56 pm" src="https://github.com/user-attachments/assets/055558e3-0b3c-4cd1-b635-74e683edfe87" />
+<img width="376" alt="Screenshot 2025-03-08 at 1 10 56 pm" src="https://github.com/user-attachments/assets/055558e3-0b3c-4cd1-b635-74e683edfe87" />  
 
 
 ## INSTALLATION
