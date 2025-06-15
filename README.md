@@ -1,25 +1,26 @@
 # RedSeaHA
 Use RedSea ReefBeat devices in Home Assistant.
 
-A node-red flow to integrate RedSea Pumps, Skimmers, Dosers, and Wavemakers. 
-
-Lights should be straight forward but I don't have any to test.
+A node-red flow to integrate RedSea Lights, Pumps, Skimmers, Dosers, and Wavemakers. 
 
 This integration uses local and cloud http REST integration allowing you to monitor and control devices remotely using Home Assistant.
 
 The cloud API is used to get information about the devices associated with the aquarium to create sensors and controls. It also provides notifications.
 
-HA can control:
+Home Assistant can control:
 - Aquarium feed mode can be started and stopped
 - ReefMat can be manually advanced
 - ReefWave change forward and reverse intensity/time and pulse time for the active wave
 - ReefRun pumps change speed
 - ReefDose daily dose can be changed
+- ReefDose manual dosing
+- ReefLed mode: auto/manual/off
+- ReefLed manual control of kelvin, intensity, moon, and duration
 
 
 ## DEVICES AND ENTITIES CREATED FROM NODE-RED
 
-<img width="825" alt="Screenshot 2025-03-07 at 1 51 19 pm" src="https://github.com/user-attachments/assets/e10d09ee-84e2-4bbe-9615-649858f34ddb" />  
+<img width="835" alt="Screenshot 2025-06-15 at 5 47 34 pm" src="https://github.com/user-attachments/assets/639bc44e-7a6b-41b4-8202-c12ea5d7feb8" />
 
 <img width="506" alt="Screenshot 2025-03-07 at 1 52 21 pm" src="https://github.com/user-attachments/assets/28528ddf-ebd5-42c2-86fd-a428cacfeef2" />  
 
@@ -31,6 +32,10 @@ HA can control:
 
 <img width="515" alt="Screenshot 2025-03-07 at 1 53 29 pm" src="https://github.com/user-attachments/assets/c39139e4-f506-4cc9-b4dd-817fdc72a5f6" />
 
+<img width="769" alt="Screenshot 2025-06-15 at 3 49 21 pm" src="https://github.com/user-attachments/assets/5059815b-a526-4496-bb22-211acd3dad14" />
+
+<img width="552" alt="Screenshot 2025-06-15 at 5 43 01 pm" src="https://github.com/user-attachments/assets/135677b4-6741-4612-86c6-f11ff511bb05" />
+
 ## EXAMPLE DASHBOARDS USING MUSHROOM
 
 <img width="375" alt="Screenshot 2025-03-08 at 1 09 31 pm" src="https://github.com/user-attachments/assets/d29879bf-374a-493f-a13f-7252dc11bb2f" />  
@@ -40,9 +45,12 @@ HA can control:
 <br />
 
 <img width="378" alt="Screenshot 2025-03-08 at 1 10 29 pm" src="https://github.com/user-attachments/assets/6948368c-37fe-4b9d-9146-4e7097e8fbee" />  
+<br />  
+
+<img width="389" alt="Screenshot 2025-06-15 at 5 44 24 pm" src="https://github.com/user-attachments/assets/2cfd4fce-5df4-48e5-93fb-3472b6da0dae" />
 <br />
 
-<img width="376" alt="Screenshot 2025-03-08 at 1 10 56 pm" src="https://github.com/user-attachments/assets/055558e3-0b3c-4cd1-b635-74e683edfe87" />  
+<img width="380" alt="Screenshot 2025-06-15 at 5 44 50 pm" src="https://github.com/user-attachments/assets/6d726af7-3abb-4ac0-9b63-26c7dfbe90ba" />
 
 
 ## INSTALLATION
@@ -88,7 +96,7 @@ HA can control:
 ## TODO
 
 1. Add overskimming and level sensors for Pump/Skimmer
-2. Lights
+2. Lights Preset program activation. Have cloud endpoints but yet to discover local endpoints and payloads
 3. ATO
 4. Figure out what "st" and "pd" is for in setting pump values
 5. Enhance ReefWave to display all wave libraries, modify each from HA, and choose an active wave
