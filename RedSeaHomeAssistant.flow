@@ -41,7 +41,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 96",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -58,7 +58,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 97",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -66,8 +66,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 640,
-        "y": 2020,
+        "x": 660,
+        "y": 2060,
         "wires": []
     },
     {
@@ -126,7 +126,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 99",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -187,7 +187,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "Update Debug",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -344,7 +344,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 105",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -381,7 +381,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 111",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -418,7 +418,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 113",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -635,7 +635,7 @@
         "type": "comment",
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea Dosers - Local",
-        "info": "cloud\n//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\n\n/* \nmsg.payload = {\n    \"container_volume\": msg.payload.container_volume,\n    \"dc\": msg.payload.dc,\n    \"entire_dd\": msg.payload.entire_dd,\n    \"food_delay\": msg.payload.food_delay,\n    \"is_food_head\": msg.payload.is_food_head,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": msg.newValue,\n        \"mode\": msg.payload.schedule.mode,\n        \"time\": msg.payload.schedule.time,\n        \"type\": msg.payload.schedule.type\n    },\n    \"schedule_enabled\": msg.payload.schedule_enabled,\n    \"show\": msg.payload.show,\n    \"slm\": msg.payload.slm\n}\n*/\n\n\n// Cloud\n// PUT https://cloud.reef-beat.com/reef-dosing/34ab9545eb30/head/4/settings\n/*\nvar returns = {\n    \"container_volume\": 159,\n    \"dc\": true,\n    \"entire_dd\": true,\n    \"food_delay\": 0,\n    \"is_food_head\": false,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": 6,\n        \"mode\": \"regular\",\n        \"time\": 480,\n        \"type\": \"single\"\n    },\n    \"schedule_enabled\": true,\n    \"show\": true,\n    \"slm\": true\n}\n\n//GET https://cloud.reef-beat.com/reef-dosing/34ab9545eb30/head/4/settings\nreturns = {\n    \"container_volume\": 159,\n    \"dc\": true,\n    \"enable_ratio\": true,\n    \"entire_dd\": true,\n    \"food_delay\": 0,\n    \"is_food_head\": false,\n    \"last_calibrated\": 1656594792,\n    \"manual_dose_scheduled\": false,\n    \"recalibration_required\": false,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": 6,\n        \"mode\": \"regular\",\n        \"time\": 480,\n        \"type\": \"single\"\n    },\n    \"schedule_enabled\": true,\n        \"show\": true,\n        \"slm\": true,\n        \"state\": \"on\",\n        \"supplement\": {\n            \"brand_name\": \"Red Sea\",\n            \"concentration\": 0,\n            \"display_name\": \"Nutrient control\",\n            \"is_brand_editable\": false,\n            \"is_name_editable\": false,\n            \"is_supplement_editable\": false,\n            \"made_by_redsea\": true,\n            \"name\": \"NO3PO4-X\",\n            \"short_name\": \"NPX\",\n            \"type\": \"null\",\n            \"uid\": \"ffaf6ff8-bc6d-44eb-9e4b-e679943dc835\"\n    },\n    \"today_auto_dosed_volume\": 5,\n    \"vps\": 0.060606\n}\n*/\n\nlocal\nhttp://\" + global.get(\"RSReefDoseIP\") + \"/device-settings\"\nhttp://\" + global.get(\"RSReefDoseIP\") + \"/dashboard\"\nGET and PUT http://\" + global.get(\"RSReefDoseIP\") + \"/head/1/settings\"",
+        "info": "cloud\n//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\n\n/* \nmsg.payload = {\n    \"container_volume\": msg.payload.container_volume,\n    \"dc\": msg.payload.dc,\n    \"entire_dd\": msg.payload.entire_dd,\n    \"food_delay\": msg.payload.food_delay,\n    \"is_food_head\": msg.payload.is_food_head,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": msg.newValue,\n        \"mode\": msg.payload.schedule.mode,\n        \"time\": msg.payload.schedule.time,\n        \"type\": msg.payload.schedule.type\n    },\n    \"schedule_enabled\": msg.payload.schedule_enabled,\n    \"show\": msg.payload.show,\n    \"slm\": msg.payload.slm\n}\n*/\n\n\n// Cloud\n// PUT https://cloud.reef-beat.com/reef-dosing/34ab9545eb30/head/4/settings\n/*\nvar returns = {\n    \"container_volume\": 159,\n    \"dc\": true,\n    \"entire_dd\": true,\n    \"food_delay\": 0,\n    \"is_food_head\": false,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": 6,\n        \"mode\": \"regular\",\n        \"time\": 480,\n        \"type\": \"single\"\n    },\n    \"schedule_enabled\": true,\n    \"show\": true,\n    \"slm\": true\n}\n\n//GET https://cloud.reef-beat.com/reef-dosing/34ab9545eb30/head/4/settings\nreturns = {\n    \"container_volume\": 159,\n    \"dc\": true,\n    \"enable_ratio\": true,\n    \"entire_dd\": true,\n    \"food_delay\": 0,\n    \"is_food_head\": false,\n    \"last_calibrated\": 1656594792,\n    \"manual_dose_scheduled\": false,\n    \"recalibration_required\": false,\n    \"schedule\": {\n        \"days\": [\n            1,\n            2,\n            3,\n            4,\n            5,\n            6,\n            7\n        ],\n        \"dd\": 6,\n        \"mode\": \"regular\",\n        \"time\": 480,\n        \"type\": \"single\"\n    },\n    \"schedule_enabled\": true,\n        \"show\": true,\n        \"slm\": true,\n        \"state\": \"on\",\n        \"supplement\": {\n            \"brand_name\": \"Red Sea\",\n            \"concentration\": 0,\n            \"display_name\": \"Nutrient control\",\n            \"is_brand_editable\": false,\n            \"is_name_editable\": false,\n            \"is_supplement_editable\": false,\n            \"made_by_redsea\": true,\n            \"name\": \"NO3PO4-X\",\n            \"short_name\": \"NPX\",\n            \"type\": \"null\",\n            \"uid\": \"ffaf6ff8-bc6d-44eb-9e4b-e679943dc835\"\n    },\n    \"today_auto_dosed_volume\": 5,\n    \"vps\": 0.060606\n}\n*/\n\nlocal\nhttp://\" + global.get(\"RSReefDoseIP\") + \"/device-settings\"\nhttp://\" + global.get(\"RSReefDoseIP\") + \"/dashboard\"\nGET and PUT http://\" + global.get(\"RSReefDoseIP\") + \"/head/1/settings\"\n\n// From mitmproxy manual feeding via the cloud api is:\n// POST https://cloud.thereefbeat.com/<device>/head/2/manual\n// msg.payload = {\n//      \"volume\": 2\n//  }\n// Returns:\n// {\n// \"success\": true,\n//    \"message\": \"running manual dosing\",\n//        \"is_given_immediately\": true\n//}\n// Local is POST http://<IP>/head/<head>/manual\n// With paylod = { \"manual_dose_scheduled\" = true, \"volume\": <volume>}\n",
         "x": 140,
         "y": 1320,
         "wires": []
@@ -790,8 +790,8 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea WaveMaker - Local - Payloads in comments",
         "info": "Reef Dose Endpoints\n//http://[rsdose-address]/time\n//http://[rsdose-address]/description.xml\n//http://[rsdose-address]/cloud\n//http://[rsdose-address]/connectivity\n//http://[rsdose-address]/connectivity/events\n//http://[rsdose-address]/mode\n//http://[rsdose-address]/logging\n//http://[rsdose-address]/head/1/settings  // /head/[head#]/settings\n//http://[rsdose-address]/device-settings\n//http://[rsdose-address]/daily-log\n//http://[rsdose-address]/dosing-queue\n//http://[rsdose-address]/supplement\n//http://[rsdose-address]/head/1/supplement-volume   //   /head/[head#]/  //   Same output as supplement above\n//http://[rsdose-address]/hourly-log/1716249600  //  /hourly-log/[epoch]\n//http://[rsdose-address]/export-log\n\nReef Wave Endpoints Local\nGET http://<IP>/feeding/schedule\nGET http://<IP>/mode\nmsg.payload = {\n    \"mode\": \"off\" // or \"auto\"\n    // Could not enable off. Use the dedicated endpoint instead.\n}\nPOST http://<IP>/feeding/schedule\nmsg.payload =\n{\n    \"in_sync\": true,\n        \"intervals\": [\n            {\n                \"duration\": msg.newValue,\n                \"name\": \"No Wave\",\n                \"type\": \"nw\",\n                \"wave_uid\": wave_uid\n            }\n        ],\n        \"uid\": uid\n}\nPOST http://192.168.68.128/preview\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": 9,\n    \"pd\": 6,\n    //\"pump_settings\": [\n    //    {\n    //        \"fti\": 100,\n    //        \"hwid\": \"16422546\",\n    //        \"rti\": 100\n    //    }\n    //],\n    \"rrt\": 5,\n    \"sn\": 3,\n    \"type\": \"un\",\n    \"duration\": 3000,\n    \"fti\": 10,\n    \"rti\": 10,\n    \"sync\": true\n}\n\n\nReef Wave Endpoints\nhttp://[rwave-address]/device-settings\nhttp://[rwave-address]/mode\nhttp://[rwave-address]/connectivity\nhttp://[rwave-address]/connectivity/events\nhttp://[rwave-address]/connect\nhttp://[rwave-address]/description.xml\nhttp://[rwave-address]\n\nhttps://cloud.reef-beat.com/reef-wave/16422546/device-settings/\n\nPUT https://cloud.reef-beat.com/reef-wave/library/39c5ecea-4d7c-4564-af04-089db8985da9\nPayload to change speed forward is fti back is rti\n{\n    \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n    \"default\": false,\n    \"frt\": 10, // Forward run time\n    \"name\": \"cade\",\n    \"pd\": 7, // Pulse time\n    \"pump_settings\": [\n        {\n            \"fti\": 90, // Forward speed\n            \"hwid\": \"16422546\",\n            \"rti\": 100, // Reverse speed\n            \"sync\": true\n        }\n    ],\n    \"rrt\": 5, // Reverse run time\n    \"type\": \"un\", // Wave type uniform\n    \"uid\": \"39c5ecea-4d7c-4564-af04-089db8985da9\"\n}\n\nPUT https://cloud.reef-beat.com/reef-mat/94b5557ea464/previous-roll\n{\n    \"days_of_usage\": 108,\n    \"length\": 2799.966751098633,\n    \"material_name\": \"Unknown\",\n    \"setup_date\": \"2024-11-17T10:02:12Z\"\n}\n\nhttps://cloud.reef-beat.com/reef-wave/schedule/16422546\n{\n    \"in_sync\": true,\n    \"intervals\": [\n        {\n            \"direction\": \"fw\",\n            \"frt\": 10,\n            \"fti\": 80,\n            \"name\": \"cade\",\n            \"pd\": 6,\n            \"rrt\": 5,\n            \"rti\": 100,\n            \"st\": 0,\n            \"sync\": true,\n            \"type\": \"un\",\n            \"wave_uid\": \"39c5ecea-4d7c-4564-af04-089db8985da9\"\n        }\n    ],\n    \"uid\": \"0bffcb14-f9d9-4d19-9dba-69cd126e6150\"\n}\n\nGET https://cloud.reef-beat.com/reef-wave/16422546/feeding/schedule\n{\n    \"in_sync\": true,\n    \"intervals\": [\n        {\n            \"duration\": 20,\n            \"name\": \"No Wave\",\n            \"type\": \"nw\",\n            \"wave_uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n        }\n    ],\n    \"uid\": \"f4fcb7f3-27bb-4595-9d32-b2feb8ab5831\"\n}\n\nhttps://cloud.reef-beat.com/reef-wave/library\nreturns:\n[\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Regular\",\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"re\",\n        \"uid\": \"0366b9c6-ba0b-4bf9-b306-0daa683f0a81\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Random\",\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"ra\",\n        \"uid\": \"14dcfbe7-cc17-4f3e-b4fd-a57b577f7036\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 10,\n        \"name\": \"cade2\",\n        \"pd\": 5.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 90,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"sn\": 6,\n        \"type\": \"st\",\n        \"uid\": \"3438f860-c7d7-4cd9-bd42-ccd42876b296\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 9,\n        \"name\": \"cade\",\n        \"pd\": 6.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 80,\n                \"hwid\": \"16422546\",\n                \"rti\": 100,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 5,\n        \"type\": \"un\",\n        \"uid\": \"39c5ecea-4d7c-4564-af04-089db8985da9\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Step\",\n        \"pd\": 3.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"sn\": 6,\n        \"type\": \"st\",\n        \"uid\": \"49ac6123-69ac-4fa9-a375-a7447a7f5ed4\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"name\": \"Surface100\",\n        \"pd\": 1.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"type\": \"su\",\n        \"uid\": \"8d4b9c60-d779-4b36-8979-7f7a44444f31\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 10,\n        \"name\": \"cade1\",\n        \"pd\": 5.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 100,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 4,\n        \"type\": \"un\",\n        \"uid\": \"aa9f4dfb-8414-4011-ab01-aec6d71f2a4f\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"name\": \"No Wave\",\n        \"pump_settings\": [],\n        \"type\": \"nw\",\n        \"uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"name\": \"surface100\",\n        \"pd\": 1.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"type\": \"su\",\n        \"uid\": \"ba283d5a-ab18-4cee-9af4-6baf9858c986\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"name\": \"RS Surface\",\n        \"pd\": 1.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"type\": \"su\",\n        \"uid\": \"c832e384-936d-4e88-a151-1f485dd9bd59\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": false,\n        \"frt\": 10,\n        \"name\": \"constant\",\n        \"pump_settings\": [\n            {\n                \"fti\": 100,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"re\",\n        \"uid\": \"ccfd6f0c-8f4e-4fd2-a268-1021af77c715\"\n    },\n    {\n        \"aquarium_uid\": \"3445b1e3-453e-4129-b53d-609a57314940\",\n        \"default\": true,\n        \"frt\": 10,\n        \"name\": \"RS Uniform\",\n        \"pd\": 3.0,\n        \"pump_settings\": [\n            {\n                \"fti\": 40,\n                \"hwid\": \"16422546\",\n                \"rti\": 60,\n                \"sync\": true\n            }\n        ],\n        \"rrt\": 2,\n        \"type\": \"un\",\n        \"uid\": \"f902c5af-9c42-4e81-a166-b6b7cfc24c07\"\n    }\n]",
-        "x": 240,
-        "y": 1820,
+        "x": 260,
+        "y": 1900,
         "wires": []
     },
     {
@@ -913,7 +913,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 117",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -921,8 +921,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1270,
-        "y": 2020,
+        "x": 1290,
+        "y": 2060,
         "wires": []
     },
     {
@@ -931,13 +931,13 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "Test ",
         "props": [],
-        "repeat": "",
+        "repeat": "180",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 110,
-        "y": 2720,
+        "x": 130,
+        "y": 2740,
         "wires": [
             [
                 "1ab2ec0feae15f97"
@@ -949,9 +949,9 @@
         "type": "comment",
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea Lights",
-        "info": "//http://[rsled-address]/time\n//http://[rsled-address]/description.xml\n//http://[rsled-address]/cloud\n//http://[rsled-address]/connectivity\n//http://[rsled-address]/connectivity/events\ncurl -i -X POST -H 'Content-Type: application/json' -d '{\"white\": 0, \"blue\":100, \"moon\": 0 }' http://xx.xx.xx.xx/manual\nmode : {\n    mode: auto\n}\ntimer: {\n    \"blue\": 100,\n    \"duration\": 30,\n    \"moon\": 0,\n    \"white\": 100\n}",
+        "info": "//http://[rsled-address]/time\n//http://[rsled-address]/description.xml\n//http://[rsled-address]/cloud\n//http://[rsled-address]/connectivity\n//http://[rsled-address]/connectivity/events\ncurl -i -X POST -H 'Content-Type: application/json' -d '{\"white\": 0, \"blue\":100, \"moon\": 0 }' http://xx.xx.xx.xx/manual\nmode : {\n    mode: auto\n}\ntimer: {\n    \"blue\": 100,\n    \"duration\": 30,\n    \"moon\": 0,\n    \"white\": 100\n}\n\n// Set duration\nPOST http://<IP>/command/manual\n{\n    \"intensity\": 100,\n    \"kelvin\": 15000,\n    \"moon\": 0\n}\n\n// Set duration\nPOST http://<IP>/command/timer\n{\n    \"kelvin\": 15000,\n    \"moon\": 0,\n    \"duration\": 29,\n    \"intensity\": 100\n}\n\nPreset Program Library for cloud. Need to work out local endpoint\nPOST https://cloud.thereefbeat.com/device/f8b3b7c74f38/command/preset_name/1\n{\n    \"name\": \"23K\"\n}",
         "x": 140,
-        "y": 2820,
+        "y": 2840,
         "wires": []
     },
     {
@@ -1483,8 +1483,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 630,
-        "y": 1980,
+        "x": 650,
+        "y": 2020,
         "wires": [
             [
                 "b486d624e7678961",
@@ -1504,8 +1504,8 @@
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 140,
-        "y": 1980,
+        "x": 160,
+        "y": 2020,
         "wires": [
             [
                 "399c7e2d2b29ab59"
@@ -1517,15 +1517,15 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 120",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 630,
-        "y": 1940,
+        "x": 650,
+        "y": 1980,
         "wires": []
     },
     {
@@ -1544,8 +1544,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 930,
-        "y": 1900,
+        "x": 950,
+        "y": 1940,
         "wires": [
             []
         ]
@@ -1561,8 +1561,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 110,
-        "y": 1900,
+        "x": 130,
+        "y": 1940,
         "wires": [
             [
                 "8f43ab0bd7e78a84"
@@ -1581,8 +1581,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 1900,
+        "x": 490,
+        "y": 1940,
         "wires": [
             [
                 "05ca3e3f06722232"
@@ -1597,7 +1597,7 @@
         "method": "POST",
         "ret": "obj",
         "paytoqs": "body",
-        "url": "http://192.168.68.128/feeding/schedule",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -1605,8 +1605,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1330,
-        "y": 2060,
+        "x": 1350,
+        "y": 2100,
         "wires": [
             [
                 "ec3f72d06e5b7656"
@@ -1624,8 +1624,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 110,
-        "y": 2060,
+        "x": 130,
+        "y": 2100,
         "wires": [
             [
                 "b65a3c00a4735b93"
@@ -1637,15 +1637,15 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "WaveMakerFeedSchedulePayload",
-        "func": "\n\n//node.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\n//var newState = msg.payload\n\n// Default value for testing\n//if (!msg.payload) { newState = \"auto\" }\n\n// Looks like wavemaker only takes mode. Not sure what the modes are yet...\n/*\nmsg.payload = {\n    \"pump_settings\": [\n        {\n            \"fti\": 90,\n            \"hwid\": \"16422546\",\n            \"rti\": 100,\n            \"sync\": true\n        }\n    ]\n}\n\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": 9,\n    \"pd\": 6,\n    //\"pump_settings\": [\n    //    {\n    //        \"fti\": 100,\n    //        \"hwid\": \"16422546\",\n    //        \"rti\": 100\n    //    }\n    //],\n    \"rrt\": 5,\n    \"sn\": 3,\n    \"type\": \"un\",\n    \"duration\": 20000,\n    \"fti\": 10,\n    \"rti\": 10,\n    \"sync\": true\n}\nmsg.payload = \n{\n    \"intervals\": [\n        {\n            \"duration\": 26,\n            \"wave_uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n        }\n    ],\n    \"uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n}\n*/\n//node.warn(msg)\nvar uid = msg.payload.uid\nvar wave_uid = msg.payload.intervals[0].wave_uid\nmsg.payload =\n{\n    \"in_sync\": true,\n        \"intervals\": [\n            {\n                \"duration\": msg.newValue,\n                \"name\": \"No Wave\",\n                \"type\": \"nw\",\n                \"wave_uid\": wave_uid\n            }\n        ],\n        \"uid\": uid\n}\nreturn msg;",
+        "func": "\n\n//node.warn(\"NEWSTATE: \" + msg.payload)\n\n// The value is the payload\n//var newState = msg.payload\n\n// Default value for testing\n//if (!msg.payload) { newState = \"auto\" }\n\n// Looks like wavemaker only takes mode. Not sure what the modes are yet...\n/*\nmsg.payload = {\n    \"pump_settings\": [\n        {\n            \"fti\": 90,\n            \"hwid\": \"16422546\",\n            \"rti\": 100,\n            \"sync\": true\n        }\n    ]\n}\n\nmsg.payload = {\n    \"direction\": \"fw\",\n    \"frt\": 9,\n    \"pd\": 6,\n    //\"pump_settings\": [\n    //    {\n    //        \"fti\": 100,\n    //        \"hwid\": \"16422546\",\n    //        \"rti\": 100\n    //    }\n    //],\n    \"rrt\": 5,\n    \"sn\": 3,\n    \"type\": \"un\",\n    \"duration\": 20000,\n    \"fti\": 10,\n    \"rti\": 10,\n    \"sync\": true\n}\nmsg.payload = \n{\n    \"intervals\": [\n        {\n            \"duration\": 26,\n            \"wave_uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n        }\n    ],\n    \"uid\": \"b311c901-6839-497d-b0f7-9d018865f025\"\n}\n*/\n//node.warn(msg)\n\nmsg.url = \"http://\" + global.get(\"RSReefWaveIP\") + \"/feeding/schedule\"\n\nvar uid = msg.payload.uid\nvar wave_uid = msg.payload.intervals[0].wave_uid\nmsg.payload =\n{\n    \"in_sync\": true,\n        \"intervals\": [\n            {\n                \"duration\": msg.newValue,\n                \"name\": \"No Wave\",\n                \"type\": \"nw\",\n                \"wave_uid\": wave_uid\n            }\n        ],\n        \"uid\": uid\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1000,
-        "y": 2060,
+        "x": 1020,
+        "y": 2100,
         "wires": [
             [
                 "0a54e7e6c5feb37a",
@@ -1669,8 +1669,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 630,
-        "y": 2060,
+        "x": 650,
+        "y": 2100,
         "wires": [
             [
                 "bf21d96081cb8f2e",
@@ -1690,8 +1690,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 980,
-        "y": 1940,
+        "x": 1000,
+        "y": 1980,
         "wires": [
             []
         ]
@@ -1724,8 +1724,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 980,
-        "y": 1980,
+        "x": 1000,
+        "y": 2020,
         "wires": [
             []
         ]
@@ -1758,8 +1758,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 160,
-        "y": 2100,
+        "x": 180,
+        "y": 2140,
         "wires": [
             [
                 "b65a3c00a4735b93"
@@ -1782,8 +1782,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 630,
-        "y": 2720,
+        "x": 650,
+        "y": 2740,
         "wires": [
             [
                 "ab49d2ecd4467f5e",
@@ -1803,8 +1803,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
-        "y": 2720,
+        "x": 410,
+        "y": 2740,
         "wires": [
             [
                 "f2bcf39deae1bede"
@@ -1816,15 +1816,15 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 122",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 630,
-        "y": 2680,
+        "x": 650,
+        "y": 2700,
         "wires": []
     },
     {
@@ -1833,8 +1833,8 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "Red Sea WaveMaker - Cloud",
         "info": "",
-        "x": 160,
-        "y": 2200,
+        "x": 180,
+        "y": 2220,
         "wires": []
     },
     {
@@ -1849,8 +1849,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1400,
-        "y": 2720,
+        "x": 1420,
+        "y": 2740,
         "wires": [
             [
                 "996af4bf1d646132",
@@ -1882,8 +1882,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1130,
-        "y": 2720,
+        "x": 1150,
+        "y": 2740,
         "wires": [
             [
                 "bc71889d117efdc8",
@@ -1896,7 +1896,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 129",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1904,8 +1904,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1130,
-        "y": 2680,
+        "x": 1150,
+        "y": 2700,
         "wires": []
     },
     {
@@ -1920,8 +1920,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 870,
-        "y": 2720,
+        "x": 890,
+        "y": 2740,
         "wires": [
             [
                 "665790a231dede0e"
@@ -1941,8 +1941,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1610,
-        "y": 2260,
+        "x": 1630,
+        "y": 2280,
         "wires": []
     },
     {
@@ -1956,8 +1956,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 110,
-        "y": 2300,
+        "x": 130,
+        "y": 2320,
         "wires": [
             [
                 "2cc808bea0b8bcd8"
@@ -1980,8 +1980,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 670,
-        "y": 2300,
+        "x": 690,
+        "y": 2320,
         "wires": [
             [
                 "4c2de54a8fb46514",
@@ -2001,8 +2001,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
-        "y": 2300,
+        "x": 410,
+        "y": 2320,
         "wires": [
             [
                 "4767286d268ef220"
@@ -2014,15 +2014,15 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 132",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 670,
-        "y": 2260,
+        "x": 690,
+        "y": 2280,
         "wires": []
     },
     {
@@ -2037,8 +2037,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 910,
-        "y": 2300,
+        "x": 930,
+        "y": 2320,
         "wires": [
             [
                 "620d29f0299decb6"
@@ -2061,8 +2061,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1130,
-        "y": 2300,
+        "x": 1150,
+        "y": 2320,
         "wires": [
             [
                 "648dc4d24ab38d0b",
@@ -2075,7 +2075,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 133",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2083,8 +2083,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1130,
-        "y": 2260,
+        "x": 1150,
+        "y": 2280,
         "wires": []
     },
     {
@@ -2099,8 +2099,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1390,
-        "y": 2300,
+        "x": 1410,
+        "y": 2320,
         "wires": [
             [
                 "471807bf187a96b6",
@@ -2124,8 +2124,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1610,
-        "y": 2300,
+        "x": 1630,
+        "y": 2320,
         "wires": [
             [
                 "82ad56da39fd49aa",
@@ -2138,7 +2138,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 134",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2146,8 +2146,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1350,
-        "y": 2260,
+        "x": 1370,
+        "y": 2280,
         "wires": []
     },
     {
@@ -2184,8 +2184,8 @@
                 "valueType": "str"
             }
         ],
-        "x": 140,
-        "y": 2460,
+        "x": 160,
+        "y": 2480,
         "wires": [
             [
                 "822dfec83e15372b"
@@ -2226,8 +2226,8 @@
                 "valueType": "str"
             }
         ],
-        "x": 140,
-        "y": 2500,
+        "x": 160,
+        "y": 2520,
         "wires": [
             [
                 "822dfec83e15372b"
@@ -2268,8 +2268,8 @@
                 "valueType": "str"
             }
         ],
-        "x": 130,
-        "y": 2540,
+        "x": 150,
+        "y": 2560,
         "wires": [
             [
                 "822dfec83e15372b"
@@ -2310,8 +2310,8 @@
                 "valueType": "str"
             }
         ],
-        "x": 130,
-        "y": 2580,
+        "x": 150,
+        "y": 2600,
         "wires": [
             [
                 "822dfec83e15372b"
@@ -2330,8 +2330,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
-        "y": 2660,
+        "x": 470,
+        "y": 2680,
         "wires": [
             [
                 "1ab2ec0feae15f97",
@@ -2355,7 +2355,7 @@
         "z": "93fb4f06d7a3a7bc",
         "name": "This Third",
         "props": [],
-        "repeat": "14400",
+        "repeat": "7200",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
@@ -2418,7 +2418,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 136",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2579,7 +2579,7 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "SetDeviceInfo",
-        "func": "// This sets up global variables for the devices\nvar devices = \"Your devices:\"\nfor (let i=0; i < msg.payload.length; i++){\n    //node.warn(msg.payload[i])\n    if (msg.payload[i].type == \"reef-dosing\"){\n        global.set(\"RSReefDose\", true)\n        global.set(\"RSReefDoseHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefDoseModel\", msg.payload[i].model)\n        global.set(\"RSReefDoseIP\", msg.payload[i].ip_address)\n    }\n    if (msg.payload[i].type == \"reef-mat\") {\n        global.set(\"RSReefMat\", true)\n        global.set(\"RSReefMatHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefMatModel\", msg.payload[i].model)\n        global.set(\"RSReefMatIP\", msg.payload[i].ip_address)\n    }\n    if (msg.payload[i].type == \"reef-run\") {\n        global.set(\"RSReefRun\", true)\n        global.set(\"RSReefRunHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefRunModel\", msg.payload[i].model)\n        global.set(\"RSReefRunIP\", msg.payload[i].ip_address)\n    }\n    if (msg.payload[i].type == \"reef-wave\") {\n        global.set(\"RSReefWave\", true)\n        global.set(\"RSReefWaveHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefWaveModel\", msg.payload[i].model)\n        global.set(\"RSReefWaveIP\", msg.payload[i].ip_address)\n        global.set(\"RSReefWaveSchedule\", msg.payload[i].properties.schedule.uid)\n    }\n    if (msg.payload[i].type == \"reef-lights\") {\n        global.set(\"RSReefLights\", true)\n        global.set(\"RSReefLightsHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefLightsModel\", msg.payload[i].model)\n        global.set(\"RSReefLightsIP\", msg.payload[i].ip_address) \n        //global.set(\"RSReefLightsSchedule\", msg.payload[i].properties.schedule.uid)\n    }\n    devices = devices + \"\\n \" + msg.payload[i].model.toString() + \" IP: \" + msg.payload[i].ip_address\n    //node.warn(devices)\n    //node.warn(msg.payload[i].model)\n}\n\nmsg.payload.devices = devices\n//node.warn(msg.payload.devices)\n\nreturn msg;",
+        "func": "// This sets up global variables for the devices\nvar devices = \"Your devices:\"\nfor (let i=0; i < msg.payload.length; i++){\n    //node.warn(msg.payload[i])\n    if (msg.payload[i].type == \"reef-dosing\"){\n        global.set(\"RSReefDose\", true)\n        global.set(\"RSReefDoseHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefDoseModel\", msg.payload[i].model)\n        global.set(\"RSReefDoseIP\", msg.payload[i].ip_address)\n    }\n    if (msg.payload[i].type == \"reef-mat\") {\n        global.set(\"RSReefMat\", true)\n        global.set(\"RSReefMatHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefMatModel\", msg.payload[i].model)\n        global.set(\"RSReefMatIP\", msg.payload[i].ip_address)\n    }\n    if (msg.payload[i].type == \"reef-run\") {\n        global.set(\"RSReefRun\", true)\n        global.set(\"RSReefRunHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefRunModel\", msg.payload[i].model)\n        global.set(\"RSReefRunIP\", msg.payload[i].ip_address)\n    }\n    if (msg.payload[i].type == \"reef-wave\") {\n        global.set(\"RSReefWave\", true)\n        global.set(\"RSReefWaveHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefWaveModel\", msg.payload[i].model)\n        global.set(\"RSReefWaveIP\", msg.payload[i].ip_address)\n        global.set(\"RSReefWaveSchedule\", msg.payload[i].properties.schedule.uid)\n    }\n    if (msg.payload[i].type == \"reef-lights\") {\n        global.set(\"RSReefLights\", true)\n        global.set(\"RSReefLightsHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefLightsModel\", msg.payload[i].model)\n        global.set(\"RSReefLightsIP\", msg.payload[i].ip_address) \n        //global.set(\"RSReefLightsSchedule\", msg.payload[i].properties.schedule.uid)\n    }\n    if (msg.payload[i].type == \"reef-ato\") {\n        global.set(\"RSReefATO\", true)\n        global.set(\"RSReefATOHWID\", msg.payload[i].hwid)\n        global.set(\"RSReefATOModel\", msg.payload[i].model)\n        global.set(\"RSReefATOIP\", msg.payload[i].ip_address)\n        //global.set(\"RSReefLightsSchedule\", msg.payload[i].properties.schedule.uid)\n    }\n    devices = devices + \"\\n \" + msg.payload[i].model.toString() + \" IP: \" + msg.payload[i].ip_address\n    //node.warn(devices)\n    //node.warn(msg.payload[i].model)\n}\n\nmsg.payload.devices = devices\n//node.warn(msg.payload.devices)\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2752,7 +2752,7 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "Do this First: Enter ReefBeat Credentials Here Then Deploy Flow Then Trigger",
-        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"user\")\nglobal.set(\"RSPass\", \"pass\")\nreturn msg;",
+        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"your@email.com\")\nglobal.set(\"RSPass\", \"YourPassword\")\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2873,8 +2873,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 100,
-        "y": 2380,
+        "x": 120,
+        "y": 2400,
         "wires": [
             [
                 "2cc808bea0b8bcd8"
@@ -2909,8 +2909,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 100,
-        "y": 2340,
+        "x": 120,
+        "y": 2360,
         "wires": [
             [
                 "2cc808bea0b8bcd8"
@@ -2969,8 +2969,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 1640,
-        "y": 2520,
+        "x": 1660,
+        "y": 2540,
         "wires": [
             []
         ]
@@ -3003,8 +3003,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 1640,
-        "y": 2560,
+        "x": 1660,
+        "y": 2580,
         "wires": [
             []
         ]
@@ -3037,8 +3037,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 1630,
-        "y": 2600,
+        "x": 1650,
+        "y": 2620,
         "wires": [
             []
         ]
@@ -3071,8 +3071,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 1630,
-        "y": 2640,
+        "x": 1650,
+        "y": 2660,
         "wires": [
             []
         ]
@@ -3105,8 +3105,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 1650,
-        "y": 2720,
+        "x": 1670,
+        "y": 2740,
         "wires": [
             []
         ]
@@ -3145,8 +3145,8 @@
                 "valueType": "str"
             }
         ],
-        "x": 120,
-        "y": 2620,
+        "x": 140,
+        "y": 2640,
         "wires": [
             [
                 "822dfec83e15372b"
@@ -3181,8 +3181,8 @@
                 "valueType": "previousValue"
             }
         ],
-        "x": 1620,
-        "y": 2680,
+        "x": 1640,
+        "y": 2700,
         "wires": [
             []
         ]
@@ -3199,8 +3199,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 690,
-        "y": 2540,
+        "x": 710,
+        "y": 2560,
         "wires": [
             [
                 "16afb6bcd2299eab"
@@ -3223,8 +3223,8 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 910,
-        "y": 2540,
+        "x": 930,
+        "y": 2560,
         "wires": [
             [
                 "a495097117f0090a",
@@ -3237,15 +3237,15 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 138",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 910,
-        "y": 2500,
+        "x": 930,
+        "y": 2520,
         "wires": []
     },
     {
@@ -3260,8 +3260,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
-        "y": 2540,
+        "x": 410,
+        "y": 2560,
         "wires": [
             [
                 "45997b82acf68360",
@@ -3274,7 +3274,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 139",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3282,8 +3282,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 370,
-        "y": 2500,
+        "x": 390,
+        "y": 2520,
         "wires": []
     },
     {
@@ -3291,7 +3291,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 140",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3299,8 +3299,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1370,
-        "y": 2680,
+        "x": 1390,
+        "y": 2700,
         "wires": []
     },
     {
@@ -3315,8 +3315,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 1200,
-        "y": 2540,
+        "x": 1220,
+        "y": 2560,
         "wires": [
             []
         ]
@@ -3333,8 +3333,8 @@
         "attributes": [],
         "inputOverride": "allow",
         "outputProperties": [],
-        "x": 1840,
-        "y": 2300,
+        "x": 1860,
+        "y": 2320,
         "wires": [
             []
         ]
@@ -3389,8 +3389,8 @@
                 "valueType": "triggerId"
             }
         ],
-        "x": 180,
-        "y": 2660,
+        "x": 200,
+        "y": 2680,
         "wires": [
             [
                 "de663c67a8187d97"
@@ -3402,15 +3402,15 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 141",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 430,
-        "y": 2620,
+        "x": 450,
+        "y": 2640,
         "wires": []
     },
     {
@@ -3425,8 +3425,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 1980,
+        "x": 450,
+        "y": 2020,
         "wires": [
             [
                 "ed5921976ec1c90e"
@@ -3445,8 +3445,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 2060,
+        "x": 450,
+        "y": 2100,
         "wires": [
             [
                 "778616bf3511dc21"
@@ -3549,7 +3549,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 142",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3637,7 +3637,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 650,
@@ -3649,7 +3650,7 @@
         "type": "debug",
         "z": "93fb4f06d7a3a7bc",
         "name": "debug 144",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3943,6 +3944,1998 @@
         ]
     },
     {
+        "id": "47a3c05c9f0c18c4",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Every 5min",
+        "props": [],
+        "repeat": "300",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 2940,
+        "wires": [
+            [
+                "6be0eb1817ca53e7"
+            ]
+        ]
+    },
+    {
+        "id": "6be0eb1817ca53e7",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefLed Settings",
+        "func": "if (global.get(\"RSReefLights\")){\n    msg.url = \"http://\" + global.get(\"RSReefLightsIP\") + \"/dashboard\"\n}\nelse {node.warn(\"No ReefLights Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 2940,
+        "wires": [
+            [
+                "c213371fc5a86f90",
+                "9f9b3c3fd4f8d135"
+            ]
+        ]
+    },
+    {
+        "id": "c213371fc5a86f90",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 151",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 2900,
+        "wires": []
+    },
+    {
+        "id": "9f9b3c3fd4f8d135",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 570,
+        "y": 2940,
+        "wires": [
+            [
+                "5fa457587bb636d7",
+                "2d321fcd59482584"
+            ]
+        ]
+    },
+    {
+        "id": "5fa457587bb636d7",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 152",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 2900,
+        "wires": []
+    },
+    {
+        "id": "2d321fcd59482584",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "GetCurrentLightValues",
+        "func": "//var activeSchedule = global.get(\"LightsActiveSchedule\")\n\n//node.warn(activeSchedule)\n/* Set global variables in HA entities \nglobal.set(\"RSReefLightsKelvin\", msg.payload.manual.kelvin)\nglobal.set(\"RSReefLightsIntensity\", msg.payload.manual.intensity)\nglobal.set(\"RSReefLightsMoon\", msg.payload.manual.moon)\n\n// I think G2 can't manually set blue and white\nglobal.set(\"RSReefLightsBlue\", msg.payload.manual.blue)\nglobal.set(\"RSReefLightsWhite\", msg.payload.manual.white)\n*/\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 2940,
+        "wires": [
+            [
+                "715ad09598636e45",
+                "a97a4f5a3e08e4fe",
+                "f0c0c316ab721fa4",
+                "1d740f23325d43aa",
+                "8d83a2587f459130",
+                "8df236630cdcf5f1",
+                "0996358147e07038",
+                "fac0e143c682ee4c",
+                "ce4f79c167696241",
+                "acc492b4c481d636",
+                "76c7a0115b6dde1c",
+                "6b97e4881b42a0cd",
+                "d436e30b0e873924",
+                "8704315979c81e7f",
+                "0b17a4aa845e2ec4",
+                "0e9ca26fa959f1f5",
+                "554a2c31a984a8e4",
+                "0df4d1c16955ac04",
+                "d9169c47df9deabf",
+                "5819ebc0790f7cf1",
+                "d816f1940641fbb9",
+                "bef6405a69114f54",
+                "31bc2a4ca5ce3f4e",
+                "0494b0658372cdac",
+                "08f7618c7c9e3a24",
+                "2171cef478f856bb",
+                "15e1532a43291992"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "715ad09598636e45",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 154",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 2900,
+        "wires": []
+    },
+    {
+        "id": "a97a4f5a3e08e4fe",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsBatteryLevel",
+        "entityConfig": "2a3ef9923e2cda51",
+        "version": 0,
+        "state": "payload.battery_level",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1050,
+        "y": 2980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0c0c316ab721fa4",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsTimeError",
+        "entityConfig": "b5e42181ea1fd5fb",
+        "version": 0,
+        "state": "payload.time_error",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1040,
+        "y": 3020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d740f23325d43aa",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsTiltSwitch",
+        "entityConfig": "967beb380f17cbc2",
+        "version": 0,
+        "state": "payload.tilt_switch",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1040,
+        "y": 3060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d83a2587f459130",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsAclimationEnabled",
+        "entityConfig": "3c489ddec931e918",
+        "version": 0,
+        "state": "payload.acclimation.enabled",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1070,
+        "y": 3100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8df236630cdcf5f1",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsAclimationStartedOn",
+        "entityConfig": "b4a15cd44d8e9995",
+        "version": 0,
+        "state": "payload.acclimation.started_on",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1080,
+        "y": 3140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0996358147e07038",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsAclimationDuration",
+        "entityConfig": "660d8dee9d337914",
+        "version": 0,
+        "state": "payload.acclimation.duration",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1070,
+        "y": 3180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fac0e143c682ee4c",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsAclimationRemainingDays",
+        "entityConfig": "de8079a708d626c5",
+        "version": 0,
+        "state": "payload.acclimation.remaining_days",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1090,
+        "y": 3220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce4f79c167696241",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsAclimationStartIntensityFactor",
+        "entityConfig": "391cad14dc8cb412",
+        "version": 0,
+        "state": "payload.acclimation.start_intensity_factor",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1110,
+        "y": 3260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "acc492b4c481d636",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsAclimationCurrentIntensityFactor",
+        "entityConfig": "1de0cddfd2273ba9",
+        "version": 0,
+        "state": "payload.acclimation.current_intensity_factor",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1110,
+        "y": 3300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "76c7a0115b6dde1c",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMoonPhaseEnabled",
+        "entityConfig": "830717efade97f92",
+        "version": 0,
+        "state": "payload.moon_phase.enabled",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1080,
+        "y": 3340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6b97e4881b42a0cd",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMoonPhaseName",
+        "entityConfig": "9502ed676376529c",
+        "version": 0,
+        "state": "payload.moon_phase.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1070,
+        "y": 3380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d436e30b0e873924",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMoonPhaseIntensity",
+        "entityConfig": "ece98cf8d0a3ed38",
+        "version": 0,
+        "state": "payload.moon_phase.intensity",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1080,
+        "y": 3420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8704315979c81e7f",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMoonPhaseTodaysMoonDay",
+        "entityConfig": "56a88a79eff34169",
+        "version": 0,
+        "state": "payload.moon_phase.todays_moon_day",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1100,
+        "y": 3460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b17a4aa845e2ec4",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMoonPhaseNextFullMoon",
+        "entityConfig": "f2b0b26848a5a895",
+        "version": 0,
+        "state": "payload.moon_phase.next_full_moon",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1090,
+        "y": 3500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0e9ca26fa959f1f5",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMoonPhaseNextNewMoon",
+        "entityConfig": "9162731b278aa81a",
+        "version": 0,
+        "state": "payload.moon_phase.next_new_moon",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1100,
+        "y": 3540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "554a2c31a984a8e4",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsCurrentProgramActivePreset",
+        "entityConfig": "b9fcc1306699cbc7",
+        "version": 0,
+        "state": "payload.current_program.active_preset",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1100,
+        "y": 3860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0df4d1c16955ac04",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsCurrentProgramName",
+        "entityConfig": "e7af747af3ce22d1",
+        "version": 0,
+        "state": "payload.current_program.name",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1080,
+        "y": 3900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "22afcb6589f04494",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test Mode Manual",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"kelvin\": 23000, \"intensity\":10, \"moon\": 1, \"duration\": 10}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 3040,
+        "wires": [
+            [
+                "2feffc2190be5445"
+            ]
+        ]
+    },
+    {
+        "id": "76bddf7e7dfa688d",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 570,
+        "y": 3080,
+        "wires": [
+            [
+                "bfce6841f9fc8546",
+                "833aa2fe6d16cb95",
+                "79976bed2bb3745e"
+            ]
+        ]
+    },
+    {
+        "id": "64b5827c1ab51d3a",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 157",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 3140,
+        "wires": []
+    },
+    {
+        "id": "bfce6841f9fc8546",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 158",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 3040,
+        "wires": []
+    },
+    {
+        "id": "13b69469e9798881",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsKelvin",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "1744f00bd833f409",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "kelvin",
+                "valueType": "str"
+            }
+        ],
+        "x": 130,
+        "y": 3080,
+        "wires": [
+            [
+                "b44fa6017fb97721"
+            ]
+        ]
+    },
+    {
+        "id": "b44fa6017fb97721",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "NewValuePayload",
+        "func": "if (global.get(\"RSReefLights\")) {\n    msg.url = \"http://\" + global.get(\"RSReefLightsIP\") + \"/manual\"\n}\nelse { node.warn(\"No ReefLights Devices Found\"); return null }\n\n// Only adjust values if we're in manual mode\nif (flow.get(\"lightMode\") == \"auto\") {return null}\n\n// Exit if values updated but not different\nif (msg.payload == msg.previousValue) { return null }\n\n// Get globals\nvar kelvin = global.get(\"RSReefLightsKelvin\")\nvar intensity = global.get(\"RSReefLightsIntensity\")\nvar moon = global.get(\"RSReefLightsMoon\")\n// I think G2 can't manually set blue and white\nvar blue = global.get(\"RSReefLightsBlue\")\nvar white = global.get(\"RSReefLightsWhite\")\n\n\n// Update what has changed\nif (msg.changeItem == \"kelvin\"){ \n        kelvin = msg.payload\n} else if (msg.changeItem == \"intensity\"){\n        intensity = msg.payload\n} else if (msg.changeItem == \"moon\"){\n        moon = msg.payload\n} else if (msg.changeItem == \"blue\") {\n        blue = msg.payload \n} else if (msg.changeItem == \"white\") {\n        white = msg.payload\n} else if (msg.changeItem == \"duration\") {\n    var duration = msg.payload\n}\n\nif (! duration || duration == 0) {\nmsg.payload = {\n    kelvin: kelvin,\n    intensity: intensity,\n    moon: moon\n}\n}\nelse {\n    msg.payload = {\n        kelvin: kelvin,\n        intensity: intensity,\n        moon: moon,\n        duration: duration\n    }\n}\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 3180,
+        "wires": [
+            [
+                "76bddf7e7dfa688d",
+                "64b5827c1ab51d3a"
+            ]
+        ]
+    },
+    {
+        "id": "d2912260646e766a",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsIntensity",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "6eafc53f1621418c",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "intensity",
+                "valueType": "str"
+            }
+        ],
+        "x": 140,
+        "y": 3120,
+        "wires": [
+            [
+                "b44fa6017fb97721"
+            ]
+        ]
+    },
+    {
+        "id": "26f71afd71b73ee8",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMoon",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "5848159de692eb1c",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "moon",
+                "valueType": "str"
+            }
+        ],
+        "x": 130,
+        "y": 3160,
+        "wires": [
+            [
+                "b44fa6017fb97721"
+            ]
+        ]
+    },
+    {
+        "id": "afe68f2b3337bdfd",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMode",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "0e3c7c960d2eece8",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "lightMode",
+                "propertyType": "flow",
+                "value": "",
+                "valueType": "value"
+            }
+        ],
+        "x": 130,
+        "y": 3320,
+        "wires": [
+            [
+                "8361bf9159c066b3"
+            ]
+        ]
+    },
+    {
+        "id": "8361bf9159c066b3",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "NewValuePayload",
+        "func": "var mode = msg.payload\n\n// Only proceed if value has changed\nif (global.get(\"RSReefLights\")) {\n    if (mode != msg.previousValue) {\n        if ( mode == \"off\" ) {\n            msg.url = \"http://\" + global.get(\"RSReefLightsIP\") + \"/off\"\n        } else { \n            msg.url = \"http://\" + global.get(\"RSReefLightsIP\") + \"/mode\"\n        }\n        msg.payload = {\n            mode: mode\n        }\n    } else {return}\n    return msg\n}\nelse { node.warn(\"No ReefLights Devices Found\"); return }",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 3320,
+        "wires": [
+            [
+                "64b5827c1ab51d3a",
+                "09e32565893e10ed"
+            ]
+        ]
+    },
+    {
+        "id": "d9169c47df9deabf",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMode",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "0e3c7c960d2eece8",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.mode",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1030,
+        "y": 2940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5819ebc0790f7cf1",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsKelvin",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "1744f00bd833f409",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.manual.kelvin",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "kelvin",
+                "valueType": "str"
+            },
+            {
+                "property": "RSReefLightsKelvin",
+                "propertyType": "global",
+                "value": "",
+                "valueType": "value"
+            }
+        ],
+        "x": 1030,
+        "y": 3580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d816f1940641fbb9",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsIntensity",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "6eafc53f1621418c",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.manual.intensity",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "intensity",
+                "valueType": "str"
+            },
+            {
+                "property": "RSReefLightsIntensity",
+                "propertyType": "global",
+                "value": "",
+                "valueType": "value"
+            }
+        ],
+        "x": 1040,
+        "y": 3620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bef6405a69114f54",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsMoon",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "5848159de692eb1c",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.manual.moon",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "moon",
+                "valueType": "str"
+            },
+            {
+                "property": "RSReefLightsMoon",
+                "propertyType": "global",
+                "value": "",
+                "valueType": "value"
+            }
+        ],
+        "x": 1030,
+        "y": 3660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "31bc2a4ca5ce3f4e",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsManualFan",
+        "entityConfig": "351d9496a00a6713",
+        "version": 0,
+        "state": "payload.manual.fan",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1050,
+        "y": 3780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0494b0658372cdac",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsManualTemperature",
+        "entityConfig": "101bf342c21adce0",
+        "version": 0,
+        "state": "payload.manual.temperature",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1070,
+        "y": 3820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "10ee5c0b5a12d2e6",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsWhite",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "2d92747cc331e899",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "white",
+                "valueType": "str"
+            }
+        ],
+        "x": 130,
+        "y": 3200,
+        "wires": [
+            [
+                "b44fa6017fb97721"
+            ]
+        ]
+    },
+    {
+        "id": "08f7618c7c9e3a24",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsWhite",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "2d92747cc331e899",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.manual.white",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "white",
+                "valueType": "str"
+            },
+            {
+                "property": "RSReefLightsWhite",
+                "propertyType": "global",
+                "value": "",
+                "valueType": "value"
+            }
+        ],
+        "x": 1030,
+        "y": 3700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "839778fc132a790a",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsBlue",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "b58b2d0c79193e0e",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "blue",
+                "valueType": "str"
+            }
+        ],
+        "x": 120,
+        "y": 3240,
+        "wires": [
+            [
+                "b44fa6017fb97721"
+            ]
+        ]
+    },
+    {
+        "id": "2171cef478f856bb",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsBlue",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "b58b2d0c79193e0e",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.manual.blue",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "blue",
+                "valueType": "str"
+            },
+            {
+                "property": "RSReefLightsBlue",
+                "propertyType": "global",
+                "value": "",
+                "valueType": "value"
+            }
+        ],
+        "x": 1020,
+        "y": 3740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ba147e9e3a41252d",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test 2ml head 1",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "data.entity_id",
+                "v": "1",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2",
+        "payloadType": "num",
+        "x": 160,
+        "y": 1720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5dca56bba1deccb6",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 650,
+        "y": 1720,
+        "wires": [
+            [
+                "767c7a0729c13b24",
+                "fe3ed67df2224e0c"
+            ]
+        ]
+    },
+    {
+        "id": "9247272a64d1bb98",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ManualDoseHead",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "7d0275db9ebd6246",
+        "exposeAsEntityConfig": "",
+        "mode": "get",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "head",
+                "propertyType": "flow",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue.head",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 410,
+        "y": 1800,
+        "wires": [
+            [
+                "97a0e79db3d6c0c1",
+                "6f7125d62b053904"
+            ]
+        ]
+    },
+    {
+        "id": "97a0e79db3d6c0c1",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ManualDoseVolume",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "a647f8cf3bb424e5",
+        "exposeAsEntityConfig": "",
+        "mode": "get",
+        "value": "payload.manual.volume",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "volume",
+                "propertyType": "flow",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue.volume",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 670,
+        "y": 1800,
+        "wires": [
+            [
+                "1b5d0b4b4a2e2d53",
+                "8f832b502e143ef2"
+            ]
+        ]
+    },
+    {
+        "id": "e45ddbfd62af6ead",
+        "type": "ha-button",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ManualDoseNow",
+        "version": 0,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityConfig": "f9527650ff515a86",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "x": 140,
+        "y": 1800,
+        "wires": [
+            [
+                "9247272a64d1bb98"
+            ]
+        ]
+    },
+    {
+        "id": "1b5d0b4b4a2e2d53",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefDose Manual",
+        "func": "var head = flow.get(\"head\")\nvar volume = flow.get(\"volume\")\n\n//node.warn(\"Head:\" + head )\n//node.warn(\"Volume:\" + volume)\n\nif (global.get(\"RSReefDose\")){\n    msg.url = \"http://\" + global.get(\"RSReefDoseIP\") + \"/head/\" + head + \"/manual\"\n}\nelse {node.warn(\"No ReefDose Devices Found\");return}\n\nmsg.payload = {\n    \"manual_dose_scheduled\": true,\n    \"volume\": volume\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 1720,
+        "wires": [
+            [
+                "b4de56184c7e3118",
+                "5dca56bba1deccb6"
+            ]
+        ]
+    },
+    {
+        "id": "6f7125d62b053904",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 161",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 1760,
+        "wires": []
+    },
+    {
+        "id": "8f832b502e143ef2",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 162",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 1760,
+        "wires": []
+    },
+    {
+        "id": "f96c2480f744a7b7",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "G2 Lights Manual Have Kelvin, Intensity, Moon, Duration",
+        "info": "",
+        "x": 270,
+        "y": 3000,
+        "wires": []
+    },
+    {
+        "id": "f41f277882e28486",
+        "type": "ha-number",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsDuration",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "f0bd2e978089f79b",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            },
+            {
+                "property": "changeItem",
+                "propertyType": "msg",
+                "value": "duration",
+                "valueType": "str"
+            }
+        ],
+        "x": 140,
+        "y": 3280,
+        "wires": [
+            [
+                "b44fa6017fb97721"
+            ]
+        ]
+    },
+    {
+        "id": "2feffc2190be5445",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "NewValuePayload",
+        "func": "if (global.get(\"RSReefLights\")) {\n    msg.url = \"http://\" + global.get(\"RSReefLightsIP\") + \"/manual\"\n}\nelse { node.warn(\"No ReefLights Devices Found\"); return }\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 3040,
+        "wires": [
+            [
+                "76bddf7e7dfa688d",
+                "64b5827c1ab51d3a"
+            ]
+        ]
+    },
+    {
+        "id": "70a87658356df6db",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsPreset",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 0,
+        "outputs": 1,
+        "entityConfig": "6fe5651395e05e99",
+        "exposeAsEntityConfig": "",
+        "mode": "listen",
+        "value": "payload",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 130,
+        "y": 3480,
+        "wires": [
+            [
+                "106454a43d122dec"
+            ]
+        ]
+    },
+    {
+        "id": "2cd254388e89dcff",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "NewValuePayload",
+        "func": "if (global.get(\"RSReefLights\")) {\n    //msg.url = \"http://\" + global.get(\"RSReefLightsIP\") + \"/command/preset_name/1\"\n    msg.url = \"http://\" + global.get(\"RSReefLightsIP\") + \"/current_program\"\n    if (msg.payload == msg.previousValue) {return}\n}\nelse { node.warn(\"No ReefLights Devices Found\"); return }\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 3520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15e1532a43291992",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsPreset",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "6fe5651395e05e99",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.current_program.name",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1030,
+        "y": 3940,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "833aa2fe6d16cb95",
+        "type": "delay",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 740,
+        "y": 3080,
+        "wires": [
+            [
+                "6be0eb1817ca53e7"
+            ]
+        ]
+    },
+    {
+        "id": "106454a43d122dec",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "d": true,
+        "name": "GetTokenPayload",
+        "func": "// Exit if no change\nif (msg.payload == msg.previousValue) {return}\n\nflow.set(\"SetLightsPreset\", msg.payload)\n\nmsg.headers = {\n    \"Authorization\": \"Basic Z0ZqSHRKcGE6Qzlmb2d3cmpEV09SVDJHWQ==\",\n    \"Content-Type\": \"application/x-www-form-urlencoded\"\n};\n\nmsg.url = \"https://cloud.reef-beat.com/oauth/token\"\n\nmsg.payload = \"grant_type=password&username=\" + global.get(\"RSUser\") + \"&password=\" + global.get(\"RSPass\");\n\n\nif (global.get(\"RSReefLights\")) {node.send}\nelse { node.warn(\"No ReefLights Devices Found\"); return }\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 3480,
+        "wires": [
+            [
+                "c30e236889558fac",
+                "ce2ee7ad3cdf7ed3"
+            ]
+        ]
+    },
+    {
+        "id": "c30e236889558fac",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 530,
+        "y": 3480,
+        "wires": [
+            [
+                "98e3677de5ec684d",
+                "5d3b60f8059cdfbd"
+            ]
+        ]
+    },
+    {
+        "id": "98e3677de5ec684d",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "SetTokenGetUID",
+        "func": "msg.headers = {\n    \"Authorization\": \"Bearer \" + msg.payload.access_token,\n    \"Content-Type\": \"application/json\"\n}\nflow.set(\"auth_token\", msg.payload.access_token)\n//node.warn(flow.get(\"auth_token\"))\nmsg.url = \"https://cloud.reef-beat.com/aquarium\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 3480,
+        "wires": [
+            [
+                "164c77afcb993235",
+                "fa55e791dff6528c"
+            ]
+        ]
+    },
+    {
+        "id": "164c77afcb993235",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "994e94fc39644f26",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 530,
+        "y": 3540,
+        "wires": [
+            [
+                "f9ecc755fafd8b1e",
+                "1e374a347208cfa1"
+            ]
+        ]
+    },
+    {
+        "id": "f9ecc755fafd8b1e",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "SetTokenURLLightPreset",
+        "func": "msg.headers = {\n    \"Authorization\": \"Bearer \" + flow.get(\"auth_token\"),\n    \"Content-Type\": \"application/json\"\n}\n\n//msg.url = \"https://cloud.reef-beat.com/aquarium/\" + msg.payload[0].uid + \"/command/preset_name/1\"\nmsg.url = \"https://cloud.thereefbeat.com/device/f8b3b7c74f38/command/preset_name/1\"\nmsg.payload = {\n    \"name\": flow.get(\"SetLightsPreset\")\n}\n//node.warn(msg.url)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 3540,
+        "wires": [
+            [
+                "4318788145c4d72c",
+                "0af1dbd18ae398e6"
+            ]
+        ]
+    },
+    {
+        "id": "ce2ee7ad3cdf7ed3",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 163",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 310,
+        "y": 3440,
+        "wires": []
+    },
+    {
+        "id": "5d3b60f8059cdfbd",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 164",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 3440,
+        "wires": []
+    },
+    {
+        "id": "fa55e791dff6528c",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 165",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 3440,
+        "wires": []
+    },
+    {
+        "id": "1e374a347208cfa1",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 166",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 3520,
+        "wires": []
+    },
+    {
+        "id": "4318788145c4d72c",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 167",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 3520,
+        "wires": []
+    },
+    {
+        "id": "2d93b55e7370ead9",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsPreset - Cloud WIP",
+        "info": "",
+        "x": 170,
+        "y": 3400,
+        "wires": []
+    },
+    {
+        "id": "0af1dbd18ae398e6",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "994e94fc39644f26",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 3640,
+        "wires": [
+            [
+                "61e63cf8d55111fd"
+            ]
+        ]
+    },
+    {
+        "id": "61e63cf8d55111fd",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 168",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 3600,
+        "wires": []
+    },
+    {
+        "id": "09e32565893e10ed",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 570,
+        "y": 3320,
+        "wires": [
+            [
+                "bfce6841f9fc8546",
+                "79976bed2bb3745e",
+                "6be0eb1817ca53e7"
+            ]
+        ]
+    },
+    {
+        "id": "1f356417b8eeade8",
+        "type": "comment",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATO - placeholder",
+        "info": "",
+        "x": 150,
+        "y": 4020,
+        "wires": []
+    },
+    {
+        "id": "3f191d96d6636b81",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Every 5min",
+        "props": [],
+        "repeat": "300",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 4100,
+        "wires": [
+            [
+                "7ded3989c308c568"
+            ]
+        ]
+    },
+    {
+        "id": "7ded3989c308c568",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefATO Settings",
+        "func": "if (global.get(\"RSReefATO\")){\n    msg.url = \"http://\" + global.get(\"RSReefATOIP\") + \"/dashboard\"\n}\nelse {node.warn(\"No ReefATO Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 4100,
+        "wires": [
+            [
+                "c00238ee6fe91d8e",
+                "24358aa81ea5b997"
+            ]
+        ]
+    },
+    {
+        "id": "c00238ee6fe91d8e",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 169",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 4060,
+        "wires": []
+    },
+    {
+        "id": "24358aa81ea5b997",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 590,
+        "y": 4100,
+        "wires": [
+            [
+                "3e81cac6ec25389c",
+                "bb484690068fb132"
+            ]
+        ]
+    },
+    {
+        "id": "3e81cac6ec25389c",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 170",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 4060,
+        "wires": []
+    },
+    {
+        "id": "bb484690068fb132",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "GetCurrentATOValues",
+        "func": "\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 4100,
+        "wires": [
+            [
+                "966e4ae251ef1bc5"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "966e4ae251ef1bc5",
+        "type": "debug",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "debug 171",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 4060,
+        "wires": []
+    },
+    {
+        "id": "79976bed2bb3745e",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "LightsLastCommandStatus",
+        "entityConfig": "4cf9a7f320f0f68f",
+        "version": 0,
+        "state": "payload.message",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "allow",
+        "outputProperties": [],
+        "x": 1080,
+        "y": 2900,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "8622b2230b385942",
         "type": "ha-entity-config",
         "server": "caf9ba1992c9f965",
@@ -3981,7 +5974,7 @@
             }
         ],
         "resend": true,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "dae8aa7e26863969",
@@ -4022,7 +6015,7 @@
             }
         ],
         "resend": true,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "d0cb2ad053e21785",
@@ -4063,7 +6056,7 @@
             }
         ],
         "resend": true,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "fda19838d43d97fc",
@@ -4104,7 +6097,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "0bee1cb3914e5e15",
@@ -4145,7 +6138,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "e247756b63567ed8",
@@ -4186,7 +6179,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "377b9e06d9d40850",
@@ -4227,7 +6220,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "1117c9c480f41ea3",
@@ -4309,7 +6302,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "3a8459e4657ff702",
@@ -4350,7 +6343,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "1eab63fe7c5278b9",
@@ -4391,7 +6384,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "f4e2971f10693b77",
@@ -4432,7 +6425,7 @@
             }
         ],
         "resend": true,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "2da421c0cd373f85",
@@ -4473,7 +6466,7 @@
             }
         ],
         "resend": true,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "0532ec63a052adfa",
@@ -4514,7 +6507,7 @@
             }
         ],
         "resend": true,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "1c79feb62a03458f",
@@ -4555,7 +6548,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "04c6d24f05021b64",
@@ -4596,7 +6589,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "28d87086bfb9ba54",
@@ -4649,7 +6642,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "a0b5ee75f380e1f0",
@@ -4690,7 +6683,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "0336e585822d6738",
@@ -4731,7 +6724,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "8db87c4539797afc",
@@ -4772,7 +6765,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "7d384937792c9d86",
@@ -4813,7 +6806,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "64d4c459cd31d03a",
@@ -4854,7 +6847,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "ee9d565c6f7932f2",
@@ -4895,7 +6888,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "717a438c0c1ad2b4",
@@ -4936,7 +6929,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "628ae3ba3c61f832",
@@ -4977,7 +6970,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "83ad6f2d56267cbf",
@@ -5018,7 +7011,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "85adae44ea93027a",
@@ -5059,7 +7052,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "cd09158a14612668",
@@ -5100,7 +7093,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "d4c7de5f22cd0674",
@@ -5141,7 +7134,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "3faa22a034cb4334",
@@ -5182,7 +7175,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "f0dd2ea7b91c3f1f",
@@ -5223,7 +7216,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "1797d4fa36801d98",
@@ -5264,7 +7257,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "d751b9a98d6b3c6b",
@@ -5305,7 +7298,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "a5d17d3f9e250603",
@@ -5346,7 +7339,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "b86b722722e064a6",
@@ -5387,7 +7380,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "fdb3f48ee1b73376",
@@ -5440,7 +7433,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "f77f5ec5d961c4f6",
@@ -5481,7 +7474,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "00519b0a4cd0ae64",
@@ -5608,7 +7601,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "994e94fc39644f26",
@@ -5675,7 +7668,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "d1f79ffc05882bda",
@@ -5728,7 +7721,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "6c4fa4d696136e6e",
@@ -5781,7 +7774,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "a15b5eb2ffc5cb40",
@@ -5834,7 +7827,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "8b9dea3eac7d4ce8",
@@ -5957,7 +7950,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "12ba62e53d136fca",
@@ -6115,7 +8108,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "cf4df60b0dfe2ee3",
@@ -6168,7 +8161,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "73e74eefc1781150",
@@ -6209,7 +8202,7 @@
             }
         ],
         "resend": false,
-        "debugEnabled": true
+        "debugEnabled": false
     },
     {
         "id": "caf9ba1992c9f965",
@@ -6611,6 +8604,1344 @@
         "debugEnabled": false
     },
     {
+        "id": "2a3ef9923e2cda51",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsBatteryLevel",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsBatteryLevel"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:battery"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "b5e42181ea1fd5fb",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsTimeError",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsTimeError"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "967beb380f17cbc2",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsTiltSwitch",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsTiltSwitch"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "3c489ddec931e918",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsAcclimationEnabled",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsAcclimationEnabled"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "b4a15cd44d8e9995",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsAcclimationStartedOn",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsAcclimationStartedOn"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "660d8dee9d337914",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsAclimationDuration",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsAclimationDuration"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "seconds"
+            },
+            {
+                "property": "state_class",
+                "value": "measurement"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "de8079a708d626c5",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsAclimationRemainingDays",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsAclimationRemainingDays"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "days"
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "391cad14dc8cb412",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsAclimationStartIntensityFactor",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsAclimationStartIntensityFactor"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "1de0cddfd2273ba9",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsAclimationCurrentIntensityFactor",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsAclimationCurrentIntensityFactor"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "830717efade97f92",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsMoonPhaseEnabled",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsMoonPhaseEnabled"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "9502ed676376529c",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsMoonPhaseName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsMoonPhaseName"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "ece98cf8d0a3ed38",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsMoonPhaseIntensity",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsMoonPhaseIntensity"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "56a88a79eff34169",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsMoonPhaseTodaysMoonDay",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsMoonPhaseTodaysMoonDay"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "f2b0b26848a5a895",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsMoonPhaseNextFullMoon",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsMoonPhaseNextFullMoon"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "9162731b278aa81a",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsMoonPhaseNextNewMoon",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsMoonPhaseNextNewMoon"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "b9fcc1306699cbc7",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsCurrentProgramActivePreset",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsCurrentProgramActivePreset"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "e7af747af3ce22d1",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsCurrentProgramName",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsCurrentProgramName"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "1744f00bd833f409",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsKelvin",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsKelvin"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "Kelvin"
+            },
+            {
+                "property": "min_value",
+                "value": 8000
+            },
+            {
+                "property": "max_value",
+                "value": 23000
+            },
+            {
+                "property": "step_value",
+                "value": 100
+            },
+            {
+                "property": "mode",
+                "value": "slider"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "6eafc53f1621418c",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsIntensity",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsIntensity"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:theme-light-dark"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "percent"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 100
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "5848159de692eb1c",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsMoon",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsMoon"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:moon-waxing-crescent"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "percent"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 100
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "0e3c7c960d2eece8",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsMode",
+        "version": "6",
+        "entityType": "select",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsMode"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "options",
+                "value": [
+                    "auto",
+                    "manual",
+                    "off"
+                ]
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "351d9496a00a6713",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsManualFan",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsManualFan"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:fan"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "101bf342c21adce0",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsManualTemperature",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsManualTemperature"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "diagnostic"
+            },
+            {
+                "property": "device_class",
+                "value": "temperature"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "°C"
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "2d92747cc331e899",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsWhite",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsWhite"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:white-balance-iridescent"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 100
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "b58b2d0c79193e0e",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsBlue",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsBlue"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:white-balance-sunny"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 100
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "auto"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "7d0275db9ebd6246",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "ManualDoseHead",
+        "version": "6",
+        "entityType": "select",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ManualDoseHead"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:pump"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "config"
+            },
+            {
+                "property": "options",
+                "value": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "a647f8cf3bb424e5",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "ManualDoseVolume",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ManualDoseVolume"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "config"
+            },
+            {
+                "property": "device_class",
+                "value": "volume"
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "mL"
+            },
+            {
+                "property": "min_value",
+                "value": 1
+            },
+            {
+                "property": "max_value",
+                "value": 50
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "box"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "f9527650ff515a86",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "112eaa19e0068b8d",
+        "name": "ManualDoseNow",
+        "version": "6",
+        "entityType": "button",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ManualDoseNow"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": "config"
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "f0bd2e978089f79b",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsDuration",
+        "version": "6",
+        "entityType": "number",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsDuration"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:timer"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": "minutes"
+            },
+            {
+                "property": "min_value",
+                "value": 0
+            },
+            {
+                "property": "max_value",
+                "value": 120
+            },
+            {
+                "property": "step_value",
+                "value": 1
+            },
+            {
+                "property": "mode",
+                "value": "box"
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "6fe5651395e05e99",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsPreset",
+        "version": "6",
+        "entityType": "select",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsPreset"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "options",
+                "value": [
+                    "23K",
+                    "15K",
+                    "Shallow Reef",
+                    "Deep Reef",
+                    "N/A"
+                ]
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "4cf9a7f320f0f68f",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "f881817f7e95c5bf",
+        "name": "LightsLastCommandStatus",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "LightsLastCommandStatus"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
         "id": "0d3d05e917a791bc",
         "type": "ha-device-config",
         "name": "Pump",
@@ -6653,6 +9984,15 @@
         "hwVersion": "",
         "manufacturer": "RedSea",
         "model": "Aquarium",
+        "swVersion": ""
+    },
+    {
+        "id": "f881817f7e95c5bf",
+        "type": "ha-device-config",
+        "name": "ReefLights",
+        "hwVersion": "",
+        "manufacturer": "RedSea",
+        "model": "ReefLed G2",
         "swVersion": ""
     }
 ]
