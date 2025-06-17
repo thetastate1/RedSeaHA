@@ -3,6 +3,13 @@ Use RedSea ReefBeat devices in Home Assistant.
 
 A node-red flow to integrate RedSea Lights, Pumps, Skimmers, Dosers, and Wavemakers. 
 
+Why use this integration? Many users are fine with the ReefBeat app. Some considerations:
+1. Monitor and control via Home Assistant
+2. Many users don't use RedSea devices exclusively. Having an integration like this allows many devices from different vendors to be controlled from one app or web page.
+3. Automation. Home Assistant provides a powerful automation engine. Examples include automatically adjusting suppliment dosing volumes from automated testing (e.g. ReefBot), using a switch or button to automate feed or maintenance routines.
+4. Speed. The ReefBeat app sends commands to the cloud which then contols the local devices. This integration communicates direct to the local device endpoints.
+5. Compatability. This integration works fine along with the ReefBeat app. If you change values in the ReefBeat app, it reflects the change in HA. Changes made from HA are reflected in the ReefBeat app.
+
 This integration uses local and cloud http REST integration allowing you to monitor and control devices remotely using Home Assistant.
 
 The cloud API is used to get information about the devices associated with the aquarium to create sensors and controls. It also provides notifications.
