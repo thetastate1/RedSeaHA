@@ -2752,7 +2752,7 @@
         "type": "function",
         "z": "93fb4f06d7a3a7bc",
         "name": "Do this First: Enter ReefBeat Credentials Here Then Deploy Flow Then Trigger",
-        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"your@email.com\")\nglobal.set(\"RSPass\", \"YourPassword\")\nreturn msg;",
+        "func": "// Put your ReefBeat app credentials here\nglobal.set(\"RSUser\", \"user@email\")\nglobal.set(\"RSPass\", \"yourReefBeatPassword\")\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -5775,9 +5775,9 @@
         "id": "1f356417b8eeade8",
         "type": "comment",
         "z": "93fb4f06d7a3a7bc",
-        "name": "ATO - placeholder",
+        "name": "ATO - untested",
         "info": "",
-        "x": 150,
+        "x": 140,
         "y": 4020,
         "wires": []
     },
@@ -5896,7 +5896,19 @@
         "y": 4100,
         "wires": [
             [
-                "966e4ae251ef1bc5"
+                "966e4ae251ef1bc5",
+                "82473e6c9c31741a",
+                "1f64897842dc3a79",
+                "a6aaa6df710a8d93",
+                "840b6d69d8fdf30b",
+                "946138921f6eddfb",
+                "fbd5d9b6397cfe63",
+                "fb28290a48842f62",
+                "2e316dec8ad81dd2",
+                "050c2f7b7ab35ac4",
+                "512f2efd535b5a39",
+                "d96f56a96a404cd4",
+                "85caa936ab2f3be2"
             ],
             []
         ]
@@ -5933,6 +5945,506 @@
         "y": 2900,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "e1054c070aa1fe71",
+        "type": "inject",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "Test Dashboard",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 4180,
+        "wires": [
+            [
+                "d9129c3740e480fe"
+            ]
+        ]
+    },
+    {
+        "id": "d9129c3740e480fe",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefATOTestPayload",
+        "func": "// Example payload as I don't have an ATO. Comment this payload out if you have one\nmsg.payload = {\n    \"mode\": \"auto\",\n    \"is_internet_connected\": true,\n    \"check_sensor\": false,\n    \"s1_average\": 867,\n    \"s2_average\": 855,\n    \"water_level\": \"desired_level_2\",\n    \"pump_state\": \"off\",\n    \"prev_pump_state\": \"pump_on\",\n    \"is_pump_on\": false,\n    \"last_pump_on_cause\": \"manual\",\n    \"pump_consumption\": 0,\n    \"pump_speed\": 54,\n    \"flow_rate\": 1200,\n    \"pump_soft_blockage_threshold\": 0,\n    \"pump_blockage_threshold\": 1011.6000366210938,\n    \"pump_empty_threshold\": 632.25,\n    \"last_fill_date\": 1751379084,\n    \"today_fills\": 8,\n    \"today_volume_usage\": 20374,\n    \"total_volume_usage\": 222155,\n    \"total_fills\": 126,\n    \"daily_fills_average\": null,\n    \"daily_volume_average\": null,\n    \"volume_left\": null,\n    \"days_till_empty\": null,\n    \"leak_sensor\": {\n        \"connected\": false,\n        \"enabled\": true,\n        \"buzzer_enabled\": true,\n        \"buzzer_on\": false,\n        \"current_read\": 0,\n        \"status\": \"dry\"\n    },\n    \"ato_sensor\": {\n        \"is_sensor_error\": false,\n        \"is_temp_enabled\": true,\n        \"temperature_log_enabled\": true,\n        \"connected\": true,\n        \"last_installation_date\": 1745531745,\n        \"current_level\": \"desired\",\n        \"code\": \"511\",\n        \"is_calibrated\": true,\n        \"last_adjustment_date\": null,\n        \"current_read\": 24.297499656677246,\n        \"temperature_probe_status\": \"connected\"\n    }\n}\nreturn msg;",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 4180,
+        "wires": [
+            [
+                "bb484690068fb132"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "82473e6c9c31741a",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOMode",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "6b6b4d1d2b95a761",
+        "exposeAsEntityConfig": "",
+        "mode": "set",
+        "value": "payload.mode",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 1020,
+        "y": 4100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1f64897842dc3a79",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOCheckSensor",
+        "entityConfig": "f519823fceeb37ca",
+        "version": 0,
+        "state": "payload.check_sensor",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1050,
+        "y": 4140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a6aaa6df710a8d93",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOPumpOn",
+        "entityConfig": "2fa3d013b20f827f",
+        "version": 0,
+        "state": "payload.is_pump_on",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1030,
+        "y": 4180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "840b6d69d8fdf30b",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOLastPumpOnCause",
+        "entityConfig": "b0bc5376ef62c820",
+        "version": 0,
+        "state": "payload.last_pump_on_cause",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1070,
+        "y": 4220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "946138921f6eddfb",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOPumpSpeed",
+        "entityConfig": "783ffcae103e6a71",
+        "version": 0,
+        "state": "payload.pump_speed",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1050,
+        "y": 4260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fbd5d9b6397cfe63",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOFlowRate",
+        "entityConfig": "71f150bbfa52ac2b",
+        "version": 0,
+        "state": "payload.flow_rate",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1040,
+        "y": 4300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fb28290a48842f62",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOTodayFills",
+        "entityConfig": "5e8176a8bd8cf79b",
+        "version": 0,
+        "state": "payload.today_fills",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1040,
+        "y": 4340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e316dec8ad81dd2",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOTodayVolumeUsage",
+        "entityConfig": "b4032e5fb51c3d37",
+        "version": 0,
+        "state": "payload.today_volume_usage",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1070,
+        "y": 4380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "050c2f7b7ab35ac4",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATODaysTillEmpty",
+        "entityConfig": "b2619df82b1f394e",
+        "version": 0,
+        "state": "payload.days_till_empty",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1050,
+        "y": 4460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "512f2efd535b5a39",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOVolumeLeft",
+        "entityConfig": "160621d99e4dc496",
+        "version": 0,
+        "state": "payload.volume_left",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1040,
+        "y": 4420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d96f56a96a404cd4",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOLeakSensorStatus",
+        "entityConfig": "eba26149d1ccd2bf",
+        "version": 0,
+        "state": "payload.leak_sensor.status",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1060,
+        "y": 4500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "85caa936ab2f3be2",
+        "type": "ha-sensor",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOTemperature",
+        "entityConfig": "2a28a23f764418ed",
+        "version": 0,
+        "state": "payload.ato_sensor.current_read",
+        "stateType": "msg",
+        "attributes": [],
+        "inputOverride": "block",
+        "outputProperties": [],
+        "x": 1050,
+        "y": 4540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7de4afa0e37f3c95",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefATO Manual Start",
+        "func": "if (global.get(\"RSReefATO\")){\n    msg.url = \"http://\" + global.get(\"RSReefATOIP\") + \"/manual-pump\"\n}\nelse {node.warn(\"No ReefATO Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 4300,
+        "wires": [
+            [
+                "25eaeafbdf4ae293"
+            ]
+        ]
+    },
+    {
+        "id": "25eaeafbdf4ae293",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 590,
+        "y": 4300,
+        "wires": [
+            [
+                "3e81cac6ec25389c"
+            ]
+        ]
+    },
+    {
+        "id": "b66df3797bceb880",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefATO Manual Stop",
+        "func": "if (global.get(\"RSReefATO\")){\n    msg.url = \"http://\" + global.get(\"RSReefATOIP\") + \"/stop\"\n}\nelse {node.warn(\"No ReefATO Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 4340,
+        "wires": [
+            [
+                "25eaeafbdf4ae293"
+            ]
+        ]
+    },
+    {
+        "id": "7ad156439ced7f2b",
+        "type": "ha-button",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ManualPumpStart",
+        "version": 0,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityConfig": "b73398ac78743d6f",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "x": 150,
+        "y": 4300,
+        "wires": [
+            [
+                "7de4afa0e37f3c95"
+            ]
+        ]
+    },
+    {
+        "id": "0942200b9cd24479",
+        "type": "ha-button",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ManualPumpStop",
+        "version": 0,
+        "debugenabled": false,
+        "outputs": 1,
+        "entityConfig": "84eed3859bc15244",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entityState"
+            },
+            {
+                "property": "topic",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "triggerId"
+            },
+            {
+                "property": "data",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "entity"
+            }
+        ],
+        "x": 150,
+        "y": 4340,
+        "wires": [
+            [
+                "b66df3797bceb880"
+            ]
+        ]
+    },
+    {
+        "id": "0c381956fb1f747a",
+        "type": "function",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ReefATO Mode",
+        "func": "if (global.get(\"RSReefATO\")){\n    msg.url = \"http://\" + global.get(\"RSReefATOIP\") + \"/configuration\",\n    msg.payload = { \n        \"auto_fill\": msg.payload\n        }\n}\nelse {node.warn(\"No ReefATO Devices Found\");return}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 4380,
+        "wires": [
+            [
+                "53fdabda5d8db773"
+            ]
+        ]
+    },
+    {
+        "id": "53fdabda5d8db773",
+        "type": "http request",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "",
+        "method": "PUT",
+        "ret": "obj",
+        "paytoqs": "body",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 590,
+        "y": 4380,
+        "wires": [
+            [
+                "3e81cac6ec25389c"
+            ]
+        ]
+    },
+    {
+        "id": "65ea4844556a20a1",
+        "type": "ha-select",
+        "z": "93fb4f06d7a3a7bc",
+        "name": "ATOAutoFill",
+        "version": 1,
+        "debugenabled": false,
+        "inputs": 1,
+        "outputs": 1,
+        "entityConfig": "a39624792cb6b54b",
+        "exposeAsEntityConfig": "",
+        "mode": "get",
+        "value": "payload.mode",
+        "valueType": "msg",
+        "outputProperties": [
+            {
+                "property": "payload",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "value"
+            },
+            {
+                "property": "previousValue",
+                "propertyType": "msg",
+                "value": "",
+                "valueType": "previousValue"
+            }
+        ],
+        "x": 130,
+        "y": 4380,
+        "wires": [
+            [
+                "0c381956fb1f747a"
+            ]
         ]
     },
     {
@@ -9942,6 +10454,595 @@
         "debugEnabled": false
     },
     {
+        "id": "6b6b4d1d2b95a761",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOMode",
+        "version": "6",
+        "entityType": "select",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "options",
+                "value": [
+                    "auto",
+                    "manual"
+                ]
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "f519823fceeb37ca",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOCheckSensor",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ATOCheckSensor"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "2fa3d013b20f827f",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOPumpOn",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ATOPumpOn"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "b0bc5376ef62c820",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOLastPumpOnCause",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ATOLastPumpOnCause"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "783ffcae103e6a71",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOPumpSpeed",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ATOPumpSpeed"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "71f150bbfa52ac2b",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOFlowRate",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ATOFlowRate"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "5e8176a8bd8cf79b",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOTodayFills",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ATOTodayFills"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "b4032e5fb51c3d37",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOTodayVolumeUsage",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ATOTodayVolumeUsage"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "b2619df82b1f394e",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATODaysTillEmpty",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "160621d99e4dc496",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOVolumeLeft",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ATOVolumeLeft"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "eba26149d1ccd2bf",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOLeakSensorStatus",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "2a28a23f764418ed",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOTemperature",
+        "version": "6",
+        "entityType": "sensor",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            },
+            {
+                "property": "unit_of_measurement",
+                "value": ""
+            },
+            {
+                "property": "state_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "b73398ac78743d6f",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ManualPumpStart",
+        "version": "6",
+        "entityType": "button",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Pump Start"
+            },
+            {
+                "property": "icon",
+                "value": "mdi:pump"
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "84eed3859bc15244",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ManualPumpStop",
+        "version": "6",
+        "entityType": "button",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "Pump Stop"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "device_class",
+                "value": ""
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
+        "id": "a39624792cb6b54b",
+        "type": "ha-entity-config",
+        "server": "caf9ba1992c9f965",
+        "deviceConfig": "5f3d2f5ee9b720ed",
+        "name": "ATOAutoFill",
+        "version": "6",
+        "entityType": "select",
+        "haConfig": [
+            {
+                "property": "name",
+                "value": "ATO Auto Fill"
+            },
+            {
+                "property": "icon",
+                "value": ""
+            },
+            {
+                "property": "entity_picture",
+                "value": ""
+            },
+            {
+                "property": "entity_category",
+                "value": ""
+            },
+            {
+                "property": "options",
+                "value": [
+                    "true",
+                    "false"
+                ]
+            }
+        ],
+        "resend": false,
+        "debugEnabled": false
+    },
+    {
         "id": "0d3d05e917a791bc",
         "type": "ha-device-config",
         "name": "Pump",
@@ -9993,6 +11094,15 @@
         "hwVersion": "",
         "manufacturer": "RedSea",
         "model": "ReefLed G2",
+        "swVersion": ""
+    },
+    {
+        "id": "5f3d2f5ee9b720ed",
+        "type": "ha-device-config",
+        "name": "ReefATO",
+        "hwVersion": "",
+        "manufacturer": "RedSea",
+        "model": "",
         "swVersion": ""
     }
 ]
