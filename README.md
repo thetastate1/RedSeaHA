@@ -9,6 +9,7 @@ Why use this integration? Many users are fine with the ReefBeat app. Some consid
 3. Automation. Home Assistant provides a powerful automation engine. Examples include automatically adjusting suppliment dosing volumes from automated testing (e.g. ReefBot), using a switch or button to automate feed or maintenance routines.
 4. Speed. The ReefBeat app sends commands to the cloud which then contols the local devices. This integration communicates direct to the local device endpoints.
 5. Compatability. This integration works fine along with the ReefBeat app. If you change values in the ReefBeat app, it reflects the change in HA. Changes made from HA are reflected in the ReefBeat app.
+6. Node-red allows users to configure and customise the integration behaviour
 
 This integration uses local and cloud http REST integration allowing you to monitor and control devices remotely using Home Assistant.
 
@@ -104,7 +105,7 @@ Home Assistant can control:
 
 1. Add overskimming and level sensors for Pump/Skimmer
 2. Lights Preset program activation. Have cloud endpoints but yet to discover local endpoints and payloads
-3. ATO
+3. ATO (pump on and off tested)
 4. Figure out what "st" and "pd" is for in setting pump values
 5. Enhance ReefWave to display all wave libraries, modify each from HA, and choose an active wave
 6. Perhaps there is a more efficient way to create HA sensors dynamically from a JS function call in node-red rather than creating a node for each sensor
