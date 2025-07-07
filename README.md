@@ -13,7 +13,7 @@ Why use this integration? Many users are fine with the ReefBeat app. Some consid
 
 This integration uses local and cloud http REST integration allowing you to monitor and control devices remotely using Home Assistant.
 
-The cloud API is used to get information about the devices associated with the aquarium to create sensors and controls. It also provides notifications.
+The cloud API is used to get information about the devices associated with the aquarium to create sensors and controls. It also provides notifications. The cloud component tracks the local IP address of each device so you don't have to set up static IP address reservations for each RedSea device.
 
 Home Assistant can control:
 - Aquarium feed mode can be started and stopped
